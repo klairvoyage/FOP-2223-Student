@@ -1,5 +1,7 @@
 package h03;
 
+import fopbot.*;
+
 /**
  * Main entry point in executing the program.
  */
@@ -11,6 +13,13 @@ public class Main {
      * @param args program arguments, currently ignored
      */
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        sandboxTests();
+    }
+
+    private static void sandboxTests() {
+        World.setSize(5, 7);
+        World.setVisible(true);
+
+        // Put your code here
     }
 }

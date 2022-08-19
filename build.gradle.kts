@@ -22,6 +22,7 @@ submit {
 
 repositories {
     mavenCentral()
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots") // only needed for snapshot versions
 }
 
 val publicTest: SourceSet by sourceSets.creating {
@@ -34,6 +35,7 @@ dependencies {
     implementation("org.jetbrains:annotations:23.0.0")
     // JUnit only available in "test" source set (./src/test)
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    implementation("org.tudalgo:fopbot:0.4.0-SNAPSHOT")
 }
 
 application {

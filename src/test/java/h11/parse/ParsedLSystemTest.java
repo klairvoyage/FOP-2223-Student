@@ -12,10 +12,24 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+/**
+ * Test a parsed L-System.
+ */
 public class ParsedLSystemTest {
 
+    /**
+     * The {@link LSystem} to test
+     * as implemented by {@link ParsedLSystem}.
+     */
     private LSystem<Character> lSystem;
 
+    /**
+     * Test that all defined sources are
+     * being projected according to the given projections.
+     *
+     * @param projections The projections to test with.
+     */
     @ParameterizedTest
     @ArgumentsSource(ProjectionsProvider.class)
     void testThat_projectOfKnownSourceProjects(List<Projection> projections) {
@@ -23,6 +37,13 @@ public class ParsedLSystemTest {
         assertAll(projections.stream().map(this::testProjection));
     }
 
+    /**
+     * Test that the L-System behaves
+     * as defined by the given {@link Projection}.
+     *
+     * @param projection The {@link Projection} to test with.
+     * @return An {@link Executable} representing the test.
+     */
     private Executable testProjection(Projection projection) {
         return () -> {
             var projected = lSystem.project(projection.source());

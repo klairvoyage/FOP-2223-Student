@@ -4,6 +4,10 @@ import java.util.List;
 
 import static org.tudalgo.algoutils.student.Student.crash;
 
+/**
+ * A basic implementation of the {@link FibonacciGenerator}
+ * using {@link java.util.stream.Stream} to compute the sequence.
+ */
 public class FibonacciGeneratorImpl implements FibonacciGenerator {
 
     @Override

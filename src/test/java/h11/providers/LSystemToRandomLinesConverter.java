@@ -9,22 +9,61 @@ import java.util.stream.Stream;
 
 import static org.tudalgo.algoutils.student.Student.crash;
 
+/**
+ * Convert a {@link List} of {@link Projection}s
+ * into a textual representation
+ * so that the resulting lines can be
+ * parsed with an <code>LSystemParserImpl</code>
+ */
 public class LSystemToRandomLinesConverter {
 
+    /**
+     * Maximum number of comment lines before and after a projection.
+     */
     private static final int MAX_LINE_NEXT_TO_PROJECTION = 2;
+
+    /**
+     * Maximum number of consecutive spaces.
+     */
     private static final int MAX_SPACES_SIZE = 3;
+
+    /**
+     * Maximum number of characters in a comment
+     */
     private static final int MAX_COMMENT_SIZE = 10;
 
+    /**
+     * {@link Random} to use.
+     */
     private final Random random;
 
+    /**
+     * @param random {@link Random} to use.
+     */
     public LSystemToRandomLinesConverter(Random random) {
         this.random = random;
     }
 
+    /**
+     * Convert a {@link List} of {@link Projection}s
+     * into a textual representation
+     * so that the resulting lines can be
+     * parsed with an <code>LSystemParserImpl</code>
+     *
+     * @param lSystem The L-System to convert.
+     * @return A Stream of lines representing
+     * the random, textual representation
+     */
     public Stream<String> lSystemAsLines(List<Projection> lSystem) {
         return crash("Not implemented: H7.2"); // TODO: H7.2
     }
 
+    /**
+     * Generate a chunk of lines form the given {@link Projection}.
+     *
+     * @param projection The {@link Projection}.
+     * @return A {@link Stream} of lines.
+     */
     private Stream<String> projectionAsLines(Projection projection) {
         return Stream.of(
             generateLinesNextToProjection(),
@@ -33,6 +72,12 @@ public class LSystemToRandomLinesConverter {
         ).flatMap(Function.identity());
     }
 
+    /**
+     * Generate a random line from the given {@link Projection}.
+     *
+     * @param projection The projection.
+     * @return A line representing the given projection.
+     */
     private Stream<String> projectionAsLine(Projection projection) {
         var s = generateSpaces()
             + projection.source()
@@ -44,6 +89,11 @@ public class LSystemToRandomLinesConverter {
         return Stream.of(s);
     }
 
+    /**
+     * Generate the lines before or after a projection.
+     *
+     * @return A {@link Stream} of the generated lines.
+     */
     private Stream<String> generateLinesNextToProjection() {
         var size = random.nextInt(MAX_LINE_NEXT_TO_PROJECTION);
         return Stream
@@ -51,10 +101,20 @@ public class LSystemToRandomLinesConverter {
             .limit(size);
     }
 
+    /**
+     * Generate a line before or after a projection.
+     *
+     * @return The generated line.
+     */
     private String generateLineNextToProjection() {
         return generateSpaces() + generateComment() + generateSpaces();
     }
 
+    /**
+     * Generate a random comment.
+     *
+     * @return The comment.
+     */
     private String generateComment() {
         if (random.nextBoolean()) {
             return "";
@@ -64,6 +124,11 @@ public class LSystemToRandomLinesConverter {
         return '#' + generateSpaces() + random.latin(size);
     }
 
+    /**
+     * Generate a random String of spaces.
+     *
+     * @return The generated String.
+     */
     private String generateSpaces() {
         return crash("Not implemented: H7.1"); // TODO: H7.1
     }

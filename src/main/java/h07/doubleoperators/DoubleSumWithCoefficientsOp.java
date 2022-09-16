@@ -2,6 +2,8 @@ package h07.doubleoperators;
 
 import java.util.function.DoubleBinaryOperator;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * Class implementing the interface DoubleBinaryOperator, such that
  * the overwritten method applyAsDouble sums the products of the in
@@ -43,7 +45,6 @@ public class DoubleSumWithCoefficientsOp implements DoubleBinaryOperator {
      */
     @Override
     public double applyAsDouble(double left, double right) {
-        //TODO: Add crash-method
-        return 0;
+        return crash(); // TODO: H2.1 - remove if implemented
     }
 }

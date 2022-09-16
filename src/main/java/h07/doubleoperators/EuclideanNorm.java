@@ -2,6 +2,8 @@ package h07.doubleoperators;
 
 import java.util.function.DoubleBinaryOperator;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * Class implementing the interface DoubleBinaryOperator, such that
  * the overwritten method applyAsDouble returns the Euclidean norm
@@ -18,8 +20,7 @@ public class EuclideanNorm implements DoubleBinaryOperator {
      */
     @Override
     public double applyAsDouble(double left, double right) {
-        //TODO: add crash-method
-        return 0;
+        return crash(); // TODO: H2.2 - remove if implemented
     }
 
 }

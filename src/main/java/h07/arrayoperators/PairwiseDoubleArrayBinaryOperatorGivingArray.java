@@ -2,6 +2,8 @@ package h07.arrayoperators;
 
 import java.util.function.DoubleBinaryOperator;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * Class implementing the interface DoubleArrayBinaryOperatorGivingArray,
  * such that the overwritten method applyAsDoubleArray returns an array
@@ -13,7 +15,7 @@ import java.util.function.DoubleBinaryOperator;
 public class PairwiseDoubleArrayBinaryOperatorGivingArray implements DoubleArrayBinaryOperatorGivingArray {
 
     /**
-     * The operator
+     * The operator.
      */
     private final DoubleBinaryOperator operator;
 
@@ -32,13 +34,12 @@ public class PairwiseDoubleArrayBinaryOperatorGivingArray implements DoubleArray
      * Each element is the result of the application of the operator on the elements of
      * the given arrays.
      *
-     * @param left      First parameter.
-     * @param right     Second Parameter.
-     * @return          The result.
+     * @param left      The first array.
+     * @param right     The second array.
+     * @return          The result of the mapping.
      */
     @Override
     public double[] applyAsDoubleArray(double[] left, double[] right) {
-        //TODO: Add crash-method
-        return null;
+        return crash(); // TODO: H1.2 - remove if implemented
     }
 }

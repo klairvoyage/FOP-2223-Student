@@ -2,6 +2,8 @@ package h07.doubleoperators;
 
 import java.util.function.DoubleBinaryOperator;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * Class implementing the interface DoubleBinaryOperator, such that
  * the overwritten method applyAsDouble first applies two operators
@@ -55,8 +57,7 @@ public class ComposedDoubleBinaryOperator implements DoubleBinaryOperator {
      */
     @Override
     public double applyAsDouble(double left, double right) {
-        //TODO: Add crash-method
-        return 0;
+        return crash(); // TODO: H2.4 - remove if implemented
     }
 
 }

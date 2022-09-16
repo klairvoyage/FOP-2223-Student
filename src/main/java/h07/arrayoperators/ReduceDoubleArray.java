@@ -2,6 +2,8 @@ package h07.arrayoperators;
 
 import java.util.function.DoublePredicate;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * Class implementing the interface DoubleArrayUnaryOperatorGivingArray,
  * such that the overwritten method applyAsDoubleArray returns an array
@@ -16,7 +18,7 @@ public class ReduceDoubleArray implements DoubleArrayUnaryOperatorGivingArray {
     private final DoublePredicate predicate;
 
     /**
-     * Constructor initializes the predicate for reduction.
+     * Constructor initializes the predicate for the filter.
      *
      * @param predicate     The predicate.
      */
@@ -30,11 +32,10 @@ public class ReduceDoubleArray implements DoubleArrayUnaryOperatorGivingArray {
      * for which the predicate returns true.
      *
      * @param array     The array.
-     * @return          Reduced array.
+     * @return          The result of the filter.
      */
     @Override
     public double[] applyAsDoubleArray(double[] array) {
-        //TODO: Add crash-method
-        return null;
+        return crash(); // TODO: H1.1 - remove if implemented
     }
 }

@@ -2,6 +2,8 @@ package h07.arrayoperators;
 
 import java.util.function.DoubleBinaryOperator;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * Class implementing the interface DoubleArrayBinaryOperatorGivingArray,
  * such that the overwritten method applyAsDoubleArray returns an array
@@ -31,9 +33,9 @@ public class PairwiseDoubleArrayBinaryOperatorGivingScalar implements DoubleArra
      * Constructor initializes the operators ("Komponentenverknüpfung" and "Faltungsoperation")
      * and the initial value (init).
      *
-     * @param operator1     First operator, "Komponentenverknüpfung" (join-fct).
-     * @param operator2     Second operator, "Faltungsoperation" (fold-fct).
-     * @param d             Initial value (init).
+     * @param operator1     The first operator, "Komponentenverknüpfung" (join-fct).
+     * @param operator2     The second operator, "Faltungsoperation" (fold-fct).
+     * @param d             The initial value (init).
      */
     public PairwiseDoubleArrayBinaryOperatorGivingScalar(DoubleBinaryOperator operator1, DoubleBinaryOperator operator2, double d) {
         // Assign first parameter to first operator
@@ -58,13 +60,12 @@ public class PairwiseDoubleArrayBinaryOperatorGivingScalar implements DoubleArra
      *                  ( join-fct ( first lst1 ) ( first lst2 ) )
      *                  ( apply ( rest lst1 ) ( rest lst2 ) join-fct fold-fct init ) ] ) )
      *
-     * @param left      First parameter.
-     * @param right     Second parameter.
-     * @return          The scalar.
+     * @param left      The first array.
+     * @param right     The second array.
+     * @return          The result of the fold.
      */
     @Override
     public double applyAsDoubleArray(double[] left, double[] right) {
-        //TODO: Add crash-method
-        return 0;
+        return crash(); // TODO: H1.3 - remove if implemented
     }
 }

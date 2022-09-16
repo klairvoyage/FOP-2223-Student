@@ -18,7 +18,7 @@ public class DoubleBinaryOperatorFactory {
      * @param obj   The object specifying the operation.
      * @return      The lambda-expression.
      */
-    public DoubleBinaryOperator doubleSumWithCoefficientsOpAsLambda(Object obj) {
+    private static DoubleBinaryOperator doubleSumWithCoefficientsOpAsLambda(Object obj) {
         return crash(); // TODO: H3.1 - remove if implemented
     }
 
@@ -28,7 +28,7 @@ public class DoubleBinaryOperatorFactory {
      *
      * @return  The lambda-expression
      */
-    public DoubleBinaryOperator euclideanNormAsLambda() {
+    private static DoubleBinaryOperator euclideanNormAsLambda() {
         return crash(); // TODO: H3.2 - remove if implemented
     }
 
@@ -41,7 +41,7 @@ public class DoubleBinaryOperatorFactory {
      * @param obj   The object specifying the operation.
      * @return      The lambda-expression.
      */
-    public DoubleBinaryOperator doubleMaxOfTwoAsLambda(Object obj) {
+    private static DoubleBinaryOperator doubleMaxOfTwoAsLambda(Object obj) {
         return crash(); // TODO: H3.3 - remove if implemented
     }
 
@@ -54,7 +54,7 @@ public class DoubleBinaryOperatorFactory {
      * @param obj   The object specifying the operation.
      * @return      The lambda-expression.
      */
-    public DoubleBinaryOperator composedDoubleBinaryOperatorAsLambda(Object obj) {
+    private static DoubleBinaryOperator composedDoubleBinaryOperatorAsLambda(Object obj) {
         return crash(); // TODO: H3.4 - remove if implemented
     }
 
@@ -66,7 +66,7 @@ public class DoubleBinaryOperatorFactory {
      * @param bool  The style of operator creation.
      * @return      The operator.
      */
-    public Object buildOperator(String str, Object obj, boolean bool) {
+    public static Object buildOperator(String str, Object obj, boolean bool) {
         return crash(); // TODO: H4.1 - remove if implemented
     }
 
@@ -77,7 +77,7 @@ public class DoubleBinaryOperatorFactory {
      * @param obj   The (optional) features of the operator.
      * @return      The operator.
      */
-    public Object buildOperatorWithNew(String str, Object obj) {
+    private static Object buildOperatorWithNew(String str, Object obj) {
         return crash(); // TODO: H4.2 - remove if implemented
     }
 
@@ -88,7 +88,7 @@ public class DoubleBinaryOperatorFactory {
      * @param obj   The (optional) features of the operator.
      * @return      The operator.
      */
-    public Object buildOperatorWithLambda(String str, Object obj) {
+    private static Object buildOperatorWithLambda(String str, Object obj) {
         return crash(); // TODO: H4.3 - remove if implemented
     }
 

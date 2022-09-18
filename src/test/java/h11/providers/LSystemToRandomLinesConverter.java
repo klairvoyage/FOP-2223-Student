@@ -1,6 +1,6 @@
 package h11.providers;
 
-import h11.Random;
+import h11.AbstractRandom;
 import h11.parse.Projection;
 
 import java.util.List;
@@ -33,14 +33,14 @@ public class LSystemToRandomLinesConverter {
     private static final int MAX_COMMENT_SIZE = 10;
 
     /**
-     * {@link Random} to use.
+     * {@link AbstractRandom} to use.
      */
-    private final Random random;
+    private final AbstractRandom random;
 
     /**
-     * @param random {@link Random} to use.
+     * @param random {@link AbstractRandom} to use.
      */
-    public LSystemToRandomLinesConverter(Random random) {
+    public LSystemToRandomLinesConverter(AbstractRandom random) {
         this.random = random;
     }
 

@@ -1,5 +1,6 @@
 package h11.providers;
 
+import h11.AbstractRandom;
 import h11.Random;
 import h11.parse.Projection;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -26,9 +27,9 @@ public class ProjectionsProvider implements ArgumentsProvider {
     private static final int SEED = 0;
 
     /**
-     * The {@link Random} to use with the given seed.
+     * The {@link AbstractRandom} to use with the given seed.
      */
-    protected final Random random = SEED != 0 ? new Random() : new Random(SEED);
+    protected final AbstractRandom random = SEED != 0 ? new Random() : new Random(SEED);
 
     /**
      * The {@link RandomLSystemGenerator} to use with the given random instance.

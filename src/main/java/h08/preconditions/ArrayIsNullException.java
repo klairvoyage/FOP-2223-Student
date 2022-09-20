@@ -1,0 +1,8 @@
+package h08.preconditions;
+
+/**
+ * Thrown when a primary array is null.
+ */
+public class ArrayIsNullException {
+    // TODO: H2
+}

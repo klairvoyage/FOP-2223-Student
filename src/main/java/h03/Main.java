@@ -1,6 +1,6 @@
 package h03;
 
-import fopbot.*;
+import fopbot.World;
 
 /**
  * Main entry point in executing the program.

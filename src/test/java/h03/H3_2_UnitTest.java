@@ -1,10 +1,7 @@
 package h03;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import fopbot.World;
 import org.junit.jupiter.api.Test;
-
-import fopbot.*;
 
 class H3_2_UnitTest {
     /*

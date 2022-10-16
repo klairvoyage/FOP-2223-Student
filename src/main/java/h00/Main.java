@@ -4,6 +4,7 @@ import fopbot.Robot;
 import fopbot.World;
 
 import static fopbot.Direction.*;
+import static org.tudalgo.algoutils.student.Student.crash;
 
 /**
  * Code für Übungsblatt 00.
@@ -38,6 +39,6 @@ public class Main {
     public static void doExercise() {
         Robot robby = new Robot(4, 0, DOWN, 12);
         // TODO H00 Implement your solution here:
-    
+        crash(); // TODO: H4 - remove if implemented
     }
 }

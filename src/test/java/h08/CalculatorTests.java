@@ -10,7 +10,6 @@ import h08.preconditions.WrongNumberException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.tudalgo.algoutils.student.Student.crash;
 
 class CalculatorTests {

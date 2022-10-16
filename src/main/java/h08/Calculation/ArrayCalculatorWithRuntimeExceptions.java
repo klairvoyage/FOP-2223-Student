@@ -10,7 +10,7 @@ public class ArrayCalculatorWithRuntimeExceptions implements ArrayCalculator {
      * @param theArray The primary array containing the secondary arrays with their
      *                 double values.
      * @return double The sum of all double values contained on all secondary
-     *         arrays.
+     *                arrays.
      */
     @Override
     public double addUp(double[][] theArray, double max) {

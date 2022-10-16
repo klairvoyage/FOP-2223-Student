@@ -1,15 +1,8 @@
 package h08.calculation;
 
-import h08.preconditions.ArrayIsNullException;
-import h08.preconditions.AtIndexException;
-import h08.preconditions.AtIndexPairException;
-import h08.preconditions.Preconditions;
-import h08.preconditions.WrongNumberException;
-
 import static org.tudalgo.algoutils.student.Student.crash;
 
 public class ArrayCalculatorWithPreconditions implements ArrayCalculator {
-
     /**
      * Adds up all double values in an array of arrays of double values. The double
      * values may not be negative or bigger than max.

@@ -1,10 +1,5 @@
 package h08;
 
-import h08.calculation.ArrayCalculatorWithPreconditions;
-import h08.preconditions.AtIndexException;
-import h08.preconditions.AtIndexPairException;
-import h08.preconditions.WrongNumberException;
-
 import static org.tudalgo.algoutils.student.Student.crash;
 
 /**

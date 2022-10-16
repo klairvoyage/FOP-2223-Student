@@ -1,41 +1,34 @@
+@Suppress("DSL_SCOPE_VIOLATION") // https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     java
     application
-    id("org.sourcegrade.submitter") version "0.5.1"
+    alias(libs.plugins.jagr)
 }
 
-submit {
-    assignmentId = "h00" // do not change assignmentId
-    studentId = null // TU-ID  z.B. "ab12cdef"
-    firstName = null
-    lastName = null
-    // Optionally require tests for prepareSubmission task. Default is true
-    requireTests = true
-    // Optionally require public tests for prepareSubmission task. Default is false
-    requirePublicTests = false
-}
-
-// !! Achtung !!
-// Die studentId (TU-ID) ist keine Matrikelnummer
-// Richtig z.B. ab12cdef
-// Falsch z.B. 1234567
-
-repositories {
-    mavenCentral()
-}
-
-val publicTest: SourceSet by sourceSets.creating {
-    val test = sourceSets.test.get()
-    compileClasspath += test.output + test.compileClasspath
-    runtimeClasspath += output + test.runtimeClasspath
+jagr {
+    assignmentId.set("h00")
+    submissions {
+        val main by creating {
+// ACHTUNG! Entfernen Sie '//' in den folgenden Zeilen und setzen Sie Ihre TU-ID (NICHT Matrikelnummer!), Vor- und Nachnamen ein.
+//            studentId.set("ab12cdef")
+//            firstName.set("FirstName")
+//            lastName.set("LastName")
+        }
+    }
+    graders {
+        val graderPublic by creating {
+            graderName.set("FOP-2223-H00-Public")
+            rubricProviderName.set("h00.H00_RubricProvider")
+        }
+    }
 }
 
 dependencies {
-    implementation("org.jetbrains:annotations:23.0.0")
-    implementation("org.sourcegrade:fopbot:0.3.0")
+    implementation(libs.algoutils.student)
+    implementation(libs.annotations)
+    implementation(libs.fopbot)
     // JUnit only available in "test" source set (./src/test)
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
-    implementation("org.tudalgo:algoutils-student:0.3.0")
+    testImplementation(libs.junit)
 }
 
 application {
@@ -56,19 +49,6 @@ tasks {
         }
         workingDir = runDir
         useJUnitPlatform()
-    }
-    val publicTest by creating(Test::class) {
-        group = "verification"
-        doFirst {
-            runDir.mkdirs()
-        }
-        workingDir = runDir
-        testClassesDirs = publicTest.output.classesDirs
-        classpath = publicTest.compileClasspath + publicTest.runtimeClasspath
-        useJUnitPlatform()
-    }
-    named("check") {
-        dependsOn(publicTest)
     }
     withType<JavaCompile> {
         options.encoding = "UTF-8"

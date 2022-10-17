@@ -1,8 +1,5 @@
 [libraries]
-annotations = "org.jetbrains:annotations:23.0.0"
-junit = "org.junit.jupiter:junit-jupiter:5.9.1"
-algoutils-student = "org.tudalgo:algoutils-student:0.3.0"
 fopbot = "org.tudalgo:fopbot:0.4.0"
 
 [plugins]
-jagr = "org.sourcegrade.jagr-gradle:0.6.0"
+algomate = "org.tudalgo.algomate:0.1.0-SNAPSHOT"

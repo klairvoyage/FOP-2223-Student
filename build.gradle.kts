@@ -20,3 +20,8 @@ submission {
     // Optionally require public grader for mainBuildSubmission task. Default is false
     requireGraderPublic = false
 }
+
+dependencies {
+    // libs.fopbot method generated from ./gradle/libs.versions.toml
+    implementation(libs.fopbot)
+}

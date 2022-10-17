@@ -60,8 +60,9 @@ public class Main {
         // Call initializeRobotsPattern
         Robot[] allRobots = main.initializeRobotsPattern(testPattern, numberOfColumns, numberOfRows);
 
-        // TODO: H2.2 - Put your code here:
+        main.letRobotsMarch(allRobots);
 
+        // TODO: H2.2 - Put your code here:
 
     }
 

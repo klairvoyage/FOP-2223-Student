@@ -45,7 +45,7 @@ public class RandomLSystemGenerator {
      * @return A {@link List} of random {@link Projection}s.
      */
     public List<Projection> generate() {
-        return crash("Not implemented: H6.2"); // TODO: H6.2
+        return crash("Not implemented: H6.2"); // TODO: H6.2 - remove if implemented
     }
 
     /**
@@ -56,6 +56,6 @@ public class RandomLSystemGenerator {
      * @return A random {@link Projection} with the given source.
      */
     private Projection makeProjection(String src) {
-        return crash("Not implemented: H6.1"); // TODO: H6.1
+        return crash("Not implemented: H6.1"); // TODO: H6.1 - remove if implemented
     }
 }

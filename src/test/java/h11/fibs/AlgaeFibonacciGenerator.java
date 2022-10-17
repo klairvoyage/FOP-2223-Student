@@ -27,6 +27,6 @@ public class AlgaeFibonacciGenerator implements FibonacciGenerator {
 
     @Override
     public List<Integer> generate(int numberOfFibs) {
-        return crash("Not implemented: H4.2"); // TODO: H4.2
+        return crash("Not implemented: H4.2"); // TODO: H4.2 - remove if implemented
     }
 }

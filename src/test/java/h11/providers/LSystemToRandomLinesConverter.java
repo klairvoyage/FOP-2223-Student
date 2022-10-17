@@ -55,7 +55,7 @@ public class LSystemToRandomLinesConverter {
      * the random, textual representation
      */
     public Stream<String> lSystemAsLines(List<Projection> lSystem) {
-        return crash("Not implemented: H7.2"); // TODO: H7.2
+        return crash("Not implemented: H7.2"); // TODO: H7.2 - remove if implemented
     }
 
     /**
@@ -130,6 +130,6 @@ public class LSystemToRandomLinesConverter {
      * @return The generated String.
      */
     private String generateSpaces() {
-        return crash("Not implemented: H7.1"); // TODO: H7.1
+        return crash("Not implemented: H7.1"); // TODO: H7.1 - remove if implemented
     }
 }

@@ -21,7 +21,6 @@ submit {
 // Falsch z.B. 1234567
 
 repositories {
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
     mavenCentral()
 }
 
@@ -33,7 +32,7 @@ val publicTest: SourceSet by sourceSets.creating {
 
 dependencies {
     implementation("org.jetbrains:annotations:23.0.0")
-    implementation("org.tudalgo:algoutils-student:0.1.0-SNAPSHOT")
+    implementation("org.tudalgo:algoutils-student:0.3.0")
     // JUnit only available in "test" source set (./src/test)
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
 }

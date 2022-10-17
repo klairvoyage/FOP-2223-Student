@@ -12,6 +12,6 @@ public class FibonacciGeneratorImpl implements FibonacciGenerator {
 
     @Override
     public List<Integer> generate(int numberOfFibs) {
-        return crash("Not implemented: H4.1"); // TODO: H4.1
+        return crash("Not implemented: H4.1"); // TODO: H4.1 - remove if implemented
     }
 }

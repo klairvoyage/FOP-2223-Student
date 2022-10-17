@@ -20,6 +20,6 @@ public class LSystemParserImpl implements LSystemParser {
 
     @Override
     public List<Projection> parse(Stream<String> lines) {
-        return crash("Not implemented: H3.2"); // TODO: H3.2
+        return crash("Not implemented: H3.2"); // TODO: H3.2 - remove if implemented
     }
 }

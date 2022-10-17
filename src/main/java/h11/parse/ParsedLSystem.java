@@ -32,11 +32,11 @@ public class ParsedLSystem implements LSystem<Character> {
 
     @Override
     public Character getAxiom() {
-        return crash("Not implemented: H3.1"); // TODO: H3.1
+        return crash("Not implemented: H3.1"); // TODO: H3.1 - remove if implemented
     }
 
     @Override
     public Stream<Character> project(Character ch) {
-        return crash("Not implemented: H3.1"); // TODO: H3.1
+        return crash("Not implemented: H3.1"); // TODO: H3.1 - remove if implemented
     }
 }

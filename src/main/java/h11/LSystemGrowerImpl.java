@@ -27,6 +27,6 @@ public class LSystemGrowerImpl<T> implements LSystemGrower<T> {
 
     @Override
     public Stream<List<T>> grow() {
-        return crash("Not implemented: H2"); // TODO: H2
+        return crash("Not implemented: H2"); // TODO: H2 - remove if implemented
     }
 }

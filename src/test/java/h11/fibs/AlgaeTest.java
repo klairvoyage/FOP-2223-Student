@@ -37,6 +37,6 @@ abstract class AlgaeTest {
     @ParameterizedTest
     @ValueSource(ints = {5, 10, 20, 30})
     void testAlgaeGeneratesFibs(int numberOfFibs) {
-        crash("Not implemented: H4.3"); // TODO: H4.3
+        crash("Not implemented: H4.3"); // TODO: H4.3 - remove if implemented
     }
 }

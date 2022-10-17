@@ -26,11 +26,11 @@ public class Random extends AbstractRandom {
     @Override
     @SafeVarargs
     public final <T> Stream<T> choices(T... values) {
-        return crash("Not implemented: H5.1"); // TODO: H5.1
+        return crash("Not implemented: H5.1"); // TODO: H5.1 - remove if implemented
     }
 
     @Override
     public String latin(int length) {
-        return crash("Not implemented: H5.2"); // TODO: H5.2
+        return crash("Not implemented: H5.2"); // TODO: H5.2 - remove if implemented
     }
 }

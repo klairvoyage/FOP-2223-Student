@@ -39,6 +39,22 @@ public class Main {
     public static void doExercise() {
         Robot robby = new Robot(4, 0, DOWN, 12);
         // TODO H00 Implement your solution here:
-        crash(); // TODO: H4 - remove if implemented
+        robby.turnLeft();
+        robby.turnLeft();
+        for (int i = 0; i<4; i++) {
+            robby.move();
+            robby.putCoin();
+        }
+        robby.turnLeft();
+        for (int i = 0; i<4; i++) {
+            robby.move();
+            robby.putCoin();
+            robby.turnLeft();
+            robby.move();
+            robby.putCoin();
+            robby.turnLeft();
+            robby.turnLeft();
+            robby.turnLeft();
+        }
     }
 }

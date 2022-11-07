@@ -1,0 +1,12 @@
+directionAccu,expectedDirection
+0,UP
+1,RIGHT
+2,DOWN
+3,LEFT
+4,UP
+5,RIGHT
+-1,LEFT
+-2,DOWN
+-3,RIGHT
+-4,UP
+-5,LEFT

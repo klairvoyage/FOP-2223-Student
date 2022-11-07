@@ -1,0 +1,7 @@
+x,y,direction,numberOfCoins,coinsToAssign,expectedResultCoins
+41,229,RIGHT,22,12,34
+41,229,RIGHT,0,11,11
+41,229,RIGHT,0,-5,0
+41,229,RIGHT,13,-7,6
+41,229,RIGHT,13,0,13
+41,229,RIGHT,0,0,0

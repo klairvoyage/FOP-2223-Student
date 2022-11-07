@@ -50,7 +50,7 @@ public class TutorTests_H1_1 {
     @DisplayName("Attribut \"numberOfColumnsOfWorld\" wurde korrekt deklariert.")
     public void numberOfColumnsOfWorldDeclaredCorrectly() {
         var attribute = robotWithOffspringCT.resolve().resolveAttribute(
-            new AttributeMatcher("numberOfColumnsOfWorld", SIMILARITY, Modifier.PRIVATE,
+            new AttributeMatcher("numberOfColumnsOfWorld", SIMILARITY, Modifier.PRIVATE | Modifier.FINAL,
                 int.class));
 
         assertFalse(attribute.getType().isArray(),
@@ -62,7 +62,7 @@ public class TutorTests_H1_1 {
     @DisplayName("Attribut \"numberOfRowsOfWorld\" wurde korrekt deklariert.")
     public void numberOfRowsOfWorldDeclaredCorrectly() {
         var attribute = robotWithOffspringCT.resolve().resolveAttribute(
-            new AttributeMatcher("numberOfRowsOfWorld", SIMILARITY, Modifier.PRIVATE,
+            new AttributeMatcher("numberOfRowsOfWorld", SIMILARITY, Modifier.PRIVATE | Modifier.FINAL,
                 int.class));
 
         assertFalse(attribute.getType().isArray(),

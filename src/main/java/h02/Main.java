@@ -1,5 +1,6 @@
 package h02;
 
+import fopbot.Direction;
 import fopbot.Robot;
 import fopbot.World;
 
@@ -75,7 +76,14 @@ public class Main {
      * @return                  Number of robots in the world.
      */
     public int countRobotsInPattern(boolean[][] pattern, int numberOfColumns, int numberOfRows) {
-        return crash(); // TODO: H1.1 - remove if implemented
+        // TODO: H1.1 - remove if implemented
+        int numberOfRobots = 0;
+        for (int x=0;x<pattern.length;x++) {
+            for (int y=0;y<pattern[x].length;y++) {
+                if (pattern[x][y] && x<numberOfColumns && y<numberOfRows) numberOfRobots++;
+            }
+        }
+        return numberOfRobots;
     }
 
     /**
@@ -87,7 +95,18 @@ public class Main {
      * @return                  Correctly initialized allRobots array.
      */
     public Robot[] initializeRobotsPattern(boolean[][] pattern, int numberOfColumns, int numberOfRows) {
-        return crash(); // TODO: H1.2 - remove if implemented
+        // TODO: H1.2 - remove if implemented
+        Robot[] allRobots = new Robot[countRobotsInPattern(pattern, numberOfColumns, numberOfRows)];
+        int index = 0;
+        for (int x=0;x<pattern.length;x++) {
+            for (int y=0;y<pattern[x].length;y++) {
+                if (pattern[x][y] && x<numberOfColumns && y<numberOfRows) {
+                    allRobots[index] = new Robot(x, y, Direction.RIGHT, numberOfColumns-x);
+                    index++;
+                }
+            }
+        }
+        return allRobots;
     }
 
     /**
@@ -97,7 +116,10 @@ public class Main {
      * @return            True, if array contains robot.
      */
     public int numberOfNullRobots(Robot[] allRobots) {
-        return crash(); // TODO: H3.1 - remove if implemented
+        // TODO: H3.1 - remove if implemented
+        int numberOfNullRobots = 0;
+        for (int i=0;i<allRobots.length;i++) if (allRobots[i]==null) numberOfNullRobots++;
+        return numberOfNullRobots;
     }
 
     /**
@@ -107,7 +129,30 @@ public class Main {
      * @return        The array.
      */
     public int[] generateThreeDistinctRandomIndices(int bound) {
-        return crash(); // TODO: H3.2 - remove if implemented
+        // TODO: H3.2 - remove if implemented
+        /*
+        int[] randomInt = new int[3];
+        randomInt[0] = ThreadLocalRandom.current().nextInt(bound);
+        do randomInt[1] = ThreadLocalRandom.current().nextInt(bound);
+        while (randomInt[1]==randomInt[0]);
+        do randomInt[2] = ThreadLocalRandom.current().nextInt(bound);
+        while (randomInt[2]==randomInt[0] || randomInt[2]==randomInt[1]);
+        return randomInt;
+        */
+        int[] randomInt = new int[3];
+        boolean unique;
+        for (int index=0;index<randomInt.length;index++) {
+            do {
+                randomInt[index] = ThreadLocalRandom.current().nextInt(bound);
+                unique = true;
+                if (index!=0) for (int i=0;i<index;i++)
+                    if (randomInt[i]==randomInt[index]) {
+                        unique = false;
+                        break;
+                    }
+            } while (!unique);
+        }
+        return randomInt;
     }
 
     /**
@@ -116,7 +161,35 @@ public class Main {
      * @param array   The array to be sorted.
      */
     public void sortArray(int[] array) {
-        crash(); // TODO: H3.3 - remove if implemented
+        // TODO: H3.3 - remove if implemented
+        /*
+        int tausch;
+        if (array[2]<array[1]) {
+            tausch = array[1];
+            array[1] = array[2];
+            array[2] = tausch;
+        }
+        if (array[1]<array[0]) {
+            tausch = array[0];
+            array[0] = array[1];
+            array[1] = tausch;
+        }
+        if (array[2]<array[1]) {
+            tausch = array[1];
+            array[1] = array[2];
+            array[2] = tausch;
+        }
+        */
+        int temp;
+        for (int i=1;i<array.length;i++) {
+            for (int j=0;j<array.length-i;j++) {
+                if (array[j]>array[j+1]) {
+                    temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                }
+            }
+        }
     }
 
     /**
@@ -129,7 +202,11 @@ public class Main {
      * @param allRobots     Array containing the robots.
      */
     public void swapRobots(int[] indices, Robot[] allRobots) {
-        crash(); // TODO: H3.4 - remove if implemented
+        // TODO: H3.4 - remove if implemented
+        Robot temp = allRobots[indices[0]];
+        allRobots[indices[0]] = allRobots[indices[2]];
+        allRobots[indices[2]] = allRobots[indices[1]];
+        allRobots[indices[1]] = temp;
     }
 
     /**
@@ -140,7 +217,16 @@ public class Main {
      * @return          The reduced array.
      */
     public Robot[] reduceRobotArray(Robot[] robots, int reduceBy) {
-        return crash(); // TODO: H3.5 - remove if implemented
+        // TODO: H3.5 - remove if implemented
+        Robot[] reducedArray = new Robot[robots.length-reduceBy];
+        int newIndex = 0;
+        for (int i=0;i<robots.length;i++) {
+            if (robots[i]!=null) {
+                reducedArray[newIndex] = robots[i];
+                newIndex++;
+            }
+        }
+        return reducedArray;
     }
 
     /**
@@ -152,6 +238,23 @@ public class Main {
      * @param allRobots   Array containing all the robots.
      */
     public void letRobotsMarch(Robot[] allRobots) {
-        crash(); // TODO: H4 - remove if implemented
+        // TODO: H4 - remove if implemented
+        int[] randomInt;
+        while (numberOfNullRobots(allRobots)!=allRobots.length) {
+            for (int i=0;i<allRobots.length;i++) {
+                if (allRobots[i]!=null) {
+                    allRobots[i].putCoin();
+                    if (allRobots[i].isFrontClear()) allRobots[i].move();
+                    else allRobots[i] = null;
+                }
+            }
+            //-numberOfNullRobots(allRobots)
+            if (allRobots.length>2) {
+                randomInt = generateThreeDistinctRandomIndices(allRobots.length);
+                sortArray(randomInt);
+                swapRobots(randomInt, allRobots);
+            }
+            if (numberOfNullRobots(allRobots)>2) allRobots = reduceRobotArray(allRobots, numberOfNullRobots(allRobots));
+        }
     }
 }

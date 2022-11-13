@@ -14,7 +14,7 @@ public class StrangeFunctions {
      * @param n another number
      * @return a mysterious result
      */
-    public static int strangeFunction1(int m, int n) {
+    public static double strangeFunction1(int m, int n) {
         return crash();
     }
 
@@ -25,7 +25,7 @@ public class StrangeFunctions {
      * @param n just another number
      * @return just another mysterious result
      */
-    public static int strangeFunction2(int m, int n) {
+    public static double strangeFunction2(int m, int n) {
         return crash();
     }
 

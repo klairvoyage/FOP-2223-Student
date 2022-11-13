@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.opentest4j.AssertionFailedError;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
@@ -16,6 +17,8 @@ import org.tudalgo.algoutils.reflect.AttributeMatcher;
 import org.tudalgo.algoutils.reflect.MethodTester;
 import org.tudalgo.algoutils.reflect.ParameterMatcher;
 import org.tudalgo.algoutils.tutor.general.assertions.Context;
+import org.tudalgo.algoutils.tutor.general.assertions.PreCommentSupplier;
+import org.tudalgo.algoutils.tutor.general.assertions.ResultOfFail;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -32,6 +35,7 @@ import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
 public class TutorTests_H2 {
 
     private static boolean robotWithOffspringClassResolved = false;
+    private static PreCommentSupplier<? super ResultOfFail> errorMessageSupplier;
 
     private static Field directionAccuField;
     private static Field offspringField;
@@ -48,9 +52,16 @@ public class TutorTests_H2 {
         World.setDelay(0);
         World.setVisible(false);
 
-        robotWithOffspring2CT.setSuperClass((Class<Object>) robotWithOffspringCT.assureClassResolved().getTheClass());
-        robotWithOffspring2CT.verify(SIMILARITY);
-        robotWithOffspringClassResolved = true;
+        try {
+            errorMessageSupplier = result -> "Class RobotWithOffspring could not be resolved";
+            robotWithOffspring2CT.setSuperClass((Class<Object>) robotWithOffspringCT.assureClassResolved().getTheClass());
+            errorMessageSupplier = result ->
+                "Class RobotWithOffspring2 could not be resolved properly, it probably does not extend RobotWithOffspring";
+            robotWithOffspring2CT.verify(SIMILARITY);
+            robotWithOffspringClassResolved = true;
+        } catch (AssertionFailedError ignored) {
+
+        }
     }
 
     @Test
@@ -58,7 +69,7 @@ public class TutorTests_H2 {
     @DisplayName("Attribut \"directionAccu\" wurde korrekt deklariert.")
     public void directionAccuDeclaredCorrectly() {
         if (!robotWithOffspringClassResolved) {
-            fail(emptyContext(), result -> "Class RobotWithOffspring2 could not be resolved");
+            fail(emptyContext(), errorMessageSupplier);
         }
 
         directionAccuField = robotWithOffspring2CT.resolve().resolveAttribute(
@@ -73,7 +84,7 @@ public class TutorTests_H2 {
     @DisplayName("Methode \"getDirectionOfOffspring\" wurde korrekt implementiert.")
     public void testGetDirectionOfOffspring(int fieldValue, Direction direction) throws ReflectiveOperationException {
         if (!robotWithOffspringClassResolved) {
-            fail(emptyContext(), result -> "Class RobotWithOffspring2 could not be resolved");
+            fail(emptyContext(), errorMessageSupplier);
         } else if (directionAccuField == null) {
             fail(emptyContext(), result -> "Field directionAccu could not be resolved");
         }
@@ -100,7 +111,7 @@ public class TutorTests_H2 {
     @ExtendWith(TestCycleResolver.class)
     public void testConstructor(TestCycle testCycle) {
         if (!robotWithOffspringClassResolved) {
-            fail(emptyContext(), result -> "Class RobotWithOffspring2 could not be resolved");
+            fail(emptyContext(), errorMessageSupplier);
         }
 
         String className = robotWithOffspring2CT.getTheClass().getName();
@@ -121,7 +132,7 @@ public class TutorTests_H2 {
     @ExtendWith(TestCycleResolver.class)
     public void testInitOffspring(TestCycle testCycle) throws ReflectiveOperationException {
         if (!robotWithOffspringClassResolved) {
-            fail(emptyContext(), result -> "Class RobotWithOffspring2 could not be resolved");
+            fail(emptyContext(), errorMessageSupplier);
         } else if (directionAccuField == null) {
             fail(emptyContext(), result -> "Field directionAccu could not be resolved");
         }
@@ -184,7 +195,7 @@ public class TutorTests_H2 {
     public void testAddToDirectionOfOffspring(Direction initialDirection, int directionAccu, int directionToBeAdded,
                                               Direction expectedDirection) throws ReflectiveOperationException {
         if (!robotWithOffspringClassResolved) {
-            fail(emptyContext(), result -> "Class RobotWithOffspring2 could not be resolved");
+            fail(emptyContext(), errorMessageSupplier);
         } else if (directionAccuField == null) {
             fail(emptyContext(), result -> "Field directionAccu could not be resolved");
         }

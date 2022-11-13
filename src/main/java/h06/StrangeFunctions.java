@@ -44,7 +44,7 @@ public class StrangeFunctions {
      * How much more strange functions are there?
      * @param m a number
      * @param n another number
-     * @return
+     * @return just another mysterious result
      */
     public static boolean understandable2(double m, double n) {
         return crash();

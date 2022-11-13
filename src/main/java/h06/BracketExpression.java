@@ -1,6 +1,7 @@
 package h06;
 
 import static org.tudalgo.algoutils.student.Student.crash;
+import static h06.EvaluationResult.Type.*;
 
 public class BracketExpression {
 

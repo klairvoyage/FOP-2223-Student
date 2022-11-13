@@ -15,7 +15,7 @@ public class StrangeFunctions {
      * @return a mysterious result
      */
     public static double strangeFunction1(int m, int n) {
-        return crash();
+        return crash(); // TODO: H1.1 - remove if implemented
     }
 
     /**
@@ -26,7 +26,7 @@ public class StrangeFunctions {
      * @return just another mysterious result
      */
     public static double strangeFunction2(int m, int n) {
-        return crash();
+        return crash(); // TODO: H1.1 - remove if implemented
     }
 
     /**
@@ -37,7 +37,7 @@ public class StrangeFunctions {
      * @return just another mysterious result
      */
     public static boolean understandable1(double m, double n) {
-        return crash();
+        return crash(); // TODO: H1.2 - remove if implemented
     }
 
     /**
@@ -47,7 +47,7 @@ public class StrangeFunctions {
      * @return just another mysterious result
      */
     public static boolean understandable2(double m, double n) {
-        return crash();
+        return crash(); // TODO: H1.2 - remove if implemented
     }
 
     /**
@@ -56,7 +56,7 @@ public class StrangeFunctions {
      * @param array the array to transform
      */
     public static void transformArray1(double[] array) {
-        crash();
+        crash(); // TODO: H2 - remove if implemented
     }
 
     /**
@@ -65,7 +65,7 @@ public class StrangeFunctions {
      * @param array the array to transform
      */
     public static void transformArray2(double[] array) {
-        crash();
+        crash(); // TODO: H2 - remove if implemented
     }
 
     /**
@@ -75,6 +75,6 @@ public class StrangeFunctions {
      * @param i the index of the current element
      */
     public static void doTheRecursion(double[] array, int i) {
-        crash();
+        crash(); // TODO: H2 - remove if implemented
     }
 }

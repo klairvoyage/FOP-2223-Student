@@ -16,6 +16,6 @@ public class BracketExpression {
     }
 
     public final EvaluationResult evaluate(int i) {
-        return crash();
+        return crash(); // TODO: H3 - remove if implemented
     }
 }

@@ -36,7 +36,7 @@ public class StrangeFunctions {
      * @param n another number
      * @return just another mysterious result
      */
-    public static double understandable1(double m, double n) {
+    public static boolean understandable1(double m, double n) {
         return crash();
     }
 
@@ -46,7 +46,7 @@ public class StrangeFunctions {
      * @param n another number
      * @return
      */
-    public static double understandable2(double m, double n) {
+    public static boolean understandable2(double m, double n) {
         return crash();
     }
 

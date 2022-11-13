@@ -73,13 +73,11 @@ public class StrangeFunctions {
     /**
      * This function is doing the recursive work!
      *
-     * @param in the input array
-     * @param out the output array
+     * @param array the array to transform
      * @param i the index of the current element
      * @return the transformed array
-     * @see #doTheRecursion(double[], double[], int)
      */
-    public static double[] doTheRecursion(double[] in, double[] out, int i) {
+    public static double[] doTheRecursion(double[] array, int i) {
         return crash();
     }
 }

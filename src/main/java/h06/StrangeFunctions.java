@@ -54,20 +54,18 @@ public class StrangeFunctions {
      * A simple function to transform arrays on a strange way.
      *
      * @param array the array to transform
-     * @return the transformed array
      */
-    public static double[] transformArray1(double[] array) {
-        return crash();
+    public static void transformArray1(double[] array) {
+        crash();
     }
 
     /**
      * Another simple function to transform arrays on a strange way.
      *
      * @param array the array to transform
-     * @return the transformed array
      */
-    public static double[] transformArray2(double[] array) {
-        return crash();
+    public static void transformArray2(double[] array) {
+        crash();
     }
 
     /**
@@ -75,9 +73,8 @@ public class StrangeFunctions {
      *
      * @param array the array to transform
      * @param i the index of the current element
-     * @return the transformed array
      */
-    public static double[] doTheRecursion(double[] array, int i) {
-        return crash();
+    public static void doTheRecursion(double[] array, int i) {
+        crash();
     }
 }

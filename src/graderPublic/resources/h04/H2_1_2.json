@@ -1,0 +1,56 @@
+[
+  {
+    "robotBefore": {
+      "x": 4,
+      "y": 2,
+      "direction": "UP",
+      "numberOfSilverCoins": 10,
+      "numberOfBrassCoins": 20,
+      "numberOfCopperCoins": 30
+    },
+    "robotAfter": {
+      "x": 4,
+      "y": 2,
+      "direction": "UP",
+      "numberOfSilverCoins": 9,
+      "numberOfBrassCoins": 20,
+      "numberOfCopperCoins": 30
+    }
+  },
+  {
+    "robotBefore": {
+      "x": 4,
+      "y": 2,
+      "direction": "UP",
+      "numberOfSilverCoins": 0,
+      "numberOfBrassCoins": 20,
+      "numberOfCopperCoins": 30
+    },
+    "robotAfter": {
+      "x": 4,
+      "y": 2,
+      "direction": "UP",
+      "numberOfSilverCoins": 0,
+      "numberOfBrassCoins": 19,
+      "numberOfCopperCoins": 30
+    }
+  },
+  {
+    "robotBefore": {
+      "x": 4,
+      "y": 2,
+      "direction": "UP",
+      "numberOfSilverCoins": 0,
+      "numberOfBrassCoins": 0,
+      "numberOfCopperCoins": 30
+    },
+    "robotAfter": {
+      "x": 4,
+      "y": 2,
+      "direction": "UP",
+      "numberOfSilverCoins": 0,
+      "numberOfBrassCoins": 0,
+      "numberOfCopperCoins": 29
+    }
+  }
+]

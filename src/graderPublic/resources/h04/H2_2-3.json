@@ -1,0 +1,98 @@
+[
+  {
+    "world": {
+      "width": 9,
+      "height": 9
+    },
+    "robot": {
+      "x": 4,
+      "y": 4,
+      "direction": "UP",
+      "numberOfSilverCoins": 1,
+      "numberOfBrassCoins": 2,
+      "numberOfCopperCoins": 3
+    },
+    "newX": 4,
+    "newY": 7,
+    "newDirection": "RIGHT",
+    "newNumberOfSilverCoins": 2,
+    "newNumberOfBrassCoins": 4,
+    "newNumberOfCopperCoins": 8,
+    "diffX": 0,
+    "diffY": 3,
+    "diffDirection": "RIGHT",
+    "diffNumberOfCoins": 8
+  },
+  {
+    "world": {
+      "width": 9,
+      "height": 9
+    },
+    "robot": {
+      "x": 4,
+      "y": 4,
+      "direction": "RIGHT",
+      "numberOfSilverCoins": 10,
+      "numberOfBrassCoins": 20,
+      "numberOfCopperCoins": 30
+    },
+    "newX": 7,
+    "newY": 4,
+    "newDirection": "RIGHT",
+    "newNumberOfSilverCoins": 12,
+    "newNumberOfBrassCoins": 22,
+    "newNumberOfCopperCoins": 0,
+    "diffX": 3,
+    "diffY": 0,
+    "diffDirection": "UP",
+    "diffNumberOfCoins": -26
+  },
+  {
+    "world": {
+      "width": 9,
+      "height": 9
+    },
+    "robot": {
+      "x": 4,
+      "y": 4,
+      "direction": "DOWN",
+      "numberOfSilverCoins": 100,
+      "numberOfBrassCoins": 200,
+      "numberOfCopperCoins": 300
+    },
+    "newX": 4,
+    "newY": 1,
+    "newDirection": "RIGHT",
+    "newNumberOfSilverCoins": 50,
+    "newNumberOfBrassCoins": 200,
+    "newNumberOfCopperCoins": 350,
+    "diffX": 0,
+    "diffY": -3,
+    "diffDirection": "LEFT",
+    "diffNumberOfCoins": 0
+  },
+  {
+    "world": {
+      "width": 9,
+      "height": 9
+    },
+    "robot": {
+      "x": 4,
+      "y": 4,
+      "direction": "LEFT",
+      "numberOfSilverCoins": 42,
+      "numberOfBrassCoins": 1337,
+      "numberOfCopperCoins": 69
+    },
+    "newX": 1,
+    "newY": 4,
+    "newDirection": "RIGHT",
+    "newNumberOfSilverCoins": 42,
+    "newNumberOfBrassCoins": 42,
+    "newNumberOfCopperCoins": 42,
+    "diffX": -3,
+    "diffY": 0,
+    "diffDirection": "DOWN",
+    "diffNumberOfCoins": -1322
+  }
+]

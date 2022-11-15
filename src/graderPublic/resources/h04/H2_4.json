@@ -1,0 +1,14 @@
+[
+  {
+    "coinCollectionBefore": {
+      "numberOfSilverCoins": 1,
+      "numberOfBrassCoins": 2,
+      "numberOfCopperCoins": 3
+    },
+    "coinCollectionAfter": {
+      "numberOfSilverCoins": 3,
+      "numberOfBrassCoins": 2,
+      "numberOfCopperCoins": 1
+    }
+  }
+]

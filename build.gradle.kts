@@ -1,3 +1,5 @@
+import org.sourcegrade.jagr.gradle.extension.JagrExtension
+
 @Suppress("DSL_SCOPE_VIOLATION") // https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     alias(libs.plugins.algomate)
@@ -24,4 +26,10 @@ submission {
 dependencies {
     // libs.fopbot method generated from ./gradle/libs.versions.toml
     implementation(libs.fopbot)
+}
+
+extensions.getByType<JagrExtension>().apply {
+    graders["graderPublic"].configureDependencies {
+        implementation("org.tudalgo:algoutils-tutor:0.5.0")
+    }
 }

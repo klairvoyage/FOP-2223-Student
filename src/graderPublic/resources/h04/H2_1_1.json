@@ -1,0 +1,24 @@
+[
+  {
+    "robot": {
+      "x": 4,
+      "y": 2,
+      "direction": "UP",
+      "numberOfSilverCoins": 1,
+      "numberOfBrassCoins": 2,
+      "numberOfCopperCoins": 3
+    },
+    "numberOfCoins": 42
+  },
+  {
+    "robot": {
+      "x": 2,
+      "y": 4,
+      "direction": "UP",
+      "numberOfSilverCoins": 10,
+      "numberOfBrassCoins": 20,
+      "numberOfCopperCoins": 30
+    },
+    "numberOfCoins": 69
+  }
+]

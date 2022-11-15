@@ -3,6 +3,8 @@ package h03;
 import fopbot.World;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class H3_2_UnitTest {
     /*
      * Beispiel für einen JUnit-Test

@@ -27,9 +27,3 @@ dependencies {
     // libs.fopbot method generated from ./gradle/libs.versions.toml
     implementation(libs.fopbot)
 }
-
-extensions.getByType<JagrExtension>().apply {
-    graders["graderPublic"].configureDependencies {
-        implementation("org.tudalgo:algoutils-tutor:0.5.0")
-    }
-}

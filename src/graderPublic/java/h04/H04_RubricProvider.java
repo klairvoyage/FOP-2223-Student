@@ -229,7 +229,7 @@ public class H04_RubricProvider implements RubricProvider {
         .addChildCriteria(H2_2_T1, H2_2_T2, H2_2_T3, H2_2_T4, H2_2_T5, H2_2_T6, H2_2_T7, H2_2_T8)
         .build();
     public static final Criterion H2_3_T1 = Criterion.builder()
-        .shortDescription("Klasse " + tt("RobotWithCoinTypesAndRefStateOne") + " ist korrekt deklariert.")
+        .shortDescription("Klasse " + tt("RobotWithCoinTypesAndRefStateTwo") + " ist korrekt deklariert.")
         .grader(Grader.testAwareBuilder()
             .requirePass(JUnitTestRef.ofMethod(() -> H2_3.class.getMethod("t20")))
             .pointsPassedMax()

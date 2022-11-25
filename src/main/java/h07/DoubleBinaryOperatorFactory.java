@@ -1,4 +1,4 @@
-package h07.doubleoperators;
+package h07;
 
 import java.util.function.DoubleBinaryOperator;
 

@@ -1,0 +1,4 @@
+First operator; Second operator; Third operator; Left value; Right value; Expected result
+DoubleProductOfTwo; DoubleProductOfTwo; DoubleSumOfTwo; -0.89751885313332; 0.7608909304419584; -1.3658279104996227
+DoubleSumOfTwo; DoubleSumOfTwo; DoubleProductOfTwo; -0.6382516689963456; 0.8302374244752413; 0.03685853030680234
+DoubleSumOfTwo; DoubleSumOfTwo; DoubleProductOfTwo; -0.5036164652059563; -0.7168401596775362; 1.489514373222006

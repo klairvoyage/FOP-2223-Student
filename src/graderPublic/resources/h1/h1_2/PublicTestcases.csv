@@ -1,0 +1,4 @@
+Operator; Left array; Right array; Expected result
+DoubleProductOfTwo; [-0.25, -0.33]; [1.0]; [-0.25]
+DoubleSumOfTwo; [-0.36]; [-0.14]; [-0.5]
+DoubleSumSqrtsOfTwo; [0.36]; [0.25]; [1.1]

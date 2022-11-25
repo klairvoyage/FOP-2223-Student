@@ -1,0 +1,4 @@
+Predicate; Input array; Output array
+IsPositive; [-1.0, -0.7, 0.24]; [0.24]
+IsNotNaN; [1.0, NaN, -0.5]; [1.0, -0.5]
+DivisibleByTwo; [0.95, 0.45, -0.37]; []

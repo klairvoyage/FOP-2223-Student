@@ -26,6 +26,16 @@ public class Main {
 
         // Create a Robot
         Robot robot = new Robot(1, 1, Direction.UP, 1);
-
+    }
+}
+class FinalKlassenbeispiel {
+    final String willkommensNachricht;
+    FinalKlassenbeispiel() {
+        willkommensNachricht = "Willkommen zu codegree!";
+    }
+    public static void main(String[] args) {
+        FinalKlassenbeispiel meinCoolesObjekt = new FinalKlassenbeispiel();
+        meinCoolesObjekt.willkommensNachricht = "";
+        System.out.println(meinCoolesObjekt.willkommensNachricht);
     }
 }

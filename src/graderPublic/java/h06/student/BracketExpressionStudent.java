@@ -58,17 +58,13 @@ public class BracketExpressionStudent {
             .add("index", i)
             .subject(LINK_TO_EVALUATE)
             .build();
+        var expected = String.format("[nextIndex=%d, type=%s]", expectedIndex, expectedType);
+        var actual = String.format("[nextIndex=%d, type=%s]", result.nextIndex(), result.type());
         assertEquals(
-            expectedIndex,
-            result.nextIndex(),
+            expected,
+            actual,
             context,
-            r -> "unexpected next index"
-        );
-        assertEquals(
-            expectedType,
-            result.type(),
-            context,
-            r -> "unexpected type"
+            r -> "unexpected result"
         );
     }
 }

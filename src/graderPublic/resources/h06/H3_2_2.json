@@ -19,7 +19,7 @@
     "data": {
       "expression": "((([])))[[()]]{)",
       "index": 0,
-      "expectedNextIndex": 16,
+      "expectedNextIndex": 15,
       "expectedType": "INVALID_CLOSING_BRACKET"
     }
   }

@@ -1,0 +1,26 @@
+[
+  {
+    "data": {
+      "expression": "()())",
+      "index": 0,
+      "expectedNextIndex": 4,
+      "expectedType": "NO_OPENING_BRACKET"
+    }
+  },
+  {
+    "data": {
+      "expression": "()[]<>",
+      "index": 0,
+      "expectedNextIndex": 4,
+      "expectedType": "INVALID_CHARACTER"
+    }
+  },
+  {
+    "data": {
+      "expression": "((([])))[[()]]{)",
+      "index": 0,
+      "expectedNextIndex": 16,
+      "expectedType": "INVALID_CLOSING_BRACKET"
+    }
+  }
+]

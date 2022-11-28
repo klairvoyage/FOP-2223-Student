@@ -18,7 +18,7 @@ public class H3_2 {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource("h06/H3_1_2.json")
+    @JsonClasspathSource("h06/H3_2_2.json")
     public void t21(
         @Property("data") BracketExpressionData data
     ) {

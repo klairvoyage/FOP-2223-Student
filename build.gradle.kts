@@ -23,6 +23,6 @@ submission {
 
 jagr {
     graders["graderPublic"].configureDependencies {
-        implementation("org.tudalgo:algoutils-tutor:0.6.0")
+        implementation("org.tudalgo:algoutils-tutor:0.6.2")
     }
 }

@@ -15,7 +15,7 @@ public class ReduceDoubleArray implements DoubleArrayUnaryOperatorGivingArray {
     /**
      * The predicate.
      */
-    private final DoublePredicate predicate;
+    private final DoublePredicate PREDICATE;
 
     /**
      * Constructor initializes the predicate for the filter.
@@ -24,7 +24,7 @@ public class ReduceDoubleArray implements DoubleArrayUnaryOperatorGivingArray {
      */
     public ReduceDoubleArray(DoublePredicate predicate) {
         // Assign given parameter to predicate
-        this.predicate = predicate;
+        this.PREDICATE = predicate;
     }
 
     /**

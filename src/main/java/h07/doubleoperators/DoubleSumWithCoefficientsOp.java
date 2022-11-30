@@ -14,12 +14,12 @@ public class DoubleSumWithCoefficientsOp implements DoubleBinaryOperator {
     /**
      * First coefficient.
      */
-    private final double coeff1;
+    private final double COEFF_1;
 
     /**
      * Second coefficient.
      */
-    private final double coeff2;
+    private final double COEFF_2;
 
     /**
      * Constructor initializes the two coefficients.
@@ -29,10 +29,10 @@ public class DoubleSumWithCoefficientsOp implements DoubleBinaryOperator {
      */
     public DoubleSumWithCoefficientsOp(double coeff1, double coeff2) {
         // Assign first parameter to first coefficient
-        this.coeff1 = coeff1;
+        this.COEFF_1 = coeff1;
 
         // Assign second parameter to second coefficient
-        this.coeff2 = coeff2;
+        this.COEFF_2 = coeff2;
     }
 
     /**

@@ -15,17 +15,17 @@ public class ComposedDoubleBinaryOperator implements DoubleBinaryOperator {
     /**
      * First operator.
      */
-    private final DoubleBinaryOperator op1;
+    private final DoubleBinaryOperator OP_1;
 
     /**
      * Second operator.
      */
-    private final DoubleBinaryOperator op2;
+    private final DoubleBinaryOperator OP_2;
 
     /**
      * Third operator.
      */
-    private final DoubleBinaryOperator op3;
+    private final DoubleBinaryOperator OP_3;
 
     /**
      * Constructor initializes the three operators.
@@ -36,13 +36,13 @@ public class ComposedDoubleBinaryOperator implements DoubleBinaryOperator {
      */
     public ComposedDoubleBinaryOperator(DoubleBinaryOperator op1, DoubleBinaryOperator op2, DoubleBinaryOperator op3) {
         // Assign first parameter to first operator
-        this.op1 = op1;
+        this.OP_1 = op1;
 
         // Assign second parameter to second operator
-        this.op2 = op2;
+        this.OP_2 = op2;
 
         // Assign third parameter to third operator
-        this.op3 = op3;
+        this.OP_3 = op3;
     }
 
     /**

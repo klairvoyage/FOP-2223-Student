@@ -17,7 +17,7 @@ public class PairwiseDoubleArrayBinaryOperatorGivingArray implements DoubleArray
     /**
      * The operator.
      */
-    private final DoubleBinaryOperator operator;
+    private final DoubleBinaryOperator OPERATOR;
 
     /**
      * Constructor initializes the operator.
@@ -26,7 +26,7 @@ public class PairwiseDoubleArrayBinaryOperatorGivingArray implements DoubleArray
      */
     public PairwiseDoubleArrayBinaryOperatorGivingArray(DoubleBinaryOperator operator) {
         // Assign parameter to operator
-        this.operator = operator;
+        this.OPERATOR = operator;
     }
 
     /**

@@ -17,12 +17,12 @@ public class PairwiseDoubleArrayBinaryOperatorGivingScalar implements DoubleArra
     /**
      * First operator, "Komponentenverknüpfung" (join-fct).
      */
-    private final DoubleBinaryOperator operator1;
+    private final DoubleBinaryOperator OPERATOR_1;
 
     /**
      * Second operator, "Faltungsoperation" (fold-fct).
      */
-    private final DoubleBinaryOperator operator2;
+    private final DoubleBinaryOperator OPERATOR_2;
 
     /**
      * Initial value (init).
@@ -39,10 +39,10 @@ public class PairwiseDoubleArrayBinaryOperatorGivingScalar implements DoubleArra
      */
     public PairwiseDoubleArrayBinaryOperatorGivingScalar(DoubleBinaryOperator operator1, DoubleBinaryOperator operator2, double d) {
         // Assign first parameter to first operator
-        this.operator1 = operator1;
+        this.OPERATOR_1 = operator1;
 
         // Assign second parameter to second operator
-        this.operator2 = operator2;
+        this.OPERATOR_2 = operator2;
 
         // Assign third parameter to initial value
         this.init = d;

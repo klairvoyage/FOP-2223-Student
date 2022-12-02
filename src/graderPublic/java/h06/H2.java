@@ -18,7 +18,7 @@ public abstract class H2 {
         Double[] expected
     ) {
         var actual = cloneArray(in);
-        var context = contextBuilder().subject(link()).add("in", expected).build();
+        var context = contextBuilder().subject(link()).add("in", asList(in)).build();
         Assertions2.call(
             () -> link().invokeStatic(actual),
             context,

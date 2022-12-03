@@ -14,7 +14,6 @@ import spoon.reflect.code.CtLambda;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.function.DoubleBinaryOperator;
 
@@ -31,11 +30,11 @@ public class ComposedDoubleBinaryOperatorAsLambdaTest {
 
     private static Method composedDoubleBinaryOperatorAsLambdaMethod;
 
-    private boolean nullTested = false;
+    private static boolean nullTested = false;
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void testResults(String op1, String op2, String op3, double left, double right, double expected) throws InvocationTargetException, IllegalAccessException {
+    void testResults(String op1, String op2, String op3, double left, double right, double expected) {
         if (!nullTested) {
             testNullCases();
         }
@@ -50,7 +49,7 @@ public class ComposedDoubleBinaryOperatorAsLambdaTest {
         DoubleBinaryOperator operator2 = convertStringToOperator(op2);
         DoubleBinaryOperator operator3 = convertStringToOperator(op3);
 
-        call(
+        double actual = callObject(
             () -> ((DoubleBinaryOperator) composedDoubleBinaryOperatorAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 new TripleOfDoubleBinaryOperators(operator1, operator2, operator3)
@@ -58,13 +57,6 @@ public class ComposedDoubleBinaryOperatorAsLambdaTest {
             context,
             r -> "Call resulted in an error"
         );
-
-        double actual = (
-            (DoubleBinaryOperator) composedDoubleBinaryOperatorAsLambdaMethod.invoke(
-                FACTORY_CT.getNewInstance(),
-                new TripleOfDoubleBinaryOperators(operator1, operator2, operator3)
-            )
-        ).applyAsDouble(left, right);
 
         assertEquals(
             expected,
@@ -78,26 +70,17 @@ public class ComposedDoubleBinaryOperatorAsLambdaTest {
         );
     }
 
-    void testNullCases() throws InvocationTargetException, IllegalAccessException {
+    void testNullCases() {
         composedDoubleBinaryOperatorAsLambdaMethod = new MethodTester(
             FACTORY_CT.resolve(),
             "composedDoubleBinaryOperatorAsLambda"
         ).resolveMethod();
         composedDoubleBinaryOperatorAsLambdaMethod.trySetAccessible();
 
-        call(
-            () -> composedDoubleBinaryOperatorAsLambdaMethod.invoke(
-                FACTORY_CT.getNewInstance(),
-                (Object) null
-            ),
-            emptyContext(),
-            r -> "Call resulted in an error"
-        );
-
         PairOfDoubleCoefficients firstNullObj = new PairOfDoubleCoefficients(0, 0);
 
-        assertNull(
-            composedDoubleBinaryOperatorAsLambdaMethod.invoke(
+        assertCallNull(
+            () -> composedDoubleBinaryOperatorAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 firstNullObj
             ),
@@ -105,8 +88,8 @@ public class ComposedDoubleBinaryOperatorAsLambdaTest {
             r -> "Expected expression to return null when invoked with an object other than PairOfDoubleCoefficients or a subtype!"
         );
 
-        assertNull(
-            composedDoubleBinaryOperatorAsLambdaMethod.invoke(
+        assertCallNull(
+            () -> composedDoubleBinaryOperatorAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 (Object) null
             ),
@@ -116,8 +99,8 @@ public class ComposedDoubleBinaryOperatorAsLambdaTest {
 
         TripleOfDoubleBinaryOperators firstNonNullObj = new TripleOfDoubleBinaryOperators(null, null, null);
 
-        assertNotNull(
-            composedDoubleBinaryOperatorAsLambdaMethod.invoke(
+        assertCallNotNull(
+            () -> composedDoubleBinaryOperatorAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 firstNonNullObj
             ),
@@ -127,8 +110,8 @@ public class ComposedDoubleBinaryOperatorAsLambdaTest {
 
         TripleOfDoubleBinaryOperatorsDescendant secondNonNullObj = new TripleOfDoubleBinaryOperatorsDescendant(null, null, null);
 
-        assertNotNull(
-            composedDoubleBinaryOperatorAsLambdaMethod.invoke(
+        assertCallNotNull(
+            () -> composedDoubleBinaryOperatorAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 secondNonNullObj
             ),

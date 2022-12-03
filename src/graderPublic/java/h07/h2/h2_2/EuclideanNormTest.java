@@ -22,13 +22,11 @@ public class EuclideanNormTest {
             .add("y", y)
             .build();
 
-        call(
+        double actual = callObject(
             () -> EUCLIDEAN_NORM.applyAsDouble(x, y),
             context,
             r -> "Call resulted in an error"
         );
-
-        double actual = EUCLIDEAN_NORM.applyAsDouble(x, y);
 
         assertEquals(
             expected,

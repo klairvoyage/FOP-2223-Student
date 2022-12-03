@@ -22,13 +22,11 @@ public class DoubleMaxOfTwoTest {
             .add("Right value", right)
             .build();
 
-        call(
+        double actual = callObject(
             () -> OP.applyAsDouble(left, right),
             context,
             r -> "Call resulted in an error"
         );
-
-        double actual = OP.applyAsDouble(left, right);
 
         assertEquals(
             expected,

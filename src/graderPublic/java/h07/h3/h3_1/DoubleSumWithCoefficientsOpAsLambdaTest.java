@@ -31,7 +31,7 @@ public class DoubleSumWithCoefficientsOpAsLambdaTest {
 
     private static Method doubleSumWithCoefficientsOpAsLambdaMethod;
 
-    private boolean nullTested = false;
+    private static boolean nullTested = false;
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
@@ -46,7 +46,7 @@ public class DoubleSumWithCoefficientsOpAsLambdaTest {
             .add("Right value", right)
             .build();
 
-        call(
+        double actual = callObject(
             () -> ((DoubleBinaryOperator) doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 new PairOfDoubleCoefficients(coeff1, coeff2)
@@ -54,8 +54,6 @@ public class DoubleSumWithCoefficientsOpAsLambdaTest {
             context,
             r -> "Call resulted in an error"
         );
-
-        double actual = ((DoubleBinaryOperator) doubleSumWithCoefficientsOpAsLambdaMethod.invoke(FACTORY_CT.getNewInstance(), new PairOfDoubleCoefficients(coeff1, coeff2))).applyAsDouble(left, right);
 
         assertEquals(
             expected,
@@ -69,26 +67,17 @@ public class DoubleSumWithCoefficientsOpAsLambdaTest {
         );
     }
 
-    void testNullCases() throws InvocationTargetException, IllegalAccessException {
+    void testNullCases() {
         doubleSumWithCoefficientsOpAsLambdaMethod = new MethodTester(
             FACTORY_CT.resolve(),
             "doubleSumWithCoefficientsOpAsLambda"
         ).resolveMethod();
         doubleSumWithCoefficientsOpAsLambdaMethod.trySetAccessible();
 
-        call(
-            () -> doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
-                FACTORY_CT.getNewInstance(),
-                (Object) null
-            ),
-            emptyContext(),
-            r -> "Call resulted in an error"
-        );
-
         TripleOfDoubleBinaryOperators firstNullObj = new TripleOfDoubleBinaryOperators(null, null, null);
 
-        assertNull(
-            doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
+        assertCallNull(
+            () -> doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 firstNullObj
             ),
@@ -96,8 +85,8 @@ public class DoubleSumWithCoefficientsOpAsLambdaTest {
             r -> "Expected expression to return null when invoked with an object other than PairOfDoubleCoefficients or a subtype!"
         );
 
-        assertNull(
-            doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
+        assertCallNull(
+            () -> doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 (Object) null
             ),
@@ -107,8 +96,8 @@ public class DoubleSumWithCoefficientsOpAsLambdaTest {
 
         PairOfDoubleCoefficients firstNonNullObj = new PairOfDoubleCoefficients(0, 0);
 
-        assertNotNull(
-            doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
+        assertCallNotNull(
+            () -> doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 firstNonNullObj
             ),
@@ -118,8 +107,8 @@ public class DoubleSumWithCoefficientsOpAsLambdaTest {
 
         PairOfDoubleCoefficientsDescendant secondNonNullObj = new PairOfDoubleCoefficientsDescendant(0, 0);
 
-        assertNotNull(
-            doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
+        assertCallNotNull(
+            () -> doubleSumWithCoefficientsOpAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 secondNonNullObj
             ),

@@ -42,15 +42,13 @@ public class EuclideanNormAsLambdaTest {
         ).resolveMethod();
         euclideanNormAsLambdaMethod.trySetAccessible();
 
-        call(
+        double actual = callObject(
             () -> ((DoubleBinaryOperator) euclideanNormAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance()
             )).applyAsDouble(x, y),
             context,
             r -> "Call resulted in an error"
         );
-
-        double actual = ((DoubleBinaryOperator) euclideanNormAsLambdaMethod.invoke(FACTORY_CT.getNewInstance())).applyAsDouble(x, y);
 
         assertEquals(
             expected,

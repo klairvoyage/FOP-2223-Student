@@ -23,13 +23,11 @@ public class DoubleSumWithCoefficientsOpTest {
             .build();
         DoubleSumWithCoefficientsOp op = new DoubleSumWithCoefficientsOp(coeff1, coeff2);
 
-        call(
+        double actual = callObject(
             () -> op.applyAsDouble(left, right),
             context,
             r -> "Call resulted in an error"
         );
-
-        double actual = op.applyAsDouble(left, right);
 
         assertEquals(
             expected,

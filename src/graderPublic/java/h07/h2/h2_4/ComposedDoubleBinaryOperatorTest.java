@@ -35,13 +35,11 @@ public class ComposedDoubleBinaryOperatorTest {
             operator3
         );
 
-        call(
+        double actual = callObject(
             () -> operator.applyAsDouble(left, right),
             context,
             r -> "Call resulted in an error"
         );
-
-        double actual = operator.applyAsDouble(left, right);
 
         assertEquals(
             expected,

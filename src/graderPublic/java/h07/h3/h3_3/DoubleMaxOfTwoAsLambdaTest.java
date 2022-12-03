@@ -7,11 +7,9 @@ import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.tudalgo.algoutils.reflect.ClassTester;
 import org.tudalgo.algoutils.reflect.MethodTester;
 import spoon.Launcher;
-import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtLambda;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
-import spoon.support.reflect.code.CtBinaryOperatorImpl;
 import spoon.support.reflect.code.CtExecutableReferenceExpressionImpl;
 
 import java.lang.reflect.InvocationTargetException;
@@ -32,7 +30,7 @@ public class DoubleMaxOfTwoAsLambdaTest {
 
     private static Method doubleMaxOfTwoAsLambdaMethod;
 
-    private boolean nullTested = false;
+    private static boolean nullTested = false;
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
@@ -46,7 +44,7 @@ public class DoubleMaxOfTwoAsLambdaTest {
             .add("Right value", right)
             .build();
 
-        call(
+        double actual = callObject(
             () -> ((DoubleBinaryOperator) doubleMaxOfTwoAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 ThreadLocalRandom.current().nextBoolean()
@@ -54,9 +52,6 @@ public class DoubleMaxOfTwoAsLambdaTest {
             context,
             r -> "Call resulted in an error"
         );
-
-        Boolean bool = ThreadLocalRandom.current().nextBoolean();
-        double actual = ((DoubleBinaryOperator) doubleMaxOfTwoAsLambdaMethod.invoke(FACTORY_CT.getNewInstance(), bool)).applyAsDouble(left, right);
 
         assertEquals(
             expected,
@@ -77,19 +72,10 @@ public class DoubleMaxOfTwoAsLambdaTest {
         ).resolveMethod();
         doubleMaxOfTwoAsLambdaMethod.trySetAccessible();
 
-        call(
-            () -> doubleMaxOfTwoAsLambdaMethod.invoke(
-                FACTORY_CT.getNewInstance(),
-                (Object) null
-            ),
-            emptyContext(),
-            r -> "Call resulted in an error"
-        );
-
         Object firstNullObj = new Object();
 
-        assertNull(
-            doubleMaxOfTwoAsLambdaMethod.invoke(
+        assertCallNull(
+            () -> doubleMaxOfTwoAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 firstNullObj
             ),
@@ -97,8 +83,8 @@ public class DoubleMaxOfTwoAsLambdaTest {
             r -> "Expected expression to return null when invoked with an object other than Boolean!"
         );
 
-        assertNull(
-            doubleMaxOfTwoAsLambdaMethod.invoke(
+        assertCallNull(
+            () -> doubleMaxOfTwoAsLambdaMethod.invoke(
                 FACTORY_CT.getNewInstance(),
                 (Object) null
             ),

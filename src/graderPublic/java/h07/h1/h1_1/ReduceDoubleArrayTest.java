@@ -33,8 +33,8 @@ public class ReduceDoubleArrayTest {
             r -> "Call resulted in an error"
         );
 
-        assertNull(
-            reducer.applyAsDoubleArray(null),
+        assertCallNull(
+            () -> reducer.applyAsDoubleArray(null),
             context,
             r -> "Expected the method to return null for null as input!"
         );
@@ -54,20 +54,12 @@ public class ReduceDoubleArrayTest {
 
         ReduceDoubleArray reducer = new ReduceDoubleArray(pred);
 
-        call(
-            () -> reducer.applyAsDoubleArray(array),
-            context,
-            r -> "Call resulted in an error"
-        );
-
-        double[] actual = reducer.applyAsDoubleArray(array);
+        double[] actual = callObject(() -> reducer.applyAsDoubleArray(array), context,
+            r -> "Call resulted in an error");
 
         for (int i = 0; i < expected.length; i++) {
             int finalI = i;
-            assertEquals(
-                expected[i],
-                actual[i],
-                context,
+            assertEquals(expected[i], actual[i], context,
                 r -> String.format(
                     "The resulting array %s differs from the expected outcome %s at index %d!",
                     Arrays.toString(actual),

@@ -2,7 +2,6 @@ package h07.h4.h4_3;
 
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
-import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 import spoon.support.reflect.code.*;
 
@@ -21,13 +20,13 @@ public class BuildOperatorWithLambdaTest {
         "buildOperatorWithLambda"
     );
 
-    private boolean coeffCaseCorrect = false;
-    private boolean euclideanCaseCorrect = false;
-    private boolean maxCaseCorrect = false;
-    private boolean composedCaseCorrect = false;
-
     @Test
     void testReturnTypes() {
+        boolean coeffCaseCorrect = false;
+        boolean euclideanCaseCorrect = false;
+        boolean maxCaseCorrect = false;
+        boolean composedCaseCorrect = false;
+
         List<CtCaseImpl<?>> caseList = BUILD_OPERATOR_WITH_LAMBDA_METHOD.getElements(Objects::nonNull);
 
         for (CtCaseImpl<?> caze : caseList) {

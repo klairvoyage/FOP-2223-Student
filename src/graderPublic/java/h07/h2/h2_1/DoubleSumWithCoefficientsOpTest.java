@@ -14,7 +14,7 @@ public class DoubleSumWithCoefficientsOpTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void testResults(double coeff1, double coeff2, double left, double right, double expected) {
+    public void testResults(double coeff1, double coeff2, double left, double right, double expected) {
         var context = contextBuilder()
             .add("First coefficient", coeff1)
             .add("Second coefficient", coeff2)

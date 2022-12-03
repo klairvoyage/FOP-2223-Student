@@ -19,7 +19,7 @@ public class ReduceDoubleArrayTest {
     private static final String PATH_TO_CSV = "/h1/h1_1/PublicTestcases.csv";
 
     @Test
-    void testNullInput() {
+    public void testNullInput() {
         ReduceDoubleArray reducer = new ReduceDoubleArray(e -> e == 0);
 
         var context = contextBuilder()
@@ -43,7 +43,7 @@ public class ReduceDoubleArrayTest {
     // Check whether correct values are chosen (with different predicates)
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void testResult(String predicate, String inputArray, String outputArray) {
+    public void testResult(String predicate, String inputArray, String outputArray) {
         var context = contextBuilder()
             .add("Predicate", predicate)
             .add("Input", inputArray)

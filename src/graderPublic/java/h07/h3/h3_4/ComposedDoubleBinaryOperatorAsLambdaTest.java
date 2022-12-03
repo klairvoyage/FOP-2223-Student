@@ -34,7 +34,7 @@ public class ComposedDoubleBinaryOperatorAsLambdaTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void testResults(String op1, String op2, String op3, double left, double right, double expected) {
+    public void testResults(String op1, String op2, String op3, double left, double right, double expected) {
         if (!nullTested) {
             testNullCases();
         }
@@ -123,7 +123,7 @@ public class ComposedDoubleBinaryOperatorAsLambdaTest {
     }
 
     @Test
-    void testLambdaExpression() {
+    public void testLambdaExpression() {
         Launcher launcher = getSpoonLauncherForClass("h07", "DoubleBinaryOperatorFactory");
         CtMethod<?> method = getCtMethod(launcher, "composedDoubleBinaryOperatorAsLambda");
 

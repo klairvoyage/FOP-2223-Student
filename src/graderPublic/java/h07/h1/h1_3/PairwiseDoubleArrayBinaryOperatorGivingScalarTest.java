@@ -19,7 +19,7 @@ public class PairwiseDoubleArrayBinaryOperatorGivingScalarTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void testResult(String op1, String op2, String init, String leftArray, String rightArray, String result) {
+    public void testResult(String op1, String op2, String init, String leftArray, String rightArray, String result) {
         double[] left = convertStringToDoubleArray(leftArray);
         double[] right = convertStringToDoubleArray(rightArray);
         double expected = Double.parseDouble(result);
@@ -57,7 +57,7 @@ public class PairwiseDoubleArrayBinaryOperatorGivingScalarTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void checkRecursion(String op1, String op2, String init, String leftArray, String rightArray) {
+    public void checkRecursion(String op1, String op2, String init, String leftArray, String rightArray) {
         PairwiseDoubleArrayBinaryOperatorGivingScalar operator = new PairwiseDoubleArrayBinaryOperatorGivingScalar(
             convertStringToOperator(op1),
             convertStringToOperator(op2),

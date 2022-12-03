@@ -20,7 +20,7 @@ public class PairwiseDoubleArrayBinaryOperatorGivingArrayTest {
     private static final String PATH_TO_CSV = "/h1/h1_2/PublicTestcases.csv";
 
     @Test
-    void testNullInput() {
+    public void testNullInput() {
         PairwiseDoubleArrayBinaryOperatorGivingArray operator = new PairwiseDoubleArrayBinaryOperatorGivingArray(new DoubleSumOfTwo());
 
         assertCallNull(
@@ -54,7 +54,7 @@ public class PairwiseDoubleArrayBinaryOperatorGivingArrayTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void testResult(String op1, String leftArray, String rightArray, String result) {
+    public void testResult(String op1, String leftArray, String rightArray, String result) {
         DoubleBinaryOperator operator1 = convertStringToOperator(op1);
 
         double[] left = convertStringToDoubleArray(leftArray);

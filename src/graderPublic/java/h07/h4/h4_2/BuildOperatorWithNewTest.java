@@ -25,7 +25,7 @@ public class BuildOperatorWithNewTest {
     );
 
     @Test
-    void testReturnTypes() {
+    public void testReturnTypes() {
         assertCallTrue(
             () -> DoubleBinaryOperatorFactory.buildOperator(
                 "Coeffs",
@@ -65,7 +65,7 @@ public class BuildOperatorWithNewTest {
     }
 
     @Test
-    void testSwitch() {
+    public void testSwitch() {
         assertTrue(
             !BUILD_OPERATOR_WITH_NEW_METHOD.getElements(e -> e instanceof CtSwitch<?>).isEmpty(),
             emptyContext(),
@@ -80,7 +80,7 @@ public class BuildOperatorWithNewTest {
     }
 
     @Test
-    void testUseOfNew() {
+    public void testUseOfNew() {
         List<CtConstructorCallImpl<?>> constructorCalls = BUILD_OPERATOR_WITH_NEW_METHOD.getElements(Objects::nonNull);
 
         assertEquals(

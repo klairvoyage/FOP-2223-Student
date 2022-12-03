@@ -11,7 +11,6 @@ import spoon.reflect.code.CtLambda;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.function.DoubleBinaryOperator;
 
@@ -30,7 +29,7 @@ public class EuclideanNormAsLambdaTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void testResults(double x, double y, double expected) throws InvocationTargetException, IllegalAccessException {
+    public void testResults(double x, double y, double expected) {
         var context = contextBuilder()
             .add("x", x)
             .add("y", y)
@@ -63,7 +62,7 @@ public class EuclideanNormAsLambdaTest {
     }
 
     @Test
-    void testLambdaExpression() {
+    public void testLambdaExpression() {
         Launcher launcher = getSpoonLauncherForClass("h07", "DoubleBinaryOperatorFactory");
         CtMethod<?> method = getCtMethod(launcher, "euclideanNormAsLambda");
 

@@ -21,7 +21,7 @@ public class BuildOperatorWithLambdaTest {
     );
 
     @Test
-    void testReturnTypes() {
+    public void testReturnTypes() {
         boolean coeffCaseCorrect = false;
         boolean euclideanCaseCorrect = false;
         boolean maxCaseCorrect = false;
@@ -71,7 +71,7 @@ public class BuildOperatorWithLambdaTest {
     }
 
     @Test
-    void testSwitch() {
+    public void testSwitch() {
         assertTrue(
             !BUILD_OPERATOR_WITH_LAMBDA_METHOD.getElements(e -> e instanceof CtSwitchExpressionImpl<?,?>).isEmpty(),
             emptyContext(),
@@ -80,7 +80,7 @@ public class BuildOperatorWithLambdaTest {
     }
 
     @Test
-    void checkForUseOfNew() {
+    public void checkForUseOfNew() {
         List<CtConstructorCallImpl<?>> constructorCalls = BUILD_OPERATOR_WITH_LAMBDA_METHOD.getBody().getElements(Objects::nonNull);
         assertTrue(
             constructorCalls.isEmpty(),

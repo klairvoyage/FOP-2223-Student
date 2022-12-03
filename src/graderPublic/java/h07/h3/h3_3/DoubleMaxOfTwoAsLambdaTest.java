@@ -12,7 +12,6 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 import spoon.support.reflect.code.CtExecutableReferenceExpressionImpl;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.DoubleBinaryOperator;
@@ -34,7 +33,7 @@ public class DoubleMaxOfTwoAsLambdaTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void testResults(double left, double right, double expected) throws InvocationTargetException, IllegalAccessException {
+    public void testResults(double left, double right, double expected) {
         if (!nullTested) {
             testNullCases();
         }
@@ -65,7 +64,7 @@ public class DoubleMaxOfTwoAsLambdaTest {
         );
     }
 
-    void testNullCases() throws InvocationTargetException, IllegalAccessException {
+    void testNullCases() {
         doubleMaxOfTwoAsLambdaMethod = new MethodTester(
             FACTORY_CT.resolve(),
             "doubleMaxOfTwoAsLambda"
@@ -96,7 +95,7 @@ public class DoubleMaxOfTwoAsLambdaTest {
     }
 
     @Test
-    void testLambdaExpression() {
+    public void testLambdaExpression() {
         Launcher launcher = getSpoonLauncherForClass("h07", "DoubleBinaryOperatorFactory");
         CtMethod<?> method = getCtMethod(launcher, "doubleMaxOfTwoAsLambda");
 
@@ -116,7 +115,7 @@ public class DoubleMaxOfTwoAsLambdaTest {
     }
 
     @Test
-    void testMethodReference() {
+    public void testMethodReference() {
         Launcher launcher = getSpoonLauncherForClass("h07", "DoubleBinaryOperatorFactory");
         CtMethod<?> method = getCtMethod(launcher, "doubleMaxOfTwoAsLambda");
 

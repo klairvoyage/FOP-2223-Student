@@ -17,7 +17,7 @@ import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.emptyCo
 public class BuildOperatorTest {
 
     @Test
-    void testMethodCalls() {
+    public void testMethodCalls() {
         CtMethod<?> buildOperatorMethod = getCtMethod(
             getSpoonLauncherForClass("h07", "DoubleBinaryOperatorFactory"),
             "buildOperator"

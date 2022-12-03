@@ -16,7 +16,7 @@ public class DoubleMaxOfTwoTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = PATH_TO_CSV, numLinesToSkip = 1, delimiter = ';')
-    void testResults(double left, double right, double expected) {
+    public void testResults(double left, double right, double expected) {
         var context = contextBuilder()
             .add("Left value", left)
             .add("Right value", right)

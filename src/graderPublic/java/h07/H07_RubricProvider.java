@@ -222,7 +222,7 @@ public class H07_RubricProvider implements RubricProvider {
                 () -> DoubleMaxOfTwoAsLambdaTest.class.getMethod("testMethodReference")
             ),
             UNTESTED_CRITERION.apply(
-                "Die Methode verwendet im Falle von [[[true]]] einen Lambda-Ausdruck mit dem Bedingungsoperator \"<\".", 1)
+                "Die Methode verwendet im Falle von [[[true]]] einen Lambda-Ausdruck mit dem Vergleichsoperator \"<\".", 1)
         )
         .build();
 

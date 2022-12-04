@@ -107,7 +107,7 @@ public abstract class H1_1 {
         }
         fail(
             context(),
-            r -> "first if statement does not contain a correct return statement"
+            r -> "first ternary operator does not contain a correct return statement"
         );
     }
 
@@ -146,7 +146,7 @@ public abstract class H1_1 {
         }
         fail(
             context(),
-            r -> "second if statement does not contain a correct return statement"
+            r -> "second ternary operator's first branch does not contain a correct return statement"
         );
     }
 
@@ -162,7 +162,7 @@ public abstract class H1_1 {
         ) {
             fail(
                 context(),
-                r -> "second else statement does not contain a correct return statement"
+                r -> "second ternary operator's second branch does not contain a correct return statement"
             );
         }
     }

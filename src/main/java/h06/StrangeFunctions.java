@@ -51,7 +51,7 @@ public class StrangeFunctions {
     }
 
     /**
-     * A simple function to transform arrays on a strange way.
+     * A simple function to transform arrays in a strange way.
      *
      * @param array the array to transform
      */
@@ -60,7 +60,7 @@ public class StrangeFunctions {
     }
 
     /**
-     * Another simple function to transform arrays on a strange way.
+     * Another simple function to transform arrays in a strange way.
      *
      * @param array the array to transform
      */

@@ -19,7 +19,7 @@ public class BuildOperatorTest {
     public void testMethodCalls() {
         CtMethod<?> buildOperatorMethod = null;
         try {
-            buildOperatorMethod = getCtMethod(getSpoonLauncherForClass("h07.h4.h4_1", "BuildOperator"), "buildOperator");
+            buildOperatorMethod = getCtMethod(getSpoonLauncherForClass("h07", "DoubleBinaryOperatorFactory"), "buildOperator");
         } catch (Exception e) {
             fail(
                 emptyContext(),

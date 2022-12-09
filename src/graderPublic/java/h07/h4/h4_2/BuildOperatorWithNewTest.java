@@ -84,12 +84,6 @@ public class BuildOperatorWithNewTest {
     public void testUseOfNew() {
         List<CtConstructorCallImpl<?>> constructorCalls = BUILD_OPERATOR_WITH_NEW_METHOD.getElements(Objects::nonNull);
 
-        assertFalse(
-            constructorCalls.size() < 5,
-            emptyContext(),
-            r -> "Found more than four constructor calls in the method! You can probably remove some of them."
-        );
-
         assertEquals(
             4,
             constructorCalls.size(),

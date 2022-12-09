@@ -4,17 +4,19 @@ import h07.DoubleBinaryOperatorFactory;
 import h07.doubleoperators.*;
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
+import org.tudalgo.algoutils.reflect.ClassTester;
+import org.tudalgo.algoutils.reflect.MethodTester;
 import spoon.reflect.code.CtIf;
 import spoon.reflect.code.CtSwitch;
 import spoon.reflect.declaration.CtMethod;
 import spoon.support.reflect.code.CtConstructorCallImpl;
 import spoon.support.reflect.code.CtSwitchExpressionImpl;
 
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Objects;
 
-import static h07.Utils.getCtMethod;
-import static h07.Utils.getSpoonLauncherForClass;
+import static h07.Utils.*;
 import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
 
 @TestForSubmission
@@ -25,40 +27,48 @@ public class BuildOperatorWithNewTest {
         "buildOperatorWithNew"
     );
 
+    private static final ClassTester<?> FACTORY_CT = getClassTester("h07", "DoubleBinaryOperatorFactory");
+
+    private static Method buildOperatorWithNewMethod = new MethodTester(
+        FACTORY_CT.resolve(),
+        "buildOperatorWithNew"
+    ).resolveMethod();
+
     @Test
     public void testReturnTypes() {
+        buildOperatorWithNewMethod.trySetAccessible();
         assertCallTrue(
-            () -> DoubleBinaryOperatorFactory.buildOperator(
+            () -> buildOperatorWithNewMethod.invoke(
+                FACTORY_CT.getNewInstance(),
                 "Coeffs",
-                new PairOfDoubleCoefficients(0, 0),
-                true
+                new PairOfDoubleCoefficients(0, 0)
             ) instanceof DoubleSumWithCoefficientsOp,
-            contextBuilder().add("String", "Coeffs").add("Object", new PairOfDoubleCoefficients(0,0)).add("Boolean", true).build(),
+            contextBuilder().add("String", "Coeffs").add("Object", new PairOfDoubleCoefficients(0,0)).build(),
             r -> "Expected method to return an object of type \"DoubleSumWithCoefficientsOp\"!"
         );
         assertCallTrue(
-            () -> DoubleBinaryOperatorFactory.buildOperator(
+            () -> buildOperatorWithNewMethod.invoke(
+                FACTORY_CT.getNewInstance(),
                 "Euclidean",
-                null,
-                true
+                null
             ) instanceof EuclideanNorm,
-            contextBuilder().add("String", "Euclidean").add("Object", null).add("Boolean", true).build(),
+            contextBuilder().add("String", "Euclidean").add("Object", null).build(),
             r -> "Expected method to return an object of type \"EuclideanNorm\"!"
         );
         assertCallTrue(
-            () -> DoubleBinaryOperatorFactory.buildOperator(
+            () -> buildOperatorWithNewMethod.invoke(
+                FACTORY_CT.getNewInstance(),
                 "Max",
-                null,
-                true
+                null
             ) instanceof DoubleMaxOfTwo,
-            contextBuilder().add("String", "Max").add("Object", null).add("Boolean", true).build(),
+            contextBuilder().add("String", "Max").add("Object", null).build(),
             r -> "Expected method to return an object of type \"DoubleMaxOfTwo\"!"
         );
         assertCallTrue(
-            () -> DoubleBinaryOperatorFactory.buildOperator(
+            () -> buildOperatorWithNewMethod.invoke(
+                FACTORY_CT.getNewInstance(),
                 "Composed",
-                new TripleOfDoubleBinaryOperators(null, null, null),
-                true
+                new TripleOfDoubleBinaryOperators(null, null, null)
             ) instanceof ComposedDoubleBinaryOperator,
             contextBuilder().add("String", "Composed").add("Object", new TripleOfDoubleBinaryOperators(null, null, null)).add("Boolean", true).build(),
             r -> "Expected method to return an object of type \"ComposedDoubleBinaryOperator\"!"

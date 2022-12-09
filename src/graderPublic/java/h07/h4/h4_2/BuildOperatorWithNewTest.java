@@ -67,7 +67,7 @@ public class BuildOperatorWithNewTest {
     @Test
     public void testSwitch() {
         assertTrue(
-            !BUILD_OPERATOR_WITH_NEW_METHOD.getElements(e -> e instanceof CtSwitch<?>).isEmpty(),
+            !BUILD_OPERATOR_WITH_NEW_METHOD.getElements(e -> e instanceof CtSwitch<?>).isEmpty() || !BUILD_OPERATOR_WITH_NEW_METHOD.getElements(e -> e instanceof CtSwitchExpressionImpl<?,?>).isEmpty(),
             emptyContext(),
             r -> "Expected method to contain a switch block!"
         );

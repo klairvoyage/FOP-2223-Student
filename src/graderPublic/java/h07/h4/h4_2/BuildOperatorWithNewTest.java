@@ -8,6 +8,7 @@ import spoon.reflect.code.CtIf;
 import spoon.reflect.code.CtSwitch;
 import spoon.reflect.declaration.CtMethod;
 import spoon.support.reflect.code.CtConstructorCallImpl;
+import spoon.support.reflect.code.CtSwitchExpressionImpl;
 
 import java.util.List;
 import java.util.Objects;
@@ -69,11 +70,11 @@ public class BuildOperatorWithNewTest {
         assertTrue(
             !BUILD_OPERATOR_WITH_NEW_METHOD.getElements(e -> e instanceof CtSwitch<?>).isEmpty() || !BUILD_OPERATOR_WITH_NEW_METHOD.getElements(e -> e instanceof CtSwitchExpressionImpl<?,?>).isEmpty(),
             emptyContext(),
-            r -> "Expected method to contain a switch block!"
+            r -> "Expected method to contain a switch block or a switch expression!"
         );
 
-        assertFalse(
-            !BUILD_OPERATOR_WITH_NEW_METHOD.getBody().getDirectChildren().stream().filter(e -> e instanceof CtIf).toList().isEmpty(),
+        assertTrue(
+            BUILD_OPERATOR_WITH_NEW_METHOD.getBody().getDirectChildren().stream().filter(e -> e instanceof CtIf).toList().isEmpty(),
             emptyContext(),
             r -> "Expected method to not use if-statements!"
         );
@@ -82,6 +83,12 @@ public class BuildOperatorWithNewTest {
     @Test
     public void testUseOfNew() {
         List<CtConstructorCallImpl<?>> constructorCalls = BUILD_OPERATOR_WITH_NEW_METHOD.getElements(Objects::nonNull);
+
+        assertFalse(
+            constructorCalls.size() < 5,
+            emptyContext(),
+            r -> "Found more than four constructor calls in the method! You can probably remove some of them."
+        );
 
         assertEquals(
             4,

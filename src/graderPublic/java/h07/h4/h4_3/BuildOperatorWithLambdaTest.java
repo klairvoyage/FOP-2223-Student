@@ -75,7 +75,7 @@ public class BuildOperatorWithLambdaTest {
         assertTrue(
             !BUILD_OPERATOR_WITH_LAMBDA_METHOD.getElements(e -> e instanceof CtSwitchExpressionImpl<?,?>).isEmpty(),
             emptyContext(),
-            r -> "Expected method to contain a switch block!"
+            r -> "Expected method to contain a switch expression!"
         );
     }
 

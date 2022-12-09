@@ -7,6 +7,7 @@ import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
 import java.util.function.DoubleBinaryOperator;
 
+import static h07.Utils.assertAlmostEquals;
 import static h07.Utils.convertStringToOperator;
 import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
 
@@ -41,7 +42,13 @@ public class ComposedDoubleBinaryOperatorTest {
             r -> "Call resulted in an error"
         );
 
-        assertEquals(
+        assertAlmostEquals(
+            expected,
+            actual,
+            context
+        );
+
+        /*assertEquals(
             expected,
             actual,
             context,
@@ -51,7 +58,7 @@ public class ComposedDoubleBinaryOperatorTest {
                 expected,
                 actual
             )
-        );
+        );*/
     }
 
 }

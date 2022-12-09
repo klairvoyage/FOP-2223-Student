@@ -10,6 +10,7 @@ import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import java.util.Arrays;
 import java.util.function.DoubleBinaryOperator;
 
+import static h07.Utils.assertArrayAlmostEquals;
 import static h07.Utils.convertStringToOperator;
 import static h07.h1.H1Utils.convertStringToDoubleArray;
 import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
@@ -75,7 +76,13 @@ public class PairwiseDoubleArrayBinaryOperatorGivingArrayTest {
             r -> "Call resulted in an error"
         );
 
-        for (int i = 0; i < expected.length; i++) {
+        assertArrayAlmostEquals(
+            expected,
+            actual,
+            context
+        );
+
+        /*for (int i = 0; i < expected.length; i++) {
             int finalI = i;
             assertEquals(
                 expected[i],
@@ -88,6 +95,6 @@ public class PairwiseDoubleArrayBinaryOperatorGivingArrayTest {
                     finalI
                 )
             );
-        }
+        }*/
     }
 }

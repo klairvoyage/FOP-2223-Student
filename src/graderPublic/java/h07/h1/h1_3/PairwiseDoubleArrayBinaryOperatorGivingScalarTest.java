@@ -8,7 +8,7 @@ import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
 import java.util.Arrays;
 
-import static h07.Utils.convertStringToOperator;
+import static h07.Utils.*;
 import static h07.h1.H1Utils.convertStringToDoubleArray;
 import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
 
@@ -43,7 +43,13 @@ public class PairwiseDoubleArrayBinaryOperatorGivingScalarTest {
             r -> "Call resulted in an error"
         );
 
-        assertEquals(
+        assertAlmostEquals(
+            expected,
+            actual,
+            context
+        );
+
+        /*assertEquals(
             expected,
             actual,
             context,
@@ -52,7 +58,7 @@ public class PairwiseDoubleArrayBinaryOperatorGivingScalarTest {
                 expected,
                 actual
             )
-        );
+        );*/
     }
 
     @ParameterizedTest

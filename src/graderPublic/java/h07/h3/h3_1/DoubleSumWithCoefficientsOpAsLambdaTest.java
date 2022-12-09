@@ -54,7 +54,13 @@ public class DoubleSumWithCoefficientsOpAsLambdaTest {
             r -> "Call resulted in an error"
         );
 
-        assertEquals(
+        assertAlmostEquals(
+            expected,
+            actual,
+            context
+        );
+
+        /*assertEquals(
             expected,
             actual,
             context,
@@ -63,7 +69,7 @@ public class DoubleSumWithCoefficientsOpAsLambdaTest {
                 expected,
                 actual
             )
-        );
+        );*/
     }
 
     void testNullCases() {

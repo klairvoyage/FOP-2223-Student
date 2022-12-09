@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
+import static h07.Utils.assertAlmostEquals;
 import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
 
 @TestForSubmission
@@ -29,7 +30,13 @@ public class DoubleSumWithCoefficientsOpTest {
             r -> "Call resulted in an error"
         );
 
-        assertEquals(
+        assertAlmostEquals(
+            expected,
+            actual,
+            context
+        );
+
+        /*assertEquals(
             expected,
             actual,
             context,
@@ -38,7 +45,7 @@ public class DoubleSumWithCoefficientsOpTest {
                 expected,
                 actual
             )
-        );
+        );*/
     }
 
 }

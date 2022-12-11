@@ -119,8 +119,8 @@ public class DoubleMaxOfTwoAsLambdaTest {
         Launcher launcher = getSpoonLauncherForClass("h07", "DoubleBinaryOperatorFactory");
         CtMethod<?> method = getCtMethod(launcher, "doubleMaxOfTwoAsLambda");
 
-        assertFalse(
-            method.getElements(element -> element instanceof CtExecutableReferenceExpressionImpl).isEmpty(),
+        assertTrue(
+            !method.getElements(element -> element instanceof CtExecutableReferenceExpressionImpl).isEmpty(),
             emptyContext(),
             r -> "Expected the method to contain a lambda method reference of method max() in class Math!"
         );

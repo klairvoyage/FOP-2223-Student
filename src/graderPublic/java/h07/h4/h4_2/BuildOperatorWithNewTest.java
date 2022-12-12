@@ -103,7 +103,7 @@ public class BuildOperatorWithNewTest {
 
         assertTrue(
             !constructorCalls.stream().filter(
-                e -> e.getType().toString().equals("DoubleSumWithCoefficientsOp")
+                e -> e.getType().getSimpleName().equals("DoubleSumWithCoefficientsOp")
             ).toList().isEmpty(),
             emptyContext(),
             r -> "Expected the method to call the constructor of \"DoubleSumWithCoefficientsOp\"!"
@@ -111,7 +111,7 @@ public class BuildOperatorWithNewTest {
 
         assertTrue(
             !constructorCalls.stream().filter(
-                e -> e.getType().toString().equals("EuclideanNorm")
+                e -> e.getType().getSimpleName().equals("EuclideanNorm")
             ).toList().isEmpty(),
             emptyContext(),
             r -> "Expected the method to call the constructor of \"EuclideanNorm\"!"
@@ -119,7 +119,7 @@ public class BuildOperatorWithNewTest {
 
         assertTrue(
             !constructorCalls.stream().filter(
-                e -> e.getType().toString().equals("DoubleMaxOfTwo")
+                e -> e.getType().getSimpleName().equals("DoubleMaxOfTwo")
             ).toList().isEmpty(),
             emptyContext(),
             r -> "Expected the method to call the constructor of \"DoubleMaxOfTwo\"!"
@@ -127,7 +127,7 @@ public class BuildOperatorWithNewTest {
 
         assertTrue(
             !constructorCalls.stream().filter(
-                e -> e.getType().toString().equals("ComposedDoubleBinaryOperator")
+                e -> e.getType().getSimpleName().equals("ComposedDoubleBinaryOperator")
             ).toList().isEmpty(),
             emptyContext(),
             r -> "Expected the method to call the constructor of \"ComposedDoubleBinaryOperator\"!"

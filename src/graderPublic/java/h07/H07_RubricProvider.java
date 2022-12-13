@@ -235,7 +235,7 @@ public class H07_RubricProvider implements RubricProvider {
                 () -> ComposedDoubleBinaryOperatorAsLambdaTest.class.getMethod("testResults", String.class, String.class, String.class, double.class, double.class, double.class)
             ),
             DEFAULT_CRITERION.apply(
-                "Die Methode liefert einen Lambda-Ausdruck in Standardform.",
+                "Die Methode liefert einen Lambda-Ausdruck in Kurzform.",
                 () -> ComposedDoubleBinaryOperatorAsLambdaTest.class.getMethod("testLambdaExpression")
             )
         )

@@ -20,7 +20,9 @@ public class DoubleMaxOfTwo implements DoubleBinaryOperator {
      */
     @Override
     public double applyAsDouble(double left, double right) {
-        return crash(); // TODO: H2.3 - remove if implemented
+        // TODO: H2.3 - remove if implemented
+        if (left>right) return left;
+        else return right;
     }
 
 }

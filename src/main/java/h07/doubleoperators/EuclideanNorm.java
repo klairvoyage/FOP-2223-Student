@@ -20,7 +20,8 @@ public class EuclideanNorm implements DoubleBinaryOperator {
      */
     @Override
     public double applyAsDouble(double left, double right) {
-        return crash(); // TODO: H2.2 - remove if implemented
+        // TODO: H2.2 - remove if implemented
+        return Math.sqrt(left*left+right*right);
     }
 
 }

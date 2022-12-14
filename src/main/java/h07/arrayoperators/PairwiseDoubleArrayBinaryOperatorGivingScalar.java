@@ -66,6 +66,13 @@ public class PairwiseDoubleArrayBinaryOperatorGivingScalar implements DoubleArra
      */
     @Override
     public double applyAsDoubleArray(double[] left, double[] right) {
-        return crash(); // TODO: H1.3 - remove if implemented
+        // TODO: H1.3 - remove if implemented
+        //if (left==null || right==null) return init; (since left & right are never null, according to the worksheet)
+        int length;
+        if (left.length<right.length) length = left.length;
+        else length = right.length;
+        for (int i=0;i<length;i++) init = OPERATOR_2.applyAsDouble(init, OPERATOR_1.applyAsDouble(left[i], right[i]));
+        return init;
+        //test if (a) this method only uses one(!) loop and no recursion & (b) there's no operations on left & right
     }
 }

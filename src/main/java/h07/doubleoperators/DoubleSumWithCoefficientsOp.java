@@ -45,6 +45,7 @@ public class DoubleSumWithCoefficientsOp implements DoubleBinaryOperator {
      */
     @Override
     public double applyAsDouble(double left, double right) {
-        return crash(); // TODO: H2.1 - remove if implemented
+        // TODO: H2.1 - remove if implemented
+        return left*COEFF_1+right*COEFF_2;
     }
 }

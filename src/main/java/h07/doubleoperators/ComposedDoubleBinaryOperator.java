@@ -57,7 +57,8 @@ public class ComposedDoubleBinaryOperator implements DoubleBinaryOperator {
      */
     @Override
     public double applyAsDouble(double left, double right) {
-        return crash(); // TODO: H2.4 - remove if implemented
+        // TODO: H2.4 - remove if implemented
+        return OP_3.applyAsDouble(OP_1.applyAsDouble(left, right), OP_2.applyAsDouble(left, right));
     }
 
 }

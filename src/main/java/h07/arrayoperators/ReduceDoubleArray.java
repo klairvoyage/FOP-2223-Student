@@ -36,6 +36,19 @@ public class ReduceDoubleArray implements DoubleArrayUnaryOperatorGivingArray {
      */
     @Override
     public double[] applyAsDoubleArray(double[] array) {
-        return crash(); // TODO: H1.1 - remove if implemented
+        // TODO: H1.1 - remove if implemented
+        if (array==null) return null;
+        int newLength = 0;
+        for (int i=0;i<array.length;i++) if (PREDICATE.test(array[i])) newLength++;
+        double[] yo = new double[newLength];
+        int counter = 0;
+        for (int i=0;i<array.length;i++) {
+            if (PREDICATE.test(array[i])) {
+                yo[counter] = array[i];
+                counter++;
+            }
+        }
+        return yo;
+        //test if (a) yo.length is accurate & (b) there's no operations on array
     }
 }

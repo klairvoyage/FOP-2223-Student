@@ -40,6 +40,13 @@ public class PairwiseDoubleArrayBinaryOperatorGivingArray implements DoubleArray
      */
     @Override
     public double[] applyAsDoubleArray(double[] left, double[] right) {
-        return crash(); // TODO: H1.2 - remove if implemented
+        // TODO: H1.2 - remove if implemented
+        if (left==null || right==null) return null;
+        double[] yo;
+        if (left.length<right.length) yo = new double[left.length];
+        else yo = new double[right.length];
+        for (int i=0;i<yo.length;i++) yo[i] = OPERATOR.applyAsDouble(left[i], right[i]);
+        return yo;
+        //test if (a) yo.length is accurate & (b) there's no operations on left & right
     }
 }

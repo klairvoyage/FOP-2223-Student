@@ -125,8 +125,8 @@ class CalculatorTests {
      * @param expectedExceptionMessage   The exact message of the expected exception being
      *                          thrown
      */
-    private void testException(ArrayCalculator sut, double[][] array, double max, Class expectedException,
-            String expectedExceptionMessage) {
+    private <T extends Throwable> void testException(ArrayCalculator sut, double[][] array, double max, Class<T> expectedException,
+                                                     String expectedExceptionMessage) {
         crash(); // TODO: H5.2 - remove if implemented
     }
 }

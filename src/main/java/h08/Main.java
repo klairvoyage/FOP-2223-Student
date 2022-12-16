@@ -1,5 +1,10 @@
 package h08;
 
+import h08.calculation.ArrayCalculatorWithPreconditions;
+import h08.preconditions.AtIndexException;
+import h08.preconditions.AtIndexPairException;
+import h08.preconditions.WrongNumberException;
+
 import static org.tudalgo.algoutils.student.Student.crash;
 
 /**
@@ -48,6 +53,14 @@ public class Main {
      * @param max      The maximum value any double value may have.
      */
     public static void print(double[][] theArray, double max) {
-        crash(); // TODO: H4 - remove if implemented
+        // TODO: H4 - remove if implemented
+        ArrayCalculatorWithPreconditions test = new ArrayCalculatorWithPreconditions();
+        try {
+            System.out.println("Sum: "+test.addUp(theArray, max));
+        } catch (AtIndexException | AtIndexPairException e) {
+            System.out.println("Bad array: "+e.getMessage());
+        } catch (WrongNumberException e) {
+            System.out.println("Bad max value: "+e.getMessage());
+        }
     }
 }

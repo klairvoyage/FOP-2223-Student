@@ -1,5 +1,7 @@
 package h08.calculation;
 
+import h08.preconditions.*;
+
 import static org.tudalgo.algoutils.student.Student.crash;
 
 public class ArrayCalculatorWithPreconditions implements ArrayCalculator {
@@ -15,7 +17,14 @@ public class ArrayCalculatorWithPreconditions implements ArrayCalculator {
      *                arrays.
      */
     @Override
-    public double addUp(double[][] theArray, double max) {
-        return crash(); // TODO: H3.2 - remove if implemented
+    public double addUp(double[][] theArray, double max) throws ArrayIsNullException, AtIndexException, WrongNumberException, AtIndexPairException {
+        // TODO: H3.2 - remove if implemented
+        Preconditions.checkPrimaryArrayNotNull(theArray);
+        Preconditions.checkSecondaryArraysNotNull(theArray);
+        Preconditions.checkNumberNotNegative(max);
+        Preconditions.checkValuesInRange(theArray, max);
+        double returned = 0;
+        for (int i=0;i<theArray.length;i++) for (int j=0;j<theArray[i].length;j++) returned += theArray[i][j];
+        return returned;
     }
 }

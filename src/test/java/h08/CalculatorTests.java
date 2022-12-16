@@ -10,6 +10,7 @@ import h08.preconditions.WrongNumberException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.tudalgo.algoutils.student.Student.crash;
 
 class CalculatorTests {
@@ -103,7 +104,12 @@ class CalculatorTests {
      * @param expectedSum The expected sum to be calculated
      */
     private void testSum(ArrayCalculator sut, double[][] array, double max, double expectedSum) {
-        crash(); // TODO: H5.1 - remove if implemented
+        // TODO: H5.1 - remove if implemented
+        try {
+            assertEquals(expectedSum, sut.addUp(array, max), expectedSum/1000);
+        } catch (Exception e) {
+            throw new AssertionError("Unexpected exception: "+e.getMessage());
+        }
     }
 
     /**
@@ -127,6 +133,12 @@ class CalculatorTests {
      */
     private <T extends Throwable> void testException(ArrayCalculator sut, double[][] array, double max, Class<T> expectedException,
                                                      String expectedExceptionMessage) {
-        crash(); // TODO: H5.2 - remove if implemented
+        // TODO: H5.2 - remove if implemented
+        assertThrowsExactly(expectedException, () -> sut.addUp(array, max));
+        try {
+            sut.addUp(array, max);
+        } catch (Exception e) {
+            assertEquals(expectedExceptionMessage, e.getMessage(), expectedExceptionMessage + " : " + e.getMessage());
+        }
     }
 }

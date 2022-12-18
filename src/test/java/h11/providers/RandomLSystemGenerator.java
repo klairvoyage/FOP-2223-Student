@@ -55,7 +55,7 @@ public class RandomLSystemGenerator {
      * @param src The source of the {@link Projection}
      * @return A random {@link Projection} with the given source.
      */
-    private Projection makeProjection(String src) {
+    public Projection makeProjection(String src) {
         return crash("Not implemented: H6.1"); // TODO: H6.1 - remove if implemented
     }
 }

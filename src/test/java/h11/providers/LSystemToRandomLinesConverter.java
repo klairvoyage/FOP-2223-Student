@@ -129,7 +129,7 @@ public class LSystemToRandomLinesConverter {
      *
      * @return The generated String.
      */
-    private String generateSpaces() {
+    public String generateSpaces() {
         return crash("Not implemented: H7.1"); // TODO: H7.1 - remove if implemented
     }
 }

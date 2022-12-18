@@ -9,7 +9,7 @@ import static org.tudalgo.algoutils.student.Student.crash;
  * The basis of a testcase for the Algae
  * L-System based on Fibonacci numbers.
  */
-abstract class AlgaeTest {
+public abstract class AlgaeTest {
 
     /**
      * The reference {@link FibonacciGenerator} to use.
@@ -36,7 +36,7 @@ abstract class AlgaeTest {
      */
     @ParameterizedTest
     @ValueSource(ints = {5, 10, 20, 30})
-    void testAlgaeGeneratesFibs(int numberOfFibs) {
+    public void testAlgaeGeneratesFibs(int numberOfFibs) {
         crash("Not implemented: H4.3"); // TODO: H4.3 - remove if implemented
     }
 }

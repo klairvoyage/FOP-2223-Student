@@ -55,7 +55,7 @@ public class H08_RubricProvider implements RubricProvider {
             JUnitTestRef.ofMethod(() ->
                 TutorTests_H3_1.class.getMethod("checkNumberNotNegativeDeclaresThrowsClause", TestCycle.class)));
         var H3_1_T4 = new OnePointCriterionBuilder("Die Methode [[[checkValuesInRange]]] " +
-            "deklariert eine AtIndexException mittels [[[throws]]]-Klausel.",
+            "deklariert eine AtIndexPairException mittels [[[throws]]]-Klausel.",
             JUnitTestRef.ofMethod(() ->
                 TutorTests_H3_1.class.getMethod("checkValuesInRangeDeclaresThrowsClause", TestCycle.class)));
 
@@ -94,7 +94,7 @@ public class H08_RubricProvider implements RubricProvider {
             " oder [[[AtIndexPairException]]] geworfen wird.");
         var H4_T3 = new UngradedCriterionBuilder("Die Methode gibt die korrekte Fehlernachricht aus, wenn eine " +
             "[[[WrongNumberException]]] geworfen wird.");
-        var H4_T4 = new UngradedCriterionBuilder("Die Methode fängt zusätzliche Ausnahmefälle ab.", -1, 0);
+        var H4_T4 = new UngradedCriterionBuilder("Anforderung verletzt: Die Methode soll keine weiteren Ausnahmefälle abfangen.", -1, 0);
 
         var H4 = new ChildCollectionCriterionBuilder("H4 | Print-Methode", H4_T1, H4_T2, H4_T3, H4_T4);
 

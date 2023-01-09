@@ -1,11 +1,15 @@
 package projekt.delivery.rating;
 
+import projekt.delivery.event.ArrivedAtNodeEvent;
+import projekt.delivery.event.DeliverOrderEvent;
 import projekt.delivery.event.Event;
+import projekt.delivery.event.OrderReceivedEvent;
 import projekt.delivery.routing.PathCalculator;
 import projekt.delivery.routing.Region;
 import projekt.delivery.routing.VehicleManager;
 import projekt.delivery.simulation.Simulation;
 
+import java.util.Deque;
 import java.util.List;
 
 import static org.tudalgo.algoutils.student.Student.crash;
@@ -23,6 +27,7 @@ public class TravelDistanceRater implements Rater {
     private final Region region;
     private final PathCalculator pathCalculator;
     private final double factor;
+    private int actualDistance=0, worstDistance=0;
 
     private TravelDistanceRater(VehicleManager vehicleManager, double factor) {
         region = vehicleManager.getRegion();
@@ -32,7 +37,8 @@ public class TravelDistanceRater implements Rater {
 
     @Override
     public double getScore() {
-        return crash(); // TODO: H8.3 - remove if implemented
+        if(0<actualDistance&&actualDistance<worstDistance*factor) return 1-(double)actualDistance/(worstDistance*factor);
+        return 0;
     }
 
     @Override
@@ -42,7 +48,17 @@ public class TravelDistanceRater implements Rater {
 
     @Override
     public void onTick(List<Event> events, long tick) {
-        crash(); // TODO: H8.3 - remove if implemented
+        Deque<Region.Node> list;
+        Region.Node tmp;
+        for(Event event:events) if(event instanceof ArrivedAtNodeEvent arr) actualDistance+=arr.getLastEdge().getDuration();
+        else if(event instanceof DeliverOrderEvent del){
+            tmp=del.getOrder().getRestaurant().getComponent();
+            list=pathCalculator.getPath(tmp,del.getNode());
+            for(Region.Node node:list) {
+                worstDistance+=2*region.getEdge(tmp,node).getDuration();
+                tmp=node;
+            }
+        }
     }
 
     /**

@@ -1,6 +1,8 @@
 package projekt.delivery.rating;
 
+import projekt.delivery.event.DeliverOrderEvent;
 import projekt.delivery.event.Event;
+import projekt.delivery.event.OrderReceivedEvent;
 import projekt.delivery.simulation.Simulation;
 
 import java.util.List;
@@ -18,13 +20,18 @@ public class AmountDeliveredRater implements Rater {
 
     private final double factor;
 
+    private int totalOrders=0, deliveredOrders=0;
+
     private AmountDeliveredRater(double factor) {
         this.factor = factor;
     }
 
     @Override
     public double getScore() {
-        return crash(); // TODO: H8.1 - remove if implemented
+        int undeliveredOrders=totalOrders-deliveredOrders;
+        if(0<undeliveredOrders&&undeliveredOrders<totalOrders*(1-factor))
+            return 1-(double)undeliveredOrders/(totalOrders*(1-factor));
+        return 0;
     }
 
     @Override
@@ -34,7 +41,8 @@ public class AmountDeliveredRater implements Rater {
 
     @Override
     public void onTick(List<Event> events, long tick) {
-        crash(); // TODO: H8.1 - remove if implemented
+        for(Event event:events) if(event instanceof DeliverOrderEvent) deliveredOrders++;
+                                else if(event instanceof OrderReceivedEvent) totalOrders++;
     }
 
     /**

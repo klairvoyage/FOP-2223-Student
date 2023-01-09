@@ -1,11 +1,10 @@
 package projekt.delivery.generator;
 
+import projekt.base.TickInterval;
 import projekt.delivery.routing.ConfirmedOrder;
 import projekt.delivery.routing.VehicleManager;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 import static org.tudalgo.algoutils.student.Student.crash;
 
@@ -18,7 +17,7 @@ import static org.tudalgo.algoutils.student.Student.crash;
 public class FridayOrderGenerator implements OrderGenerator {
 
     private final Random random;
-
+    private final Map<Long,List<ConfirmedOrder>> orders;
     /**
      * Creates a new {@link FridayOrderGenerator} with the given parameters.
      * @param orderCount The total amount of orders this {@link OrderGenerator} will create. It is equal to the sum of
@@ -32,12 +31,46 @@ public class FridayOrderGenerator implements OrderGenerator {
      */
     private FridayOrderGenerator(int orderCount, VehicleManager vehicleManager, int deliveryInterval, double maxWeight, double variance, long lastTick, int seed) {
         random = seed < 0 ? new Random() : new Random(seed);
-        crash(); // TODO: H7.1 - remove if implemented
+        if(orderCount<0) throw new IndexOutOfBoundsException(orderCount);
+        orders=new HashMap();
+        double dIndex;
+        long lIndex;
+        ConfirmedOrder order;
+        VehicleManager.OccupiedNeighborhood[] neighborhoods=vehicleManager.getOccupiedNeighborhoods()
+            .toArray(new VehicleManager.OccupiedNeighborhood[0]);
+        VehicleManager.OccupiedRestaurant[] restaurants=vehicleManager.getOccupiedRestaurants()
+            .toArray(new VehicleManager.OccupiedRestaurant[0]);
+        VehicleManager.OccupiedRestaurant res;
+        List<String> foodList=new ArrayList();
+        String[] resList;
+        int number_of_foods;
+
+        for(int i=0;i<orderCount;i++){
+            do{
+                dIndex=random.nextGaussian(lastTick/2.0,variance);
+            } while(dIndex<0||dIndex>=lastTick+1);
+            lIndex=(long)dIndex;
+            res=restaurants[random.nextInt(restaurants.length)];
+            foodList.clear();
+            resList=res.getComponent().getAvailableFood().toArray(new String[0]);
+            for(number_of_foods=1+random.nextInt(9);number_of_foods>0;number_of_foods--){
+                foodList.add(resList[random.nextInt(resList.length)]);
+            }
+            order=new ConfirmedOrder(neighborhoods[random.nextInt(neighborhoods.length)].getComponent().getLocation(),
+                                    res,
+                                    new TickInterval(lIndex,lIndex+deliveryInterval),
+                                    foodList,
+                                    random.nextDouble(maxWeight));
+            if(!orders.containsKey(lIndex)) orders.put(lIndex,new ArrayList<>());
+            orders.get(lIndex).add(order);
+        }
     }
 
     @Override
     public List<ConfirmedOrder> generateOrders(long tick) {
-        return crash(); // TODO: H7.1 - remove if implemented
+        List<ConfirmedOrder> list=orders.get(tick);
+        if(list==null) return new ArrayList<>();
+        return list;
     }
 
     /**

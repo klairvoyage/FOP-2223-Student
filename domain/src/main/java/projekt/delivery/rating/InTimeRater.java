@@ -1,6 +1,8 @@
 package projekt.delivery.rating;
 
+import projekt.delivery.event.DeliverOrderEvent;
 import projekt.delivery.event.Event;
+import projekt.delivery.event.OrderReceivedEvent;
 import projekt.delivery.routing.ConfirmedOrder;
 import projekt.delivery.simulation.Simulation;
 
@@ -19,6 +21,7 @@ public class InTimeRater implements Rater {
 
     private final long ignoredTicksOff;
     private final long maxTicksOff;
+    private long maxTotalTicksOff=0,actualTotalTicksOff=0;
 
     /**
      * Creates a new {@link InTimeRater} instance.
@@ -35,12 +38,27 @@ public class InTimeRater implements Rater {
 
     @Override
     public double getScore() {
-        return crash(); // TODO: H8.2 - remove if implemented
+        if(maxTicksOff==0) return 0;
+        return 1-(double)actualTotalTicksOff/maxTotalTicksOff;
     }
 
     @Override
     public void onTick(List<Event> events, long tick) {
-        crash(); // TODO: H8.2 - remove if implemented
+        long start,end;
+        // TODO: what about too early deliveries?
+        for(Event event:events) if(event instanceof DeliverOrderEvent del) {
+            actualTotalTicksOff-=maxTicksOff;
+            start=del.getOrder().getDeliveryInterval().start();
+            end=del.getOrder().getDeliveryInterval().end();
+            if(tick>end+ignoredTicksOff+maxTicksOff) actualTotalTicksOff+=maxTicksOff;
+            else if(tick>end+ignoredTicksOff) actualTotalTicksOff+=tick-end-ignoredTicksOff;
+            else if(tick<start-ignoredTicksOff) actualTotalTicksOff+=start-ignoredTicksOff-tick;
+            else if(tick<start-ignoredTicksOff-maxTicksOff) actualTotalTicksOff+=maxTicksOff;
+        }
+        else if(event instanceof OrderReceivedEvent) {
+            maxTotalTicksOff+=maxTicksOff;
+            actualTotalTicksOff+=maxTicksOff;
+        }
     }
 
     /**

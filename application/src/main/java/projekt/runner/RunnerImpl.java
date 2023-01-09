@@ -2,6 +2,7 @@ package projekt.runner;
 
 import projekt.delivery.archetype.ProblemArchetype;
 import projekt.delivery.archetype.ProblemGroup;
+import projekt.delivery.rating.RatingCriteria;
 import projekt.delivery.service.DeliveryService;
 import projekt.delivery.simulation.BasicDeliverySimulation;
 import projekt.delivery.simulation.Simulation;
@@ -10,6 +11,7 @@ import projekt.runner.handler.ResultHandler;
 import projekt.runner.handler.SimulationFinishedHandler;
 import projekt.runner.handler.SimulationSetupHandler;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.tudalgo.algoutils.student.Student.crash;
@@ -25,7 +27,30 @@ public class RunnerImpl implements Runner {
                     SimulationFinishedHandler simulationFinishedHandler,
                     ResultHandler resultHandler) {
 
-        crash(); // TODO: H10.2 - remove if implemented
+        //if(simulationRuns==0) return null;      // not needed?
+        Map<ProblemArchetype, Simulation> simulations=createSimulations(problemGroup,simulationConfig,deliveryServiceFactory);
+        Map<RatingCriteria,Double> ratings=new HashMap<>();
+        for(RatingCriteria rating:problemGroup.ratingCriteria()) ratings.put(rating,new Double(0));
+        int count=0;
+        double tmp;
+        for(int i=0;i<simulationRuns;i++) for(ProblemArchetype problem:simulations.keySet()) {
+            count++;
+            simulationSetupHandler.accept(simulations.get(problem),problem,i);
+            simulations.get(problem).runSimulation(problem.simulationLength());
+            simulationFinishedHandler.accept(simulations.get(problem),problem);
+            for(RatingCriteria rating:problemGroup.ratingCriteria()){
+                tmp=ratings.get(rating);
+                ratings.remove(rating);
+                tmp+=simulations.get(problem).getRatingForCriterion(rating);
+                ratings.put(rating,tmp);
+            }
+        }
+        for(RatingCriteria rating:problemGroup.ratingCriteria()){
+            tmp=ratings.get(rating);
+            ratings.remove(rating);
+            ratings.put(rating,tmp/count);
+        }
+       resultHandler.accept(ratings);
     }
 
     /**
@@ -41,7 +66,11 @@ public class RunnerImpl implements Runner {
                                                                 SimulationConfig simulationConfig,
                                                                 DeliveryService.Factory deliveryServiceFactory) {
 
-        return crash(); // TODO: H10.1 - remove if implemented
+        Map<ProblemArchetype,Simulation> map=new HashMap<>();
+        for(ProblemArchetype problem:problemGroup.problems()) map.put(problem,
+            new BasicDeliverySimulation(simulationConfig,problem.raterFactoryMap(),
+                deliveryServiceFactory.create(problem.vehicleManager()),problem.orderGeneratorFactory()));
+        return map;
     }
 
 }

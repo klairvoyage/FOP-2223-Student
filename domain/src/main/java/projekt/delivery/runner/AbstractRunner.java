@@ -7,6 +7,7 @@ import projekt.delivery.simulation.BasicDeliverySimulation;
 import projekt.delivery.simulation.Simulation;
 import projekt.delivery.simulation.SimulationConfig;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.tudalgo.algoutils.student.Student.crash;
@@ -25,8 +26,12 @@ public abstract class AbstractRunner implements Runner {
     protected Map<ProblemArchetype, Simulation> createSimulations(ProblemGroup problemGroup,
                                                                   SimulationConfig simulationConfig,
                                                                   DeliveryService.Factory deliveryServiceFactory) {
-
-        return crash(); // TODO: H10.1 - remove if implemented
+        /*Map<ProblemArchetype,Simulation> map=new HashMap<>();
+        for(ProblemArchetype problem:problemGroup.problems()) map.put(problem,
+            new BasicDeliverySimulation(simulationConfig,problem.raterFactoryMap(),
+                deliveryServiceFactory.create(problem.vehicleManager()),problem.orderGeneratorFactory()));
+        return map;*/
+        return crash();
     }
 
 }

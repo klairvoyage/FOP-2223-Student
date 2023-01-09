@@ -31,15 +31,28 @@ class VehicleManagerImpl implements VehicleManager {
     }
 
     private Map<Region.Node, OccupiedNodeImpl<? extends Region.Node>> toOccupiedNodes(Collection<Region.Node> nodes) {
-        return crash(); // TODO: H6.1 - remove if implemented
+        Map<Region.Node, OccupiedNodeImpl<? extends Region.Node>> map=new HashMap<Region.Node, OccupiedNodeImpl<? extends Region.Node>>();
+        for(Region.Node node:nodes)
+            if(node instanceof Region.Restaurant res)
+                map.put(node,new OccupiedRestaurantImpl(res,this));
+            else if(node instanceof Region.Neighborhood nei)
+                map.put(node,new OccupiedNeighborhoodImpl(nei,this));
+            else
+                map.put(node,new OccupiedNodeImpl<>(node,this));
+        return Collections.unmodifiableMap(map);
     }
 
     private Map<Region.Edge, OccupiedEdgeImpl> toOccupiedEdges(Collection<Region.Edge> edges) {
-        return crash(); // TODO: H6.1 - remove if implemented
+        Map<Region.Edge, OccupiedEdgeImpl> map=new HashMap<Region.Edge, OccupiedEdgeImpl>();
+        for(Region.Edge edge:edges) map.put(edge, new OccupiedEdgeImpl(edge, this));
+        return Collections.unmodifiableMap(map);
     }
 
     private Set<AbstractOccupied<?>> getAllOccupied() {
-        return crash(); // TODO: H6.2 - remove if implemented
+        Set<AbstractOccupied<?>> set=new HashSet<>();
+        set.addAll(occupiedNodes.values());
+        set.addAll(occupiedEdges.values());
+        return Collections.unmodifiableSet(set);
     }
 
     private OccupiedNodeImpl<? extends Region.Node> getOccupiedNode(Location location) {
@@ -73,7 +86,18 @@ class VehicleManagerImpl implements VehicleManager {
 
     @Override
     public <C extends Region.Component<C>> AbstractOccupied<C> getOccupied(C component) {
-        return crash(); // TODO: H6.3 - remove if implemented
+        if(component==null) throw new NullPointerException("Component is null!");
+        String type=component.getClass().getName();
+        if(!(component instanceof Region.Node)&&!(component instanceof Region.Edge))
+            throw new IllegalArgumentException("Component is not of recognized subtype: "+type);
+        if(component instanceof Region.Node node){
+            if(occupiedNodes.containsKey(node)) return (AbstractOccupied<C>) occupiedNodes.get(node);
+            else throw new IllegalArgumentException("Could not find occupied node for "+component.toString());
+        } else if(component instanceof Region.Edge edge){
+            if(occupiedEdges.containsKey(edge)) return (AbstractOccupied<C>) occupiedEdges.get(edge);
+            else throw new IllegalArgumentException("Could not find occupied edge for "+component.toString());
+        }
+        return null; // a priori unreachable code
     }
 
     @Override
@@ -86,7 +110,11 @@ class VehicleManagerImpl implements VehicleManager {
 
     @Override
     public OccupiedRestaurant getOccupiedRestaurant(Region.Node node) {
-        return crash(); // TODO: H6.4- remove if implemented
+        if(node==null) throw new NullPointerException("Node is null!");
+        OccupiedNodeImpl<? extends Region.Node> occ=occupiedNodes.get(node);
+        if(occ==null) throw new IllegalArgumentException("Node "+node.toString()+" is not a neighborhood");
+        if(occ instanceof OccupiedRestaurant res) return res;
+        else throw new IllegalArgumentException("Node "+node.toString()+" is not a neighborhood");
     }
 
     @Override
@@ -99,7 +127,11 @@ class VehicleManagerImpl implements VehicleManager {
 
     @Override
     public OccupiedNeighborhood getOccupiedNeighborhood(Region.Node node) {
-        return crash(); // TODO: H6.4 - remove if implemented
+        if(node==null) throw new NullPointerException("Node is null!");
+        OccupiedNodeImpl<? extends Region.Node> occ=occupiedNodes.get(node);
+        if(occ==null) throw new IllegalArgumentException("Node "+node.toString()+" is not a neighborhood");
+        if(occ instanceof OccupiedNeighborhood nei) return nei;
+        else throw new IllegalArgumentException("Node "+node.toString()+" is not a neighborhood");
     }
 
     @Override

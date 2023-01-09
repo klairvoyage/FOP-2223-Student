@@ -70,21 +70,25 @@ public final class Location implements Comparable<Location> {
 
     @Override
     public int compareTo(@NotNull Location o) {
-        return crash(); // TODO: H1.1 - remove if implemented
+        if(x!=o.getX()) return x-o.getX();
+        if(y!=o.getY()) return y-o.getY();
+        return 0;
     }
 
     @Override
     public int hashCode() {
-        return crash(); // TODO: H1.2 - remove if implemented
+        return x*1000000+y;
     }
 
     @Override
     public boolean equals(Object o) {
-        return crash(); // TODO: H1.3 - remove if implemented
+        if(o==null) return false;
+        if(o instanceof Location loc) return this.compareTo(loc)==0;
+        return false;
     }
 
     @Override
     public String toString() {
-        return crash(); // TODO: H1.4 - remove if implemented
+        return "("+x+","+y+")";
     }
 }

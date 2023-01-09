@@ -34,7 +34,8 @@ public class VehicleManagerIO {
                 if (line.startsWith("V ")) {
                     String[] splitSerializedVehicle = line.substring(2).split(",", 3);
                     builder.addVehicle(parseLocation(splitSerializedVehicle[0], splitSerializedVehicle[1]),
-                        Double.parseDouble(splitSerializedVehicle[2]));
+                        //Double.parseDouble(splitSerializedVehicle[2]));       Diese Zeile habe ich mit der unteren ersetzt
+                        Double.parseDouble(splitSerializedVehicle[2].replace(',','.')));
                 } else if (line.startsWith("P ")) {
                     builder.pathCalculator(parsePathCalculator(line.substring(2)));
                 } else {

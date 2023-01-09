@@ -51,12 +51,29 @@ class VehicleImpl implements Vehicle {
 
     @Override
     public void moveDirect(Region.Node node, Consumer<? super Vehicle> arrivalAction) {
-        crash(); // TODO: H5.4 - remove if implemented
+        if(!moveQueue.isEmpty()) {
+            Region.Node start = moveQueue.getFirst().nodes().getFirst();
+            moveQueue.clear();
+            checkMoveToNode(node);
+            if (!(occupied.component instanceof Region.Node)) moveQueued(start, arrivalAction);
+            moveQueued(node, arrivalAction);
+        } else{
+            checkMoveToNode(node);
+            // if the queue is empty, we must be at the original restaurant
+            moveQueued(node,arrivalAction);
+        }
     }
 
     @Override
     public void moveQueued(Region.Node node, Consumer<? super Vehicle> arrivalAction) {
-        crash(); // TODO: H5.3 - remove if implemented
+        checkMoveToNode(node);
+        if(!moveQueue.isEmpty())
+            moveQueue.add(new PathImpl(vehicleManager.getPathCalculator().getPath(moveQueue.getLast().nodes().getLast(),node),
+                                arrivalAction));
+        else
+            moveQueue.add(new PathImpl(vehicleManager.getPathCalculator().getPath(startingNode.getComponent(),node),
+                arrivalAction));
+
     }
 
     @Override
@@ -125,11 +142,12 @@ class VehicleImpl implements Vehicle {
     }
 
     void loadOrder(ConfirmedOrder order) {
-        crash(); // TODO: H5.2 - remove if implemented
+        orders.add(order);
+        if(getCurrentWeight()>capacity) throw new VehicleOverloadedException(this,getCurrentWeight());
     }
 
     void unloadOrder(ConfirmedOrder order) {
-        crash(); // TODO: H5.2 - remove if implemented
+        orders.remove(order);
     }
 
     @Override

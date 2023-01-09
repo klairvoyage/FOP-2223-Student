@@ -90,7 +90,9 @@ public interface Vehicle extends Comparable<Vehicle> {
      * @return The total weight of all {@link ConfirmedOrder}s loaded onto this {@link Vehicle}.
      */
     default double getCurrentWeight() {
-        return crash(); // TODO: H5.1 - remove if implemented
+        double sum=0;
+        for(ConfirmedOrder order:getOrders()) sum+=order.getWeight();
+        return sum;
     }
 
     /**

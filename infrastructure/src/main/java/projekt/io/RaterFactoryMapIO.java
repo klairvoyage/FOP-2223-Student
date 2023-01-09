@@ -49,9 +49,9 @@ public class RaterFactoryMapIO {
                         inTimeBuilder.setIgnoredTicksOff(Integer.parseInt(serializedRater[2]));
                         inTimeBuilder.setMaxTicksOff(Integer.parseInt(serializedRater[3]));
                     } else if (builder instanceof AmountDeliveredRater.FactoryBuilder amountDeliveredBuilder) {
-                        amountDeliveredBuilder.setFactor(Double.parseDouble(serializedRater[2]));
+                        amountDeliveredBuilder.setFactor(Double.parseDouble(serializedRater[2].replace(',','.')));//gleiches Problem
                     } else if (builder instanceof TravelDistanceRater.FactoryBuilder travelDistanceBuilder) {
-                        travelDistanceBuilder.setFactor(Double.parseDouble(serializedRater[2]));
+                        travelDistanceBuilder.setFactor(Double.parseDouble(serializedRater[2].replace(',','.')));//gleiches Problem
                         travelDistanceBuilder.setVehicleManager(vehicleManager);
                     }
 

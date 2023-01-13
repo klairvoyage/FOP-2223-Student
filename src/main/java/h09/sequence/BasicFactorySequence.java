@@ -1,22 +1,32 @@
 package h09.sequence;
 
+import h09.basic.BasicFactory;
+
 import java.util.Iterator;
 
 import static org.tudalgo.algoutils.student.Student.crash;
 
-public class BasicFactorySequence/*TODO: H3.3*/ {
+public class BasicFactorySequence/*TODO: H3.3*/<T> implements Sequence<T> {
+    private BasicFactory<T> factory;
+
+    public BasicFactorySequence(BasicFactory<T> factory) {
+        this.factory = factory;
+    }
+
 // TODO: H3.3 - uncomment if implemented
-//    @Override
-    public Iterator</*TODO: H3.3 replace*/Object> iterator() {
+    @Override
+    public Iterator<T> iterator() {
         return new Iterator<>() {
             @Override
             public boolean hasNext() {
-                return crash(); // TODO: H3.3 - remove if implemented
+                // TODO: H3.3 - remove if implemented
+                return true;
             }
 
             @Override
-            public /*TODO: H3.3 replace*/Object next() {
-                return crash(); // TODO: H3.3 - remove if implemented
+            public T next() {
+                // TODO: H3.3 - remove if implemented
+                return factory.create();
             }
         };
     }

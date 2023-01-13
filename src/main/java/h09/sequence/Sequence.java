@@ -54,9 +54,9 @@ public interface Sequence<T> {
     @SafeVarargs
     static <T> Sequence<T> of(T... elements) {
         // TODO: H3.1 - remove if implemented
-        throw new RuntimeException("Not implemented yet");
+        //throw new RuntimeException("Not implemented yet");
         // Uncomment the following line when implemented:
-//        return new ArraySequence<>(elements);
+        return new ArraySequence<>(elements);
     }
 
     /**
@@ -79,8 +79,8 @@ public interface Sequence<T> {
      */
     static <T> Sequence<T> of(BasicFactory<T> factory) {
         // TODO: H3.3 - remove if implemented
-        throw new RuntimeException("Not implemented yet");
+        //throw new RuntimeException("Not implemented yet");
         // Uncomment the following line when implemented:
-//        return new BasicFactorySequence<>(factory);
+        return new BasicFactorySequence<>(factory);
     }
 }

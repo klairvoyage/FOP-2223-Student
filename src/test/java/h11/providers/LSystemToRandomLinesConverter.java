@@ -2,6 +2,7 @@ package h11.providers;
 
 import h11.AbstractRandom;
 import h11.parse.Projection;
+import org.tudalgo.algoutils.student.io.PropertyUtils;
 
 import java.util.List;
 import java.util.function.Function;
@@ -20,17 +21,20 @@ public class LSystemToRandomLinesConverter {
     /**
      * Maximum number of comment lines before and after a projection.
      */
-    private static final int MAX_LINE_NEXT_TO_PROJECTION = 2;
+    private static final int MAX_LINE_NEXT_TO_PROJECTION =
+        PropertyUtils.getIntProperty("h11/h11-generator.properties", "MAX_LINES_NEXT_TO_PROJECTION");
 
     /**
      * Maximum number of consecutive spaces.
      */
-    private static final int MAX_SPACES_SIZE = 3;
+    private static final int MAX_SPACES_SIZE =
+        PropertyUtils.getIntProperty("h11/h11-generator.properties", "MAX_SPACES_SIZE");
 
     /**
      * Maximum number of characters in a comment
      */
-    private static final int MAX_COMMENT_SIZE = 10;
+    private static final int MAX_COMMENT_SIZE =
+        PropertyUtils.getIntProperty("h11/h11-generator.properties", "MAX_COMMENT_SIZE");
 
     /**
      * {@link AbstractRandom} to use.

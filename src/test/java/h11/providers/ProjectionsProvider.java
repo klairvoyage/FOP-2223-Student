@@ -6,6 +6,7 @@ import h11.parse.Projection;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
+import org.tudalgo.algoutils.student.io.PropertyUtils;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -18,13 +19,15 @@ public class ProjectionsProvider implements ArgumentsProvider {
     /**
      * The maximum stream size.
      */
-    protected static final long MAX_STREAM_SIZE = 100;
+    protected static final long MAX_STREAM_SIZE =
+        PropertyUtils.getIntProperty("h11/h11-generator.properties", "MAX_PROJECTIONS_STREAM_SIZE");
 
     /**
      * The seed to use when generating the system.
      * If this is zero, a unique seed is used.
      */
-    private static final int SEED = 0;
+    private static final int SEED =
+        PropertyUtils.getIntProperty("h11/h11-generator.properties", "SEED");
 
     /**
      * The {@link AbstractRandom} to use with the given seed.

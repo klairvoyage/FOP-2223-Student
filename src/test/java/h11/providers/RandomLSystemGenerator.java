@@ -2,6 +2,7 @@ package h11.providers;
 
 import h11.AbstractRandom;
 import h11.parse.Projection;
+import org.tudalgo.algoutils.student.io.PropertyUtils;
 
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class RandomLSystemGenerator {
      * The maximum number of {@link Projection}
      * in a generated LSystem.
      */
-    private static final int MAX_SYSTEM_SIZE = 10;
+    private static final int MAX_SYSTEM_SIZE =
+        PropertyUtils.getIntProperty("h11/h11-generator.properties", "MAX_LSYSTEM_SIZE");
 
     /**
      * The maximum size of the destination

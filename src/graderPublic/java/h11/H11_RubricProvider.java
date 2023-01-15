@@ -21,6 +21,17 @@ import org.sourcegrade.jagr.api.rubric.*;
 
 public class H11_RubricProvider implements RubricProvider {
 
+    private static final Criterion H1_1 = Criterion.builder()
+        .shortDescription("H11.1.1 | Das Axiom ist korrekt implementiert")
+        .build();
+    private static final Criterion H1_2 = Criterion.builder()
+        .shortDescription("H11.1.2 | Die Projektion ist korrekt implementiert")
+        .build();
+    private static final Criterion H1 = Criterion.builder()
+        .shortDescription("H11.1 | Algae")
+        .addChildCriteria(H1_1, H1_2)
+        .build();
+
     private static final Criterion H2_A = Criterion.builder()
         .shortDescription("H11.2.A | Der Stream ist unendlich")
         .maxPoints(2)
@@ -73,7 +84,7 @@ public class H11_RubricProvider implements RubricProvider {
         .addChildCriteria(H3_1_A, H3_1_B, H3_1_C)
         .build();
     private static final Criterion H3_2_A = Criterion.builder()
-        .shortDescription("H11.3.2.A | Der Parser parsed einfachen Input")
+        .shortDescription("H11.3.2.A | Der Parser parsed einfachen Input korrekt")
         .maxPoints(2)
         .grader(Grader.testAwareBuilder()
             .requirePass(JUnitTestRef.ofMethod(() -> LSystemParserTest.class.getDeclaredMethod("testThat_parserParsesProjections")))
@@ -82,7 +93,7 @@ public class H11_RubricProvider implements RubricProvider {
             .build())
         .build();
     private static final Criterion H3_2_B = Criterion.builder()
-        .shortDescription("H11.3.2.A | Der Parser parsed mittleren Input")
+        .shortDescription("H11.3.2.A | Der Parser parsed mittleren Input korrekt")
         .maxPoints(2)
         .grader(Grader.testAwareBuilder()
             .requirePass(JUnitTestRef.ofMethod(() -> LSystemParserTest.class.getDeclaredMethod("testThat_parserIgnoresInlineCommentsAndWhitespace")))
@@ -91,7 +102,7 @@ public class H11_RubricProvider implements RubricProvider {
             .build())
         .build();
     private static final Criterion H3_2_C = Criterion.builder()
-        .shortDescription("H11.3.2.A | Der Parser parsed schweren Input")
+        .shortDescription("H11.3.2.A | Der Parser parsed schweren Input korrekt")
         .maxPoints(2)
         .grader(Grader.testAwareBuilder()
             .requirePass(JUnitTestRef.ofMethod(() -> LSystemParserTest.class.getDeclaredMethod("testThat_parserIgnoresLinesWithCommentsAndEmptyLines")))
@@ -148,8 +159,8 @@ public class H11_RubricProvider implements RubricProvider {
         .shortDescription("H11.4.2 | Auslesen der Fibonaccizahlen aus der Algae")
         .addChildCriteria(H4_2_A, H4_2_B)
         .build();
-    private static final Criterion H4_3 = Criterion.builder()
-        .shortDescription("H11.4.3 | Der Testcase")
+    private static final Criterion H4_3_A = Criterion.builder()
+        .shortDescription("H11.4.3.A | Der Test ist korrekt implementiert")
         .grader(Grader.testAwareBuilder()
             .requirePass(JUnitTestRef.ofMethod(() -> AlgaeTestTest.class.getDeclaredMethod("testThat_algaeTestAcceptsPositive", int.class)))
             .requirePass(JUnitTestRef.ofMethod(() -> AlgaeTestTest.class.getDeclaredMethod("testThat_algaeTestRejectsWrongSize", int.class)))
@@ -157,6 +168,10 @@ public class H11_RubricProvider implements RubricProvider {
             .pointsFailedMin()
             .pointsPassedMax()
             .build())
+        .build();
+    private static final Criterion H4_3 = Criterion.builder()
+        .shortDescription("H11.4.3 | Der Testcase")
+        .addChildCriteria(H4_3_A)
         .build();
     private static final Criterion H4 = Criterion.builder()
         .shortDescription("H11.4 | Testen der Algae")
@@ -173,6 +188,7 @@ public class H11_RubricProvider implements RubricProvider {
         .build();
     private static final Criterion H5_2 = Criterion.builder()
         .shortDescription("H11.5.2 | Zufälliges Latein")
+        .maxPoints(2)
         .grader(Grader.testAwareBuilder()
             .requirePass(JUnitTestRef.ofMethod(() -> RandomTest.class.getDeclaredMethod("testLatin", RandomLatinTestCase.class)))
             .pointsFailedMin()
@@ -241,7 +257,7 @@ public class H11_RubricProvider implements RubricProvider {
 
     public static final Rubric RUBRIC = Rubric.builder()
         .title("H11 | L-Systeme")
-        .addChildCriteria(H2, H3, H4, H5, H6, H7)
+        .addChildCriteria(H1, H2, H3, H4, H5, H6, H7)
         .build();
 
     @Override

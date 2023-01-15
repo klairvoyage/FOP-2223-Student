@@ -148,7 +148,7 @@ public class H11_RubricProvider implements RubricProvider {
             .build())
         .build();
     private static final Criterion H4_2_B = Criterion.builder()
-        .shortDescription("H11.4.1.B | Alle Werte sind jeweils korrekt")
+        .shortDescription("H11.4.2.B | Alle Werte sind jeweils korrekt")
         .grader(Grader.testAwareBuilder()
             .requirePass(JUnitTestRef.ofMethod(() -> AlgaeFibonacciGeneratorTest.class.getDeclaredMethod("testThat_fibsAreCorrect", int.class)))
             .pointsFailedMin()

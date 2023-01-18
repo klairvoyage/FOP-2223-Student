@@ -20,7 +20,7 @@ public class ProjectionsProvider implements ArgumentsProvider {
      * The maximum stream size.
      */
     protected static final long MAX_STREAM_SIZE =
-        PropertyUtils.getIntProperty("h11/h11-generator.properties", "MAX_PROJECTIONS_STREAM_SIZE");
+        PropertyUtils.getLongProperty("h11/h11-generator.properties", "MAX_PROJECTIONS_STREAM_SIZE");
 
     /**
      * The seed to use when generating the system.
@@ -38,7 +38,6 @@ public class ProjectionsProvider implements ArgumentsProvider {
      * The {@link RandomLSystemGenerator} to use with the given random instance.
      */
     protected final RandomLSystemGenerator generator = new RandomLSystemGenerator(random);
-
 
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext context) {

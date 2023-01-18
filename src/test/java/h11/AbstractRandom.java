@@ -3,7 +3,7 @@ package h11;
 import java.util.stream.Stream;
 
 /**
- * Descendant from {@link java.util.Random}
+ * Descendant from {{@link java.util.Random}
  * adding extra methods.
  */
 public abstract class AbstractRandom extends java.util.Random {
@@ -30,7 +30,7 @@ public abstract class AbstractRandom extends java.util.Random {
      * might result in <code>[2, 2, 1, 3, 2, 1, 2, 3, 2, 2, ...]</code>
      *
      * @param values The pool of values to choose from.
-     * @return A endless {@link Stream} of randomly chosen values.
+     * @return An endless {@link Stream} of randomly chosen values.
      * @param <T> The type of values.
      */
     public abstract <T> Stream<T> choices(T... values);

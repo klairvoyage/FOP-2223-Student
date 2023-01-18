@@ -1,12 +1,13 @@
 package h11.fibs;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.tudalgo.algoutils.student.Student.crash;
 
 /**
  * A basic implementation of the {@link FibonacciGenerator}
- * using {@link java.util.stream.Stream} to compute the sequence.
+ * using {@link Stream} to compute the sequence.
  */
 public class FibonacciGeneratorImpl implements FibonacciGenerator {
 

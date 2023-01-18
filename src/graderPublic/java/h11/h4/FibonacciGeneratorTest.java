@@ -48,7 +48,7 @@ public abstract class FibonacciGeneratorTest {
     private Context getContext(int numberOfFibs) throws NoSuchMethodException {
         return Assertions2.contextBuilder()
             .subject(classToTest.getMethod("generate", int.class))
-            .property("numberOfFibs", numberOfFibs)
+            .add("numberOfFibs", numberOfFibs)
             .build();
     }
 }

@@ -19,7 +19,7 @@ public class LSystemParserTest {
 
     @Test
     @Tag("H3")
-    void testThat_parserParsesProjections() throws NoSuchMethodException {
+    public void testThat_parserParsesProjections() throws NoSuchMethodException {
         assertParser(
             List.of(
                 "A -> AB",
@@ -33,7 +33,7 @@ public class LSystemParserTest {
 
     @Test
     @Tag("H3")
-    void testThat_parserIgnoresInlineCommentsAndWhitespace() throws NoSuchMethodException {
+    public void testThat_parserIgnoresInlineCommentsAndWhitespace() throws NoSuchMethodException {
         assertParser(
             List.of(
                 "   A     ->   AB # aiwdjaw awpdijawid a ",
@@ -47,7 +47,7 @@ public class LSystemParserTest {
 
     @Test
     @Tag("H3")
-    void testThat_parserIgnoresLinesWithCommentsAndEmptyLines() throws NoSuchMethodException {
+    public void testThat_parserIgnoresLinesWithCommentsAndEmptyLines() throws NoSuchMethodException {
         assertParser(
             List.of(
                 "   # auiwoda aiwdjiawd aiwodj",

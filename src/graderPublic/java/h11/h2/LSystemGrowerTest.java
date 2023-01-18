@@ -21,7 +21,7 @@ public class LSystemGrowerTest {
 
     @Test
     @Tag("H2")
-    void testThat_streamIsInfinite() throws NoSuchMethodException {
+    public void testThat_streamIsInfinite() throws NoSuchMethodException {
         var grower = new LSystemGrowerImpl<>(new LSystem<Character>() {
             @Override
             public Character getAxiom() {
@@ -46,7 +46,7 @@ public class LSystemGrowerTest {
     @ParameterizedTest
     @JsonClasspathSource("h11/h2/lsystem-grower-test.json")
     @Tag("H2")
-    void testGrow(LSystemGrowerTestCase testCase) throws NoSuchMethodException {
+    public void testGrow(LSystemGrowerTestCase testCase) throws NoSuchMethodException {
         LSystemGrowerImpl<Character> grower = getGrower(testCase);
 
         var actual = grower

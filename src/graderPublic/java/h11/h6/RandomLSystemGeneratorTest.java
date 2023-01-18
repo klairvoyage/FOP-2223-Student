@@ -15,9 +15,20 @@ import org.tudalgo.algoutils.tutor.general.assertions.Context;
 public class RandomLSystemGeneratorTest {
 
     @ParameterizedTest
-    @JsonClasspathSource("h11/h6/make-projection-test.json")
+    @JsonClasspathSource("h11/h6/make-projection-test-exclusive.json")
     @Tag("H6")
-    void testMakeProjection(MakeProjectionTestCase testCase) throws NoSuchMethodException {
+    public void testMakeProjectionExclusive(MakeProjectionTestCase testCase) throws NoSuchMethodException {
+        testMakeProjection(testCase);
+    }
+
+    @ParameterizedTest
+    @JsonClasspathSource("h11/h6/make-projection-test-inclusive.json")
+    @Tag("H6")
+    public void testMakeProjectionInclusive(MakeProjectionTestCase testCase) throws NoSuchMethodException {
+        testMakeProjection(testCase);
+    }
+
+    private void testMakeProjection(MakeProjectionTestCase testCase) throws NoSuchMethodException {
         var random = new Random(testCase.seed());
         var generator = new RandomLSystemGenerator(random);
 
@@ -31,15 +42,15 @@ public class RandomLSystemGeneratorTest {
     private Context getMakeProjectionContext(MakeProjectionTestCase testCase) throws NoSuchMethodException {
         return Assertions2.contextBuilder()
             .subject(RandomLSystemGenerator.class.getMethod("makeProjection", String.class))
-            .property("seed", testCase.seed())
-            .property("source", testCase.source())
+            .add("seed", testCase.seed())
+            .add("source", testCase.source())
             .build();
     }
 
     @ParameterizedTest
     @ValueSource(ints = { 12, 3, 5, 67, 8, 2, 1 })
     @Tag("H6")
-    void testThat_sourcesAreUnique(int seed) throws NoSuchMethodException {
+    public void testThat_sourcesAreUnique(int seed) throws NoSuchMethodException {
         var random = new Random(seed);
         var generator = new RandomLSystemGenerator(random);
         var projections = generator.generate();
@@ -56,9 +67,20 @@ public class RandomLSystemGeneratorTest {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource("h11/h6/generate-test.json")
+    @JsonClasspathSource("h11/h6/generate-test-exclusive.json")
     @Tag("H6")
-    void testGenerate(GenerateTestCase testCase) throws NoSuchMethodException {
+    public void testGenerateExclusive(GenerateTestCase testCase) throws NoSuchMethodException {
+        testGenerate(testCase);
+    }
+
+    @ParameterizedTest
+    @JsonClasspathSource("h11/h6/generate-test-inclusive.json")
+    @Tag("H6")
+    public void testGenerateInclusive(GenerateTestCase testCase) throws NoSuchMethodException {
+        testGenerate(testCase);
+    }
+
+    private void testGenerate(GenerateTestCase testCase) throws NoSuchMethodException {
         var random = new Random(testCase.seed());
         var generator = new RandomLSystemGenerator(random);
         var actual = generator.generate();
@@ -70,7 +92,7 @@ public class RandomLSystemGeneratorTest {
     private Context getGenerateContext(long seed) throws NoSuchMethodException {
         return Assertions2.contextBuilder()
             .subject(RandomLSystemGenerator.class.getMethod("generate"))
-            .property("seed", seed)
+            .add("seed", seed)
             .build();
     }
 }

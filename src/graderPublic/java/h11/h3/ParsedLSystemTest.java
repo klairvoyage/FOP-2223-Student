@@ -17,7 +17,7 @@ public class ParsedLSystemTest {
     @ParameterizedTest
     @JsonClasspathSource("h11/h3/parsed-lsystem-test.json")
     @Tag("H3")
-    void testThat_firstProjectionGivesAxiom(ParsedLSystemTestCase testCase) throws NoSuchMethodException {
+    public void testThat_firstProjectionGivesAxiom(ParsedLSystemTestCase testCase) throws NoSuchMethodException {
         var lSystem = new ParsedLSystem(testCase.projections());
         var expected = testCase.projections().get(0).source();
         Assertions2.assertEquals(expected, lSystem.getAxiom(), getAxiomContext(), result ->
@@ -33,7 +33,7 @@ public class ParsedLSystemTest {
     @ParameterizedTest
     @JsonClasspathSource("h11/h3/parsed-lsystem-test.json")
     @Tag("H3")
-    void testThat_projectionsOfKnownProject(ParsedLSystemTestCase testCase) throws NoSuchMethodException {
+    public void testThat_projectionsOfKnownProject(ParsedLSystemTestCase testCase) throws NoSuchMethodException {
         var lSystem = new ParsedLSystem(testCase.projections());
 
         for (var p : testCase.projections()) {
@@ -50,7 +50,7 @@ public class ParsedLSystemTest {
     @ParameterizedTest
     @JsonClasspathSource("h11/h3/parsed-lsystem-test.json")
     @Tag("H3")
-    void testThat_projectionsOfUnknownDoesNotProject(ParsedLSystemTestCase testCase) throws NoSuchMethodException {
+    public void testThat_projectionsOfUnknownDoesNotProject(ParsedLSystemTestCase testCase) throws NoSuchMethodException {
         var lSystem = new ParsedLSystem(testCase.projections());
 
         for (char c = '0'; c <= '9'; c++) {

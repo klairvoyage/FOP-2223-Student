@@ -14,7 +14,7 @@ public class RandomTest {
     @ParameterizedTest
     @JsonClasspathSource("h11/h5/random-choices-test.json")
     @Tag("H5")
-    void testChoices(RandomChoicesTestCase testCase) throws NoSuchMethodException {
+    public void testChoices(RandomChoicesTestCase testCase) throws NoSuchMethodException {
         var random = new Random(testCase.seed());
         var actual = random
             .choices(testCase.input())
@@ -28,14 +28,14 @@ public class RandomTest {
     private Context getChoicesContext(RandomChoicesTestCase testCase) throws NoSuchMethodException {
         return Assertions2.contextBuilder()
             .subject(Random.class.getMethod("choices", Object[].class))
-            .property("seed", testCase.seed())
+            .add("seed", testCase.seed())
             .build();
     }
 
     @ParameterizedTest
     @JsonClasspathSource("h11/h5/random-latin-test.json")
     @Tag("H5")
-    void testLatin(RandomLatinTestCase testCase) throws NoSuchMethodException {
+    public void testLatin(RandomLatinTestCase testCase) throws NoSuchMethodException {
         var random = new Random(testCase.seed());
         var actual = random.latin(testCase.length());
         Assertions2.assertEquals(testCase.output(), actual, getLatinContext(testCase), result ->
@@ -45,8 +45,8 @@ public class RandomTest {
     private Context getLatinContext(RandomLatinTestCase testCase) throws NoSuchMethodException {
         return Assertions2.contextBuilder()
             .subject(Random.class.getMethod("latin", int.class))
-            .property("seed", testCase.seed())
-            .property("length", testCase.length())
+            .add("seed", testCase.seed())
+            .add("length", testCase.length())
             .build();
     }
 }

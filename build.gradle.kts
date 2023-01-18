@@ -21,6 +21,13 @@ submission {
     requireGraderPublic = false
 }
 
+dependencies {
+    implementation("org.junit-pioneer:junit-pioneer:1.7.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.3")
+    implementation("org.tudalgo:algoutils-tutor:0.1.0-SNAPSHOT")
+    implementation("org.tudalgo:algoutils-student:0.1.0-SNAPSHOT")
+}
+
 jagr {
     graders {
         val graderPublic by getting {

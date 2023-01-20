@@ -129,7 +129,19 @@ public class SkipList<T> {
      * @return {@code true} if this list contains the specified element
      */
     public boolean contains(T key) {
-        return crash(); // TODO: H1 - remove if implemented
+        // TODO: H1 - remove if implemented
+        if (head!=null) {
+            ListItem<ExpressNode<T>> current = head;
+            while (current.key.down!=null || current.next!=null && cmp.compare(current.next.key.value, key)<1) {
+                if (current.next!=null) {
+                    int comparator = cmp.compare(current.next.key.value, key);
+                    if (comparator==0) return true;
+                    else if (current.key.down!=null && comparator>0) current = current.key.down;
+                    else current = current.next;
+                } else current = current.key.down;
+            }
+        }
+        return false;
     }
 
     /**
@@ -138,9 +150,7 @@ public class SkipList<T> {
      *
      * @param key the element to be added
      */
-    public void add(T key) {
-        crash(); // TODO: H2 - remove if implemented
-    }
+    public void add(T key) { }
 
     /**
      * Removes the first occurrence of the specified element from this list, if it is present. The element will be
@@ -149,7 +159,66 @@ public class SkipList<T> {
      * @param key the element to be removed from this list, if present
      */
     public void remove(T key) {
-        crash(); // TODO: H3 - remove if implemented
+        // TODO: H3 - remove if implemented
+        if (head!=null) {
+            ListItem<ExpressNode<T>> current = head;
+            while (current.key.down!=null || current.next!=null && cmp.compare(current.next.key.value, key)<1) {
+                if (current.next!=null) {
+                    int comparator = cmp.compare(current.next.key.value, key);
+                    if (comparator==0) {
+                        while (true) {
+                            ListItem<ExpressNode<T>> nextCurrent;
+                            if (current.key.value==null && current.next.next==null) {
+                                if (current.key.down!=null) {
+                                    nextCurrent = current.next.key.down.key.prev;
+                                    current.next.key.prev = null;
+                                    current.next = null;
+                                    head = head.key.down;
+                                    head.key.up = null;
+                                    current = nextCurrent;
+                                    height--;
+                                } else {
+                                    current.next.key.up = null;
+                                    current.next = null;
+                                    head = null;
+                                    height = 0;
+                                    break;
+                                }
+                            } else {
+                                if (current.key.down!=null) {
+                                    nextCurrent = current.next.key.down.key.prev;
+                                    if (current.next.next!=null) {
+                                        current.next.next.key.prev = current;
+                                        current.next = current.next.next;
+                                    } else {
+                                        current.next.key.prev = null;
+                                        current.next.key.up = null;
+                                        current.next = null;
+
+                                    }
+                                    current = nextCurrent;
+                                } else {
+                                    if (current.next.next!=null) {
+                                        current.next.next.key.prev = current;
+                                        current.next = current.next.next;
+                                    } else {
+                                        current.next.key.prev = null;
+                                        current.next.key.up = null;
+                                        current.next = null;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        size --;
+                        break;
+                    }
+                    else if (current.key.down!=null && comparator>0) current = current.key.down;
+                    else current = current.next;
+                }
+                else current = current.key.down;
+            }
+        }
     }
 
     /**

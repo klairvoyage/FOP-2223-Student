@@ -1,6 +1,7 @@
 package h11.h4;
 
 import h11.fibs.FibonacciGeneratorImpl;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
@@ -17,6 +18,12 @@ public class FibonacciGeneratorImplTest extends FibonacciGeneratorTest {
     @Override
     public void testThat_initialIsCorrect(int numberOfFibs) throws NoSuchMethodException {
         super.testThat_initialIsCorrect(numberOfFibs);
+    }
+
+    @Test
+    @Override
+    public void testThat_fibsMatchHardcodedValues() throws NoSuchMethodException {
+        super.testThat_fibsMatchHardcodedValues();
     }
 
     @ParameterizedTest

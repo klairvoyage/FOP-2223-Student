@@ -3,6 +3,9 @@ package h11.fibs;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.tudalgo.algoutils.student.Student.crash;
 
 /**
@@ -37,6 +40,9 @@ public abstract class AlgaeTest {
     @ParameterizedTest
     @ValueSource(ints = {5, 10, 20, 30})
     public void testAlgaeGeneratesFibs(int numberOfFibs) {
-        crash("Not implemented: H4.3"); // TODO: H4.3 - remove if implemented
+        // TODO: H4.3 - remove if implemented
+        List<Integer> a = fibonacciGenerator.generate(numberOfFibs);
+        List<Integer> b = algaeFibonacciGenerator.generate(numberOfFibs);
+        assertEquals(a, b);
     }
 }

@@ -1,6 +1,8 @@
 package h11;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.tudalgo.algoutils.student.Student.crash;
@@ -27,6 +29,9 @@ public class LSystemGrowerImpl<T> implements LSystemGrower<T> {
 
     @Override
     public Stream<List<T>> grow() {
-        return crash("Not implemented: H2"); // TODO: H2 - remove if implemented
+        // TODO: H2 - remove if implemented
+        List<T> seed = new ArrayList<>();
+        seed.add(lSystem.getAxiom());
+        return Stream.iterate(seed, x -> x.stream().flatMap(lSystem::project).collect(Collectors.toList()));
     }
 }

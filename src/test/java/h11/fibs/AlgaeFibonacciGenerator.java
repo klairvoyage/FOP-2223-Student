@@ -4,6 +4,7 @@ import h11.Algae;
 import h11.LSystemGrower;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.tudalgo.algoutils.student.Student.crash;
 
@@ -27,6 +28,10 @@ public class AlgaeFibonacciGenerator implements FibonacciGenerator {
 
     @Override
     public List<Integer> generate(int numberOfFibs) {
-        return crash("Not implemented: H4.2"); // TODO: H4.2 - remove if implemented
+        // TODO: H4.2 - remove if implemented
+        return algaeGrower.grow()
+            .limit(numberOfFibs)
+            .map(List::size)
+            .collect(Collectors.toList());
     }
 }

@@ -5,6 +5,8 @@ import h11.parse.Projection;
 import org.tudalgo.algoutils.student.io.PropertyUtils;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.tudalgo.algoutils.student.Student.crash;
 
@@ -47,7 +49,12 @@ public class RandomLSystemGenerator {
      * @return A {@link List} of random {@link Projection}s.
      */
     public List<Projection> generate() {
-        return crash("Not implemented: H6.2"); // TODO: H6.2 - remove if implemented
+        // TODO: H6.2 - remove if implemented
+        return Stream.generate(() -> random.latin(1))
+            .distinct()
+            .limit(random.nextInt(1, MAX_SYSTEM_SIZE + 1))
+            .map(this::makeProjection)
+            .collect(Collectors.toList());
     }
 
     /**
@@ -58,6 +65,7 @@ public class RandomLSystemGenerator {
      * @return A random {@link Projection} with the given source.
      */
     public Projection makeProjection(String src) {
-        return crash("Not implemented: H6.1"); // TODO: H6.1 - remove if implemented
+        // TODO: H6.1 - remove if implemented
+        return new Projection(src, random.latin(random.nextInt(1, MAX_PROJECTION_DESTINATION_SIZE + 1)));
     }
 }

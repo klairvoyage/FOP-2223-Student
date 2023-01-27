@@ -32,11 +32,17 @@ public class ParsedLSystem implements LSystem<Character> {
 
     @Override
     public Character getAxiom() {
-        return crash("Not implemented: H3.1"); // TODO: H3.1 - remove if implemented
+        // TODO: H3.1 - remove if implemented
+        return projections.get(0).source();
     }
 
     @Override
     public Stream<Character> project(Character ch) {
-        return crash("Not implemented: H3.1"); // TODO: H3.1 - remove if implemented
+        // TODO: H3.1 - remove if implemented
+        return projections.stream()
+            .filter(x -> x.source()==ch)
+            .findFirst()
+            .map(x -> x.destination().chars().mapToObj(conv -> (char)conv))
+            .orElse(Stream.of(ch));
     }
 }

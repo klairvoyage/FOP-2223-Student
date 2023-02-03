@@ -35,7 +35,8 @@ public class JSONConstantNode extends JSONNode implements JSONConstant {
      */
     @Override
     public void write(BufferedWriter writer, int indentation) throws IOException {
-        crash(); //TODO H2 - remove if implemented
+        //TODO H2 - remove if implemented
+        writer.write(constant.getSpelling());
     }
 
     /**

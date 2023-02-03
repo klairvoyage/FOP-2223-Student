@@ -30,6 +30,7 @@ public class LookaheadReader extends Reader {
 
     private final BufferedReader reader;
     private boolean isClosed = false;
+    private int nextChar = -1;
 
     /**
      * Creates a new {@link LookaheadReader}-Instance based on the given reader.
@@ -48,7 +49,10 @@ public class LookaheadReader extends Reader {
      * @throws IOException If reading from the underlying reader causes an {@link IOException}.
      */
     public int read() throws IOException {
-        return crash(); //TODO H1.2 - remove if implemented
+        //TODO H1.2 - remove if implemented
+        int temp = nextChar!=-1 ? nextChar : reader.read();
+        nextChar = -1;
+        return temp;
     }
 
     /**
@@ -58,7 +62,9 @@ public class LookaheadReader extends Reader {
      * @throws IOException If reading from the underlying Reader causes an {@link IOException}.
      */
     public int peek() throws IOException {
-        return crash(); //TODO H1.2 - remove if implemented
+        //TODO H1.2 - remove if implemented
+        if (nextChar==-1) nextChar = reader.read();
+        return nextChar;
     }
 
     /**

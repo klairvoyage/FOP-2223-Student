@@ -41,7 +41,19 @@ public class JSONArrayNode extends JSONNode implements JSONArray {
      */
     @Override
     public void write(BufferedWriter writer, int indentation) throws IOException {
-        crash(); //TODO H2 - remove if implemented
+        //TODO H2 - remove if implemented
+        writer.write("[\n");
+        indentation++;
+        JSONElement element;
+        for (int i=0;i<list.size();i++) {
+            element = list.get(i);
+            writeIndentation(writer, indentation);
+            element.write(writer, indentation);
+            if (i<list.size()-1) writer.write(",\n");
+            else writer.write('\n');
+        }
+        writeIndentation(writer, --indentation);
+        writer.write(']');
     }
 
     /**

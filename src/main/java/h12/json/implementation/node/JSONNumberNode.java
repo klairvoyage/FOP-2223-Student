@@ -33,7 +33,8 @@ public class JSONNumberNode extends JSONNode implements JSONNumber {
      */
     @Override
     public void write(BufferedWriter writer, int indentation) throws IOException {
-        crash(); //TODO H2 - remove if implemented
+        //TODO H2 - remove if implemented
+        writer.write(""+number);
     }
 
     /**

@@ -43,7 +43,8 @@ public class JSONElementNodeParser implements JSONElementParser {
      * @throws IOException If an {@link IOException} occurs while reading the contents of the reader.
      */
     public void skipIndentation() throws IOException {
-        crash(); //TODO H3.1 - remove if implemented
+        //TODO H3.1 - remove if implemented
+        while (Character.isWhitespace(reader.peek())) reader.read();
     }
 
     /**
@@ -54,7 +55,9 @@ public class JSONElementNodeParser implements JSONElementParser {
      * @see #skipIndentation()
      */
     public int acceptIt() throws IOException {
-        return crash(); //TODO H3.1 - remove if implemented
+        //TODO H3.1 - remove if implemented
+        skipIndentation();
+        return reader.read();
     }
 
     /**
@@ -67,7 +70,11 @@ public class JSONElementNodeParser implements JSONElementParser {
      * @see #skipIndentation()
      */
     public void accept(char expected) throws IOException, UnexpectedCharacterException, BadFileEndingException {
-        crash(); //TODO H3.1 - remove if implemented
+        //TODO H3.1 - remove if implemented
+        skipIndentation();
+        int ch = reader.read();
+        if (ch==-1) throw new BadFileEndingException();
+        if (ch!=expected) throw new UnexpectedCharacterException(expected, (char) ch);
     }
 
     /**
@@ -78,7 +85,9 @@ public class JSONElementNodeParser implements JSONElementParser {
      * @see LookaheadReader
      */
     public int peek() throws IOException {
-        return crash(); //TODO H3.1 - remove if implemented
+        //TODO H3.1 - remove if implemented
+        skipIndentation();
+        return reader.peek();
     }
 
     /**
@@ -89,7 +98,8 @@ public class JSONElementNodeParser implements JSONElementParser {
      */
     @Override
     public void checkEndOfFile() throws IOException, BadFileEndingException {
-        crash(); //TODO H3.1 - remove if implemented
+        //TODO H3.1 - remove if implemented
+        if (peek()!=-1) throw new BadFileEndingException();
     }
 
     /**
@@ -103,7 +113,16 @@ public class JSONElementNodeParser implements JSONElementParser {
      * @throws BadFileEndingException If the end of the File is reached before the {@link Predicate} returned true.
      */
     public String readUntil(Predicate<Integer> stopPred) throws IOException, BadFileEndingException {
-        return crash(); //TODO H3.1 - remove if implemented
+        //TODO H3.1 - remove if implemented
+        StringBuilder s = new StringBuilder();
+        int ch = peek();
+        while (ch!=-1 && !stopPred.test(ch)) {
+            s.append((char)ch);
+            reader.read();
+            ch = peek();
+        }
+        if (ch==-1) throw new BadFileEndingException();
+        return " "+s+" ";
     }
 
     /**
@@ -115,7 +134,16 @@ public class JSONElementNodeParser implements JSONElementParser {
      */
     @Override
     public JSONElement parse() throws IOException {
-        return crash(); //TODO H3.2 - remove if implemented
+        //TODO H3.2 - remove if implemented
+        int nextChar = peek();
+        if (nextChar==-1) return null;
+        return switch (nextChar) {
+            case '{' -> objectParser.parse();
+            case '[' -> arrayParser.parse();
+            case '"' -> stringParser.parse();
+            case '+', '-', '.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' -> numberParser.parse();
+            default -> constantParser.parse();
+        };
     }
 
     /**

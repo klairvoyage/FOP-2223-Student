@@ -6,6 +6,7 @@ import h12.json.JSONObject;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -43,7 +44,19 @@ public class JSONObjectNode extends JSONNode implements JSONObject {
      */
     @Override
     public void write(BufferedWriter writer, int indentation) throws IOException {
-        crash(); //TODO H2 - remove if implemented
+        //TODO H2 - remove if implemented
+        writer.write("{\n");
+        indentation++;
+        boolean commaNeeded = false;
+        for (JSONObjectEntry objectEntry : objectEntries) {
+            if (commaNeeded) writer.write(",\n");
+            else commaNeeded = true;
+            writeIndentation(writer, indentation);
+            objectEntry.write(writer, indentation);
+        }
+        writer.write('\n');
+        writeIndentation(writer, --indentation);
+        writer.write('}');
     }
 
     /**
@@ -105,7 +118,10 @@ public class JSONObjectNode extends JSONNode implements JSONObject {
          */
         @Override
         public void write(BufferedWriter writer, int indentation) throws IOException {
-            crash(); //TODO H2 - remove if implemented
+            //TODO H2 - remove if implemented
+            identifier.write(writer, indentation);
+            writer.write(": ");
+            value.write(writer, indentation);
         }
 
         /**

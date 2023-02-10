@@ -1,5 +1,6 @@
 package h13.model.gameplay.sprites;
 
+import h13.controller.ApplicationSettings;
 import h13.model.gameplay.Direction;
 import h13.model.gameplay.GameState;
 import javafx.scene.paint.Color;
@@ -27,6 +28,10 @@ public class Enemy extends BattleShip {
      * The amount of points the enemy is worth when it is destroyed.
      */
     private final int pointsWorth;
+    /**
+     * The amount of time that has passed since the last shot.
+     */
+    private double timePassed = 0;
 
     // --Constructors-- //
 
@@ -96,6 +101,13 @@ public class Enemy extends BattleShip {
     public void update(final double elapsedTime) {
         super.update(elapsedTime);
 
-        crash(); // TODO: H1.4 - remove if implemented
+        // TODO: H1.4 - remove if implemented
+        timePassed += elapsedTime;
+        if (ApplicationSettings.enemyShootingDelayProperty().lessThanOrEqualTo(timePassed).get()) {
+            if (ApplicationSettings.enemyShootingProbabilityProperty().greaterThanOrEqualTo(Math.random()).get()) {
+                shoot();
+                timePassed = 0;
+            }
+        }
     }
 }

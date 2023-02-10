@@ -77,7 +77,8 @@ public class Bullet extends Sprite {
      * @return True if the Bullet can damage the given Sprite.
      */
     public boolean canHit(final BattleShip other) {
-        return crash(); // TODO: H1.2 - remove if implemented
+        // TODO: H1.2 - remove if implemented
+        return owner.isEnemy(other) && other.isAlive() && !hits.contains(other) && this.getBounds().intersects(other.getBounds());
     }
 
     /**
@@ -86,8 +87,15 @@ public class Bullet extends Sprite {
      * @param other The BattleShip to hit.
      */
     public void hit(final BattleShip other) {
-        crash(); // TODO: H1.2 - remove if implemented
+        // TODO: H1.2 - remove if implemented
+        other.damage();
+        this.damage();
+        hits.add(other); //not checked by Public Grader?!
     }
 
     // TODO: Check if the Bullet is out of bounds and die if it is.
+    @Override
+    public void update(double elapsedTime) {
+        super.update(elapsedTime);
+    }
 }

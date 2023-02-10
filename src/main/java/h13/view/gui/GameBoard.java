@@ -4,12 +4,19 @@ import h13.controller.ApplicationSettings;
 import h13.controller.GameConstants;
 import h13.controller.scene.game.GameController;
 import h13.model.gameplay.Updatable;
+import h13.model.gameplay.sprites.Bullet;
+import h13.model.gameplay.sprites.Enemy;
+import h13.model.gameplay.sprites.Player;
+import h13.model.gameplay.sprites.Sprite;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Scale;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static h13.controller.GameConstants.*;
 import static org.tudalgo.algoutils.student.Student.crash;
@@ -107,7 +114,13 @@ public class GameBoard extends Canvas implements Updatable {
      * @param gc The {@link GraphicsContext} to draw the background to.
      */
     private void drawBackground(final GraphicsContext gc) {
-        crash(); // TODO: H2.3 - remove if implemented
+        // TODO: H2.3 - remove if implemented
+        if (backgroundImage!=null) gc.drawImage(backgroundImage, ORIGINAL_GAME_BOUNDS.getMinX(),
+            ORIGINAL_GAME_BOUNDS.getMinY(), ORIGINAL_GAME_BOUNDS.getWidth(), ORIGINAL_GAME_BOUNDS.getHeight());
+        else {
+            gc.clearRect(ORIGINAL_GAME_BOUNDS.getMinX(), ORIGINAL_GAME_BOUNDS.getMinY(),
+                ORIGINAL_GAME_BOUNDS.getWidth(), ORIGINAL_GAME_BOUNDS.getHeight());
+        }
     }
 
     /**
@@ -125,7 +138,22 @@ public class GameBoard extends Canvas implements Updatable {
      * @param gc The {@link GraphicsContext} to draw the sprites to.
      */
     private void drawSprites(final GraphicsContext gc) {
-        crash(); // TODO: H2.3 - remove if implemented
+        // TODO: H2.3 - remove if implemented
+        List<Sprite> spriteList = getGameController().getGameState().getSprites().stream().toList();
+        List<Sprite> bullets = new ArrayList<>();
+        List<Sprite> enemies = new ArrayList<>();
+        Sprite player = null;
+        List<Sprite> other = new ArrayList<>();
+        for (Sprite sprite : spriteList) {
+            if (sprite instanceof Bullet) bullets.add(sprite);
+            else if (sprite instanceof Enemy) enemies.add(sprite);
+            else if (sprite instanceof Player) player = sprite;
+            else other.add(sprite);
+        }
+        for (Sprite sprite : bullets) SpriteRenderer.renderSprite(gc, sprite);
+        for (Sprite sprite : enemies) SpriteRenderer.renderSprite(gc, sprite);
+        if (player!=null) SpriteRenderer.renderSprite(gc, player);
+        for (Sprite sprite : other) SpriteRenderer.renderSprite(gc, sprite);
     }
 
     /**
@@ -158,6 +186,10 @@ public class GameBoard extends Canvas implements Updatable {
      * @param gc The {@link GraphicsContext} to draw the border to.
      */
     private static void drawBorder(final GraphicsContext gc) {
-        crash(); // TODO: H2.3 - remove if implemented
+        // TODO: H2.3 - remove if implemented
+        gc.setLineWidth(BORDER_WIDTH);
+        gc.setStroke(BORDER_COLOR);
+        gc.strokeRect(ORIGINAL_GAME_BOUNDS.getMinX()/2, ORIGINAL_GAME_BOUNDS.getMinY()/2, ORIGINAL_GAME_BOUNDS.getWidth(),
+            ORIGINAL_GAME_BOUNDS.getHeight());
     }
 }

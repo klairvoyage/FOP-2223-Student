@@ -21,7 +21,15 @@ public class Utils {
      * @see h13.controller.GameConstants
      */
     public static Bounds clamp(final Bounds bounds) {
-        return crash(); // TODO: H1.1 - remove if implemented
+        // TODO: H1.1 - remove if implemented
+        if (ORIGINAL_GAME_BOUNDS.contains(bounds)) return bounds;
+        double minX = bounds.getMinX();
+        double minY = bounds.getMinY();
+        if (minX<ORIGINAL_GAME_BOUNDS.getMinX()) minX = ORIGINAL_GAME_BOUNDS.getMinX();
+        if (minX+bounds.getWidth()>ORIGINAL_GAME_BOUNDS.getMaxX()) minX = ORIGINAL_GAME_BOUNDS.getMaxX() - bounds.getWidth();
+        if (minY<ORIGINAL_GAME_BOUNDS.getMinY()) minY = ORIGINAL_GAME_BOUNDS.getMinY();
+        if (minY+bounds.getHeight()>ORIGINAL_GAME_BOUNDS.getMaxY()) minY = ORIGINAL_GAME_BOUNDS.getMaxY() - bounds.getHeight();
+        return new BoundingBox(minX, minY, bounds.getWidth(), bounds.getHeight());
     }
 
     /**
@@ -34,6 +42,9 @@ public class Utils {
      * @return the moved bounds
      */
     public static Bounds getNextPosition(final Bounds bounds, final double velocity, final Direction direction, final double elapsedTime) {
-        return crash(); // TODO: H1.1 - remove if implemented
+        // TODO: H1.1 - remove if implemented
+        double minX = bounds.getMinX() + direction.getX()*velocity*elapsedTime;
+        double miny = bounds.getMinY() + direction.getY()*velocity*elapsedTime;
+        return new BoundingBox(minX, miny, bounds.getWidth(), bounds.getHeight());
     }
 }

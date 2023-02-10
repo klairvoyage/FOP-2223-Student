@@ -4,6 +4,7 @@ import h13.controller.ApplicationSettings;
 import h13.model.gameplay.Direction;
 import h13.model.gameplay.GameState;
 import h13.model.gameplay.Updatable;
+import h13.shared.Utils;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
@@ -11,6 +12,7 @@ import javafx.scene.paint.Color;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static h13.controller.GameConstants.ORIGINAL_GAME_BOUNDS;
 import static org.tudalgo.algoutils.student.Student.crash;
 
 /**
@@ -213,7 +215,8 @@ public abstract class Sprite implements Updatable {
      * @return whether the sprite is no longer alive.
      */
     public boolean isDead() {
-        return crash(); // TODO: H1.1 - remove if implemented
+        // TODO: H1.1 - remove if implemented
+        return getHealth()==0;
     }
 
     /**
@@ -339,7 +342,8 @@ public abstract class Sprite implements Updatable {
      * @param amount the amount to damage the sprite by.
      */
     public void damage(final int amount) {
-        crash(); // TODO: H1.1 - remove if implemented
+        // TODO: H1.1 - remove if implemented
+        health -= amount;
     }
 
     /**
@@ -355,12 +359,20 @@ public abstract class Sprite implements Updatable {
      * Kills the sprite.
      */
     public void die() {
-        crash(); // TODO: H1.1 - remove if implemented
+        // TODO: H1.1 - remove if implemented
+        health = 0;
     }
     // --update-- //
 
     @Override
     public void update(final double elapsedTime) {
-        crash(); // TODO: H1.1 - remove if implemented
+        // TODO: H1.1 - remove if implemented
+        Bounds newBounds = Utils.getNextPosition(getBounds(), getVelocity(), getDirection(), elapsedTime);
+        if (this instanceof Bullet && !ORIGINAL_GAME_BOUNDS.contains(newBounds)) die();
+        else {
+            newBounds = Utils.clamp(newBounds);
+            setX(newBounds.getMinX());
+            setY(newBounds.getMinY());
+        }
     }
 }

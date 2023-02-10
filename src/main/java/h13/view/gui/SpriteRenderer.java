@@ -30,6 +30,11 @@ public final class SpriteRenderer {
      * @see GraphicsContext
      */
     public static void renderSprite(@NotNull final GraphicsContext gc, @NotNull final Sprite s) {
-        crash(); // TODO: H2.2 - remove if implemented
+        // TODO: H2.2 - remove if implemented
+        if (s.getTexture()!=null) gc.drawImage(s.getTexture(), s.getX(), s.getY(), s.getWidth(), s.getHeight());
+        else {
+            gc.setFill(s.getColor());
+            gc.fillRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+        }
     }
 }

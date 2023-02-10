@@ -1,5 +1,6 @@
 package h13.model.gameplay.sprites;
 
+import h13.controller.ApplicationSettings;
 import h13.model.gameplay.Direction;
 import h13.model.gameplay.GameState;
 import javafx.scene.paint.Color;
@@ -82,7 +83,8 @@ public class BattleShip extends Sprite {
      * @return {@code true} if the given {@link BattleShip} is befriended with this Ship, {@code false} otherwise.
      */
     public boolean isFriend(final BattleShip other) {
-        return crash(); // TODO: H1.3 - remove if implemented
+        // TODO: H1.3 - remove if implemented
+        return this.getClass().isInstance(other); //siehe JavaDoc (isInstance vs instanceof)
     }
 
     /**
@@ -103,6 +105,11 @@ public class BattleShip extends Sprite {
      * @param direction The {@link Direction} to shoot the {@link Bullet} towards.
      */
     protected void shoot(final Direction direction) {
-        crash(); // TODO: H1.3 - remove if implemented
+        // TODO: H1.3 - remove if implemented
+        if (!hasBullet() || (hasBullet() && ApplicationSettings.instantShootingProperty().get())) {
+            Bullet newBullet = new Bullet(this.getBounds().getCenterX()-BULLET_WIDTH/2, this.getBounds().getCenterY()-BULLET_HEIGHT/2, getGameState(), this, direction);
+            setBullet(newBullet);
+            getGameState().getToAdd().add(newBullet);
+        }
     }
 }

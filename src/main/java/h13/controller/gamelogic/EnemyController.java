@@ -5,6 +5,8 @@ import h13.model.gameplay.EnemyMovement;
 import h13.model.gameplay.sprites.Bullet;
 import h13.model.gameplay.sprites.Enemy;
 
+import java.util.Set;
+
 import static h13.controller.GameConstants.*;
 import static org.tudalgo.algoutils.student.Student.crash;
 
@@ -56,7 +58,9 @@ public final class EnemyController {
      * @see Enemy#isDead()
      */
     public boolean isDefeated() {
-        return crash(); // TODO: H3.3 - remove if implemented
+        // TODO: H3.3 - remove if implemented
+        Set<Enemy> aliveEnemies = gameController.getGameState().getAliveEnemies();
+        return aliveEnemies.isEmpty();
     }
 
     // --Other Methods-- //

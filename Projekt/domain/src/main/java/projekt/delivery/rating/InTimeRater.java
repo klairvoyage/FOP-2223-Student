@@ -21,8 +21,8 @@ public class InTimeRater implements Rater {
 
     private final long ignoredTicksOff;
     private final long maxTicksOff;
+    public final long ignoredTicksOffPublic,maxTicksOffPublic;
     private long maxTotalTicksOff=0,actualTotalTicksOff=0;
-
     /**
      * Creates a new {@link InTimeRater} instance.
      * @param ignoredTicksOff The amount of ticks this {@link InTimeRater} ignores when dealing with an {@link ConfirmedOrder} that didn't get delivered in time.
@@ -34,6 +34,8 @@ public class InTimeRater implements Rater {
 
         this.ignoredTicksOff = ignoredTicksOff;
         this.maxTicksOff = maxTicksOff;
+        ignoredTicksOffPublic=ignoredTicksOff;
+        maxTicksOffPublic=maxTicksOff;
     }
 
     @Override

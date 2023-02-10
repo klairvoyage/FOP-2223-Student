@@ -21,14 +21,17 @@ public class AmountDeliveredRater implements Rater {
     private final double factor;
 
     private int totalOrders=0, deliveredOrders=0;
+    public final double factorPublic;
 
     private AmountDeliveredRater(double factor) {
         this.factor = factor;
+        factorPublic=factor;
     }
 
     @Override
     public double getScore() {
         int undeliveredOrders=totalOrders-deliveredOrders;
+        if(undeliveredOrders==0) return 1;                      //ACHTUNG: DAS WIDERSPRICHT DER AUFGABENSTELLUNG, IST ABER SINNIG
         if(0<undeliveredOrders&&undeliveredOrders<totalOrders*(1-factor))
             return 1-(double)undeliveredOrders/(totalOrders*(1-factor));
         return 0;

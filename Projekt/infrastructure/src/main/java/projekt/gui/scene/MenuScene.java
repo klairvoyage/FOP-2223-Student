@@ -21,6 +21,11 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.function.Consumer;
 
+/*own imports */
+import javafx.scene.Group;
+import javafx.scene.layout.Pane;
+/*end own imports*/
+
 /**
  * An abstract class for representing a controllable menu scene.<p>
  * The root Element of each menu scene is a {@link BorderPane}.
@@ -36,6 +41,7 @@ public abstract class MenuScene<SC extends MenuSceneController> extends Scene im
 
     protected final Button returnButton;
     protected final Button quitButton;
+    protected BorderPane centralRegion=new BorderPane();
 
     protected List<ProblemArchetype> problems;
 

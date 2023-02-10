@@ -78,7 +78,10 @@ public class OurDeliveryService extends AbstractDeliveryService {
                             vehicleManager.getRegion().getNode(locationSpecificOrders.get(0).getLocation()));
                         for(ConfirmedOrder order:locationSpecificOrders)
                             dest.deliverOrder(vehicle,order, BasicDeliveryService.HelperClass.helper);              // THIS IS LIKELY WRONG!!!
-                        if(vehicle.getOrders().isEmpty()) vehicle.moveDirect(vehicleManager.getRegion().getNode(
+                        if(vehicle.getOrders().isEmpty()&&!(vehicle.getOccupied().getComponent()
+                            instanceof projekt.delivery.routing.Region.Node myNode &&
+                            myNode.equals(vehicleManager.getRegion().getNode(locationSpecificOrders.get(0).getLocation()))))
+                            vehicle.moveDirect(vehicleManager.getRegion().getNode(
                             locationSpecificOrders.get(0).getLocation()));
                     }
                 };

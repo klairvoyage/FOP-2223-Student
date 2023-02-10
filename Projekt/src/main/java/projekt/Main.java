@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         startWithGUI();
-        //startWithoutGUI(); //can bew used instead to run a simulation without a gui
+        //startWithoutGUI(); //can be used instead to run a simulation without a gui
     }
 
     private static void startWithGUI() throws ClassNotFoundException, InstantiationException, IllegalAccessException {

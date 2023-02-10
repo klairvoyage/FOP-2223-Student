@@ -27,12 +27,14 @@ public class TravelDistanceRater implements Rater {
     private final Region region;
     private final PathCalculator pathCalculator;
     private final double factor;
+    public final double factorPublic;
     private int actualDistance=0, worstDistance=0;
 
     private TravelDistanceRater(VehicleManager vehicleManager, double factor) {
         region = vehicleManager.getRegion();
         pathCalculator = vehicleManager.getPathCalculator();
         this.factor = factor;
+        factorPublic=factor;
     }
 
     @Override

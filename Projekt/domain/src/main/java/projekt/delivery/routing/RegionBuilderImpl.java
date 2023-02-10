@@ -140,6 +140,7 @@ class RegionBuilderImpl implements Region.Builder {
         edges.forEach(e -> {
 
             if (!nodes.containsKey(e.getLocationA()) || !nodes.containsKey(e.locationB)) {
+                //System.out.println(e.getLocationA().getX()+" "+e.getLocationB().getX());
                 throw new IllegalArgumentException("Can't create an edge if one of the connected nodes wasn't added to the region");
             }
 

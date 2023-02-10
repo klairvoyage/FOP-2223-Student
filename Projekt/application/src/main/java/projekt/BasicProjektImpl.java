@@ -14,7 +14,7 @@ import projekt.delivery.routing.Region;
 import projekt.delivery.routing.VehicleManager;
 import projekt.delivery.service.BasicDeliveryService;
 import projekt.delivery.simulation.SimulationConfig;
-import projekt.runner.RunnerImpl;
+import projekt.delivery.archetype.runner.RunnerImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;

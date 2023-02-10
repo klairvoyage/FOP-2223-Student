@@ -91,7 +91,14 @@ public final class SceneSwitcher {
 
         SIMULATION(() -> SceneAndController.fromScene(new SimulationScene())),
 
-        RATING(() -> SceneAndController.fromScene(new RaterScene()));
+        RATING(() -> SceneAndController.fromScene(new RaterScene())),
+
+        PROBLEMINFO(()->SceneAndController.fromScene(new ProblemInfoScene())),
+
+        CREATEPROBLEM(()->SceneAndController.fromScene(new CreateProblemScene())),
+
+        CREATEREGION(()->SceneAndController.fromScene(new ProblemInfoScene()));
+
 
         // --Variables-- //
         /**

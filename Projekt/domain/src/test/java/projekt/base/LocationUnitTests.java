@@ -7,6 +7,7 @@ import projekt.ObjectUnitTests;
 
 import static org.tudalgo.algoutils.student.Student.crash;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.function.Function;
 
 public class LocationUnitTests {
 
@@ -15,37 +16,42 @@ public class LocationUnitTests {
 
     @BeforeAll
     public static void initialize() {
-        crash(); // TODO: H12.2 - remove if implemented
+        Function<Integer, Location> testObjectFactory=(i)->new Location(2*i,3*i);
+        comparableUnitTests=new ComparableUnitTests<>(testObjectFactory);
+        objectUnitTests=new ObjectUnitTests<>(testObjectFactory,Location::toString);
+        comparableUnitTests.initialize(10);
+        objectUnitTests.initialize(10);
+
     }
 
     @Test
     public void testEquals() {
-        crash(); // TODO: H12.2 - remove if implemented
+        objectUnitTests.testEquals();
     }
 
     @Test
     public void testHashCode() {
-        crash(); // TODO: H12.2 - remove if implemented
+        objectUnitTests.testHashCode();
     }
 
     @Test
     public void testToString() {
-        crash(); // TODO: H12.2 - remove if implemented
+        objectUnitTests.testToString();
     }
 
     @Test
     public void testBiggerThen() {
-        crash(); // TODO: H12.2 - remove if implemented
+        comparableUnitTests.testBiggerThen();
     }
 
     @Test
     public void testAsBigAs() {
-        crash(); // TODO: H12.2 - remove if implemented
+        comparableUnitTests.testAsBigAs();
     }
 
     @Test
     public void testLessThen() {
-        crash(); // TODO: H12.2 - remove if implemented
+        comparableUnitTests.testLessThen();
     }
 
 }

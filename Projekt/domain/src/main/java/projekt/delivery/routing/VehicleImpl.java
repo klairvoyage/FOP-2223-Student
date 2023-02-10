@@ -67,6 +67,7 @@ class VehicleImpl implements Vehicle {
     @Override
     public void moveQueued(Region.Node node, Consumer<? super Vehicle> arrivalAction) {
         checkMoveToNode(node);
+        moveQueue.removeIf((path)->path.nodes().isEmpty());
         if(!moveQueue.isEmpty())
             moveQueue.add(new PathImpl(vehicleManager.getPathCalculator().getPath(moveQueue.getLast().nodes().getLast(),node),
                                 arrivalAction));

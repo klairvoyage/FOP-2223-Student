@@ -1,0 +1,26 @@
+[
+  {
+    "data": {
+      "expression": "()()",
+      "index": 0,
+      "expectedNextIndex": 4,
+      "expectedType": "CORRECT"
+    }
+  },
+  {
+    "data": {
+      "expression": "()[]{}",
+      "index": 0,
+      "expectedNextIndex": 6,
+      "expectedType": "CORRECT"
+    }
+  },
+  {
+    "data": {
+      "expression": "((([])))[[()]]{{{}}}",
+      "index": 0,
+      "expectedNextIndex": 20,
+      "expectedType": "CORRECT"
+    }
+  }
+]

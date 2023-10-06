@@ -1,0 +1,50 @@
+[
+  {
+    "data": {
+      "expression": "()",
+      "index": 0,
+      "expectedNextIndex": 2,
+      "expectedType": "CORRECT"
+    }
+  },
+  {
+    "data": {
+      "expression": "[]",
+      "index": 0,
+      "expectedNextIndex": 2,
+      "expectedType": "CORRECT"
+    }
+  },
+  {
+    "data": {
+      "expression": "{}",
+      "index": 0,
+      "expectedNextIndex": 2,
+      "expectedType": "CORRECT"
+    }
+  },
+  {
+    "data": {
+      "expression": "([{}])",
+      "index": 2,
+      "expectedNextIndex": 4,
+      "expectedType": "CORRECT"
+    }
+  },
+  {
+    "data": {
+      "expression": "{{(([[]]))}}",
+      "index": 5,
+      "expectedNextIndex": 7,
+      "expectedType": "CORRECT"
+    }
+  },
+  {
+    "data": {
+      "expression": "[[{{{((()))}}}]]",
+      "index": 7,
+      "expectedNextIndex": 9,
+      "expectedType": "CORRECT"
+    }
+  }
+]

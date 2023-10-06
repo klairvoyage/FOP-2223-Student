@@ -1,0 +1,42 @@
+[
+  {
+    "data": {
+      "expression": "(FOP",
+      "index": 0,
+      "expectedNextIndex": 1,
+      "expectedType": "INVALID_CHARACTER"
+    }
+  },
+  {
+    "data": {
+      "expression": "{(AuD)}",
+      "index": 0,
+      "expectedNextIndex": 2,
+      "expectedType": "INVALID_CHARACTER"
+    }
+  },
+  {
+    "data": {
+      "expression": "(]",
+      "index": 0,
+      "expectedNextIndex": 1,
+      "expectedType": "INVALID_CLOSING_BRACKET"
+    }
+  },
+  {
+    "data": {
+      "expression": "{{{]]]",
+      "index": 0,
+      "expectedNextIndex": 3,
+      "expectedType": "INVALID_CLOSING_BRACKET"
+    }
+  },
+  {
+    "data": {
+      "expression": "{{{]]]",
+      "index": 0,
+      "expectedNextIndex": 3,
+      "expectedType": "INVALID_CLOSING_BRACKET"
+    }
+  }
+]

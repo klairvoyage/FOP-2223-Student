@@ -1,0 +1,26 @@
+[
+  {
+    "data": {
+      "expression": "(((",
+      "index": 2,
+      "expectedNextIndex": 2,
+      "expectedType": "NO_CLOSING_BRACKET"
+    }
+  },
+  {
+    "data": {
+      "expression": "{{{{",
+      "index": 3,
+      "expectedNextIndex": 3,
+      "expectedType": "NO_CLOSING_BRACKET"
+    }
+  },
+  {
+    "data": {
+      "expression": "{{{{",
+      "index": 0,
+      "expectedNextIndex": 3,
+      "expectedType": "NO_CLOSING_BRACKET"
+    }
+  }
+]

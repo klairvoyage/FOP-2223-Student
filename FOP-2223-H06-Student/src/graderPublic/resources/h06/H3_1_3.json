@@ -1,0 +1,58 @@
+[
+  {
+    "data": {
+      "expression": "(FOP",
+      "index": 1,
+      "expectedNextIndex": 1,
+      "expectedType": "INVALID_CHARACTER"
+    }
+  },
+  {
+    "data": {
+      "expression": "((AuD))",
+      "index": 2,
+      "expectedNextIndex": 2,
+      "expectedType": "INVALID_CHARACTER"
+    }
+  },
+  {
+    "data": {
+      "expression": "(]",
+      "index": 1,
+      "expectedNextIndex": 1,
+      "expectedType": "NO_OPENING_BRACKET"
+    }
+  },
+  {
+    "data": {
+      "expression": "(]",
+      "index": 0,
+      "expectedNextIndex": 1,
+      "expectedType": "INVALID_CLOSING_BRACKET"
+    }
+  },
+  {
+    "data": {
+      "expression": "(]",
+      "index": 1,
+      "expectedNextIndex": 1,
+      "expectedType": "NO_OPENING_BRACKET"
+    }
+  },
+  {
+    "data": {
+      "expression": "{{{]]]",
+      "index": 3,
+      "expectedNextIndex": 3,
+      "expectedType": "NO_OPENING_BRACKET"
+    }
+  },
+  {
+    "data": {
+      "expression": "{{{]]]",
+      "index": 2,
+      "expectedNextIndex": 3,
+      "expectedType": "INVALID_CLOSING_BRACKET"
+    }
+  }
+]

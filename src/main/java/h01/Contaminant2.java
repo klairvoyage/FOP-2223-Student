@@ -5,6 +5,7 @@ import fopbot.Robot;
 import fopbot.RobotFamily;
 import h01.template.Contaminant;
 import h01.template.TickBased;
+import h01.template.Utils;
 import org.tudalgo.algoutils.student.Student;
 
 /**
@@ -32,6 +33,28 @@ public class Contaminant2 extends Robot implements Contaminant, TickBased {
     @Override
     public void doMove() {
         // TODO: H2.2
-        Student.crash("H2.2 - remove if implemented");
+        if (!hasAnyCoins()) turnOff();
+        else if (!isTurnedOff()) {
+            // fills current field (if possible) up to 2 coins
+            while (Utils.getCoinAmount(getX(), getY())<2 && hasAnyCoins()) putCoin();
+            // collects needed amount of turns in an array for all viable direction
+            // options; starting from its left and then in clockwise order
+            Integer[] allAmountOfTurnsInOrder = new Integer[4];
+            for (int i=0; i<4; i++) {
+                if (isFrontClear()) {
+                    if (i%2==0) allAmountOfTurnsInOrder[i+1] = i;
+                    else allAmountOfTurnsInOrder[i-1] = i;
+                }
+                turnLeft();
+            }
+            // turns to the first direction in the array that is a viable option
+            for (Integer amountOfTurns : allAmountOfTurnsInOrder) {
+                if (amountOfTurns != null) {
+                    for (int i=0; i<amountOfTurns; i++) turnLeft();
+                    break;
+                }
+            }
+            if (isFrontClear()) move();
+        }
     }
 }

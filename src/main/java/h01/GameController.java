@@ -1,7 +1,9 @@
 package h01;
 
 import fopbot.Robot;
+import fopbot.World;
 import h01.template.GameControllerBase;
+import h01.template.Utils;
 import org.tudalgo.algoutils.student.Student;
 
 /**
@@ -19,6 +21,25 @@ public class GameController extends GameControllerBase {
     @Override
     public void checkWinCondition() {
         // TODO: H3
-        Student.crash("H3 - remove if implemented");
+        boolean cleanerWon = (getContaminant1().isTurnedOff() && getContaminant2().isTurnedOff()) ||
+            (Utils.getCoinAmount(0, World.getHeight()-1) >= 200);
+
+        int amountsOfFieldsWithCoins = 0;
+        for (int i=0; i<World.getWidth(); i++) for (int j=0; j<World.getHeight(); j++) if (Utils.getCoinAmount(i, j)>0)
+            amountsOfFieldsWithCoins++;
+        boolean contaminantsWon = amountsOfFieldsWithCoins >= (World.getWidth()*World.getHeight())*0.5;
+
+        if (cleanerWon && contaminantsWon) {
+            System.out.println("Cleaning robot won!");
+            stopGame();
+        }
+        else if (cleanerWon) {
+            System.out.println("Cleaning robot won!");
+            stopGame();
+        }
+        else if (contaminantsWon) {
+            System.out.println("Contaminants won!");
+            stopGame();
+        }
     }
 }
